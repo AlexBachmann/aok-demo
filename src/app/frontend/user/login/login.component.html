@@ -1,0 +1,37 @@
+<div class="backdrop">
+	<div class="row">
+		<div class="small-12 large-6 large-offset-3 columns">
+			<div class="login-container">
+				<div class="logo-container">
+					<div class="logo"></div>
+					<span class="subtitle" i18n="The name of page, the user is currently on.">Login</span>
+				</div>
+				<form (ngSubmit)="onSubmit(form.getControlGroup().value)" [formGroup]="form.getControlGroup()">
+					<tekkl-text-field [field]="form.getField('username')" label="Username / Email" i18n-label="Input Field Label">
+						<tekkl-field-error [field]="form.getField('username')" type="required" message="Please provide your username or email" i18n-message="Error message for empty username form field"></tekkl-field-error>
+					</tekkl-text-field>
+					<tekkl-text-field [field]="form.getField('password')" label="Password" i18n-label="Input Field Label">
+						<tekkl-field-error [field]="form.getField('password')" type="required" message="Please provide your password" i18n-message></tekkl-field-error>
+						<tekkl-field-error [field]="form.getField('password')" type="minlength" message="Your password needs to be at least 8 characters long" i18n-message="Error message for password entry that is too short"></tekkl-field-error>
+					</tekkl-text-field>
+					<div class="row">
+						<div class="columns small-12 medium-6">
+							<tekkl-checkbox-field [field]="form.getField('remember')" label="Remember me" i18n-label="Input Field Label" value="1"></tekkl-checkbox-field>
+						</div>
+						<div class="columns small-12 medium-6">
+							<div class="password-reset-container">
+								<a routerLink="/user/password-reset" class="password-reset" i18n="Password reset link">Forgot your password?</a>
+							</div>
+						</div>
+					</div>
+					<div class="actions">
+						<button class="button" type="submit" [disabled]="!form.getControlGroup().valid" i18n="Submit Button Label">Submit</button>
+					</div>
+				</form>
+			</div>
+			<div class="register-container">
+				<ng-container i18n="Question under the login screen that leads to registration page">Don't have an account yet?</ng-container> <a routerLink="/user/register" i18n="Link to registration page">Sign up now</a>
+			</div>
+		</div>
+	</div>
+</div>

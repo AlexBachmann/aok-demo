@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: '%env(TEKKL_DATABASE_HOST)%'
+    database_port: '%env(TEKKL_DATABASE_PORT)%'
+    database_name: '%env(TEKKL_DATABASE_NAME)%'
+    database_user: '%env(TEKKL_DATABASE_USER)%'
+    database_password: '%env(TEKKL_DATABASE_PASSWORD)%'
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: bachmann@loop-one.de
+    mailer_password: testpasswort
+    secret: 73b46dea0206bc4006982aaa8aed0a75596152f7

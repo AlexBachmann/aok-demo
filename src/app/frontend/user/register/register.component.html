@@ -1,0 +1,35 @@
+<div class="backdrop">
+	<div class="row">
+		<div class="small-12 large-6 large-offset-3 columns">
+			<div class="register-container">
+				<div class="logo-container">
+					<div class="logo"></div>
+					<span class="subtitle" i18n="The name of page, the user is currently on.">Registration</span>
+				</div>
+				<form (ngSubmit)="onSubmit(form.getControlGroup().value)" [formGroup]="form.getControlGroup()">
+					<tekkl-text-field [field]="form.getField('username')" label="Username" i18n-label="Input Field Label">
+						<tekkl-field-error [field]="form.getField('username')" type="required" message="Please choose a username you'll use for login" i18n-message="Error message for empty username form field"></tekkl-field-error>
+					</tekkl-text-field>
+					<tekkl-text-field [field]="form.getField('email')" label="Email" i18n-label="Input Field Label">
+						<tekkl-field-error [field]="form.getField('email')" type="required" message="Please enter your email address" i18n-message="Error message for empty email form field"></tekkl-field-error>
+						<tekkl-field-error [field]="form.getField('email')" type="email" message="Unfortunately this is not a valid email address. Please check for typos." i18n-message="Error message for empty email form field"></tekkl-field-error>
+					</tekkl-text-field>
+					<tekkl-text-field [field]="form.getField('password')" label="Password" i18n-label="Input Field Label">
+						<tekkl-field-error [field]="form.getField('password')" type="required" message="Please provide your password" i18n-message></tekkl-field-error>
+						<tekkl-field-error [field]="form.getField('password')" type="minlength" message="Your password needs to be at least 8 characters long" i18n-message="Error message for password entry that is too short"></tekkl-field-error>
+					</tekkl-text-field>
+					<tekkl-text-field [field]="form.getField('verify_password')" label="Verify Password" i18n-label="Input Field Label">
+						<tekkl-field-error [field]="form.getField('verify_password')" type="required" message="Please provide your password again" i18n-message></tekkl-field-error>
+						<tekkl-field-error [field]="form.getField('verify_password')" type="sameAs" message="The two passwords do not match" i18n-message="Error message for password verification that does not match original password"></tekkl-field-error>
+					</tekkl-text-field>
+					<div class="actions">
+						<button class="button" type="submit" [disabled]="!form.getControlGroup().valid" i18n="Submit Button Label">Create Account</button>
+					</div>
+				</form>
+			</div>
+			<div class="login-container">
+				<ng-container i18n="Question under the registration screen that leads to login page">Already have an account?</ng-container> <a routerLink="/user/login" i18n="Link to registration page">Login now</a>
+			</div>
+		</div>
+	</div>
+</div>

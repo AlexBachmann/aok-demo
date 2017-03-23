@@ -1,0 +1,12 @@
+{{#shapes}}%png-{{name}}{{^last}}{{/last}} {
+	background-position: {{position.relative.xy}};{{#dimensions.inline}}
+	width: {{width.outer}}px;
+	height: {{height.outer}}px;{{/dimensions.inline}}
+}{{#dimensions.extra}}
+
+%png-{{name}}{{^last}}{{/last}}-dims {
+	width: {{width.outer}}px;
+	height: {{height.outer}}px;
+}{{/dimensions.extra}}
+
+{{/shapes}}

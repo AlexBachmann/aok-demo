@@ -1,0 +1,53 @@
+<tekkl-vertical-slide [open]="!field.getControl().valid && field.getControl().touched && field.getControl().hasError('required') && !field.error_msg_required">
+	<div class="message error" i18n="The error message provided, once the users leaves a required form field blank">
+		Dieses Feld darf nicht leer sein.
+	</div>
+</tekkl-vertical-slide>
+
+<tekkl-vertical-slide [open]="!field.getControl().valid && field.getControl().touched && field.getControl().hasError('email') && !!field.error_msg_email">
+	<div class="message error">
+		{{field.error_msg_email}}
+	</div>
+</tekkl-vertical-slide>
+
+<tekkl-vertical-slide [open]="!field.getControl().valid && field.getControl().touched && field.getControl().hasError('email') && !field.error_msg_email">
+	<div class="message error" i18n="The error message provided, once the users enters a not valid email address">
+		Bitte geben Sie eine valide Email-Adresse an.
+	</div>
+</tekkl-vertical-slide>
+
+<tekkl-vertical-slide [open]="!field.getControl().valid && field.getControl().touched && field.getControl().hasError('minlength') && !!field.error_msg_minLength">
+	<div class="message error">
+		{{field.error_msg_minLength}}
+	</div>
+</tekkl-vertical-slide>
+
+<tekkl-vertical-slide [open]="!field.getControl().valid && field.getControl().touched && field.getControl().hasError('minlength') && !field.error_msg_minLength">
+	<div class="message error" i18n="The error message provided, when the user input in a form field has not the required length">
+		Dieses Feld muss mindestens eine Länge von <span *ngIf="field.getControl().hasError('minlength')">{{field.getControl().getError('minlength').requiredLength}}</span> haben (Aktuell: <span *ngIf="field.getControl().hasError('minlength')">{{field.getControl().getError('minlength').actualLength}})</span>.
+	</div>
+</tekkl-vertical-slide>
+
+<tekkl-vertical-slide [open]="!field.getControl().valid && field.getControl().touched && field.getControl().hasError('maxlength') && !!field.error_msg_maxLength">
+	<div class="message error">
+		{{field.error_msg_maxLength}}
+	</div>
+</tekkl-vertical-slide>
+
+<tekkl-vertical-slide [open]="!field.getControl().valid && field.getControl().touched && field.getControl().hasError('maxlength') && !field.error_msg_maxLength">
+	<div class="message error" i18n="The error message provided, when the user input has more characters than allowed">
+		Dieses Feld darf maximal eine Länge von <span *ngIf="field.getControl().hasError('maxlength')">{{field.getControl().getError('maxlength').requiredLength}}</span> haben (Aktuell: <span *ngIf="field.getControl().hasError('maxlength')">{{field.getControl().getError('maxlength').actualLength}}</span>).
+	</div>
+</tekkl-vertical-slide>
+
+<tekkl-vertical-slide [open]="!field.getControl().valid && field.getControl().touched && field.getControl().hasError('sameAs') && !!field.error_msg_sameAs">
+	<div class="message error">
+		{{field.error_msg_sameAs}}
+	</div>
+</tekkl-vertical-slide>
+
+<tekkl-vertical-slide [open]="!field.getControl().valid && field.getControl().touched && field.getControl().hasError('sameAs') && !field.error_msg_sameAs">
+	<div class="message error" i18n="The error message provided, when the user input is required to be identical with another input, but are not">
+		Dieses Feld hat nicht den gleichen Inhalt wie das Feld &quot;<span *ngIf="field.getControl().hasError('sameAs')">{{field.getForm().getField(field.getControl().getError('sameAs').name).label}}</span>&quot;.
+	</div>
+</tekkl-vertical-slide>

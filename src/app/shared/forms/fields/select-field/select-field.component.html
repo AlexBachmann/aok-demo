@@ -1,0 +1,10 @@
+<label>{{field.label}}
+	<div class="input_wrapper" [formGroup]="field.getFormGroup()">
+		<select *ngIf="!printOut" [formControlName]="field.getName()" (change)="onChange($event)">
+			<option *ngFor="let option of field.getOptionsArray()" value="{{option.value}}">{{option.text}}</option>
+		</select>
+		<span *ngIf="printOut && field.getSelected()" class="print-out-value">{{field.getSelected().text}}</span>
+		<span class="icon icon-info"></span>
+	</div>
+</label>
+<tekkl-field-error [field]='field'></tekkl-field-error >

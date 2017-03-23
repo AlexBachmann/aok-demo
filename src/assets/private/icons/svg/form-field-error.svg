@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="15px" viewBox="0 0 18 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Checkout-Step-3---Daten" transform="translate(-879.000000, -629.000000)" fill="#DA291C">
+            <g id="2.-Anmelden" transform="translate(0.000000, 115.000000)">
+                <g id="Kundenlogin" transform="translate(144.000000, 188.000000)">
+                    <g id="Head" transform="translate(390.997403, 17.000000)">
+                        <g id="warning" transform="translate(314.000000, 308.000000)">
+                            <path d="M30.5,16 L47.5,16 L39,1 L30.5,16 L30.5,16 Z M40,14 L38,14 L38,12 L40,12 L40,14 L40,14 Z M40,11 L38,11 L38,7 L40,7 L40,11 L40,11 Z" id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,29 @@
+@import "./src/assets/private/sass/base";
+
+.form-control
+	position: relative
+	padding-left: 30px
+	margin-top: 14px
+
+label
+	color: $grey
+	cursor: pointer
+	user-select: none
+	font-size: 0.875rem
+
+.checkbox
+	position: absolute
+	left: 6px
+	top: 5px
+	border-radius: $global-radius
+	display: inline-block
+	width: 14px
+	height: 14px
+	border: 1px solid $grey
+	cursor: pointer
+
+	&.checked
+		+icon($icon:checkbox-mark, $rootelementsize: false, $rootelementposition: absolute)
+			top: 50%
+			left: 50%
+			transform: translateX(-50%) translateY(-50%)

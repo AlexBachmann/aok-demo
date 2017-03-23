@@ -1,0 +1,13 @@
+fos_rest:
+    view:
+        empty_content: 204
+        view_response_listener: 'force'
+    format_listener:
+        enabled: true
+        rules:
+            - { path: '^/api', priorities: ['json'] }
+            - { path: '^/', priorities: ['html'] }
+    exception:
+        enabled: true
+    service:
+        inflector: app.util.inflector

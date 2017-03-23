@@ -1,0 +1,17 @@
+services:
+    tekkl_user.jwt_authenticator:
+        class: Tekkl\Bundle\UserBundle\Security\JwtAuthenticator
+        public: false
+    tekkl_user.jwt_user_provider:
+        class: Tekkl\Bundle\UserBundle\Security\JwtUserProvider
+        arguments:
+            entityManager: "@doctrine.orm.entity_manager"
+    tekkl_user.util.jwt_secret_generator:
+        class: Tekkl\Bundle\UserBundle\Util\JwtSecretGenerator
+    tekkl_user.listeners.fos_user.registration.complete:
+        class: Tekkl\Bundle\UserBundle\EventListener\Registration\JwtSecret
+        arguments: ['@fos_user.user_manager', '@tekkl_user.util.jwt_secret_generator']
+        tags:
+            - { name: kernel.event_subscriber }
+        #tags:
+            #- { name: kernel.event_listener, event: !php/const:FOSUserEvents::REGISTRATION_COMPLETED, method: onRegistrationCompleted }

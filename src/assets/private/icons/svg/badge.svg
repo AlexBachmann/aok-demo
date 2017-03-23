@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="64px" height="60px" viewBox="0 0 64 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="99.0214445%" id="linearGradient-1">
+            <stop stop-color="#000000" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.02" offset="80%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.04" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" stop-opacity="0.12" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.06" offset="20%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <path d="M33,60.1764706 C50.673112,60.1764706 65,47.1137198 65,31 C65,14.8862802 50.673112,1.82352941 33,1.82352941 C15.326888,1.82352941 1,14.8862802 1,31 C1,47.1137198 15.326888,60.1764706 33,60.1764706 Z" id="path-3"></path>
+        <mask id="mask-5" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="64" height="58.3529412" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="64" height="58.3529412" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <path d="M33,56.4705882 C51.2253967,56.4705882 66,45.0538494 66,30.9705882 C66,16.8873271 51.2253967,5.47058824 33,5.47058824 C14.7746033,5.47058824 -3.55271368e-14,16.8873271 -3.55271368e-14,30.9705882 C-3.55271368e-14,45.0538494 14.7746033,56.4705882 33,56.4705882 Z" id="path-7"></path>
+        <mask id="mask-8" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="66" height="51" fill="white">
+            <use xlink:href="#path-7"></use>
+        </mask>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Startseite-Desktop-HD" transform="translate(-154.000000, -213.000000)">
+            <g id="Slider" transform="translate(0.000000, 74.000000)">
+                <g id="Caption" transform="translate(153.000000, 0.000000)">
+                    <g id="New-Badge" transform="translate(0.000000, 138.000000)">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <g id="Oval-3" transform="translate(33.000000, 31.000000) rotate(-2.000000) translate(-33.000000, -31.000000) ">
+                            <use stroke="url(#linearGradient-1)" mask="url(#mask-5)" fill="#DA291C" fill-rule="evenodd" xlink:href="#path-3"></use>
+                            <use stroke="url(#linearGradient-2)" mask="url(#mask-6)" xlink:href="#path-3"></use>
+                        </g>
+                        <g id="Oval-3" mask="url(#mask-4)" transform="translate(33.000000, 30.970588) rotate(-2.000000) translate(-33.000000, -30.970588) " stroke-width="4" stroke="#FFFFFF">
+                            <use mask="url(#mask-8)" xlink:href="#path-7"></use>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

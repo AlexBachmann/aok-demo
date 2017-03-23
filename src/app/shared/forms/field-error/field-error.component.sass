@@ -1,0 +1,15 @@
+@import "./src/assets/private/sass/base";
+.message
+	font-size: 13px
+	line-height: 16px
+	padding: 4px 6px
+	
+	&.error
+		padding-right: 25px
+		position: relative
+		color: $red
+
+		+icon($icon:form-field-error, $rootelementsize: false)
+			top: 3px
+			left: auto
+			right: 6px

@@ -1,0 +1,56 @@
+@import 'iconpng';
+
+@mixin iconpng($icon, $hover: false, $transitiontype: opacity, $rootelementsize: true, $rootelementposition: relative) {
+	//relative by default
+	position: $rootelementposition;
+	//set root element to same size as icon
+	@if ($rootelementsize) {
+		@extend %png-#{$icon}-dims;
+	}
+	//properites shared across before and after
+	&:before,
+	&:after {
+		content: "";
+		display: inline-block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		background-image: url('/assets/public/sprite/generated/sprite-8eb16979x1.png');
+		background-repeat: no-repeat;
+		@if ($transitiontype != none) {
+			-moz-transition:    $transitiontype, 0.5s, ease;
+			-o-transition:      $transitiontype, 0.5s, ease;
+			-webkit-transition: $transitiontype, 0.5s, ease;
+			-ms-transition:     $transitiontype, 0.5s, ease;
+			transition:         $transitiontype, 0.5s, ease;
+		}
+		@content;
+	}
+	//use the selected icon in before element
+	&:before {
+		@extend %png-#{$icon};
+		@extend %png-#{$icon}-dims;
+	}
+	//dont show after yet, maybe theres no hover...
+	&:after {
+		display: none;
+	}
+	//...but if theres a hover...
+	@if ($hover) {
+		//...then show after and use the hover icon
+		&:after {
+			display: inline-block;
+			@extend .png-#{$icon}-hover;
+			opacity: 0;
+		}
+		//and use this for transitions
+		&:hover {
+			&:before {
+				opacity: 0;
+			}
+			&:after {
+				opacity: 1;
+			}
+		}
+	}
+}

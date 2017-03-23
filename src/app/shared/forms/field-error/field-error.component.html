@@ -1,0 +1,23 @@
+<tekkl-vertical-slide [open]="!field.getControl().valid && field.getControl().touched && field.getControl().hasError(type)">
+	<div *ngIf="message" class="message error">
+		{{message}}
+	</div>
+	<div *ngIf="!message && type == 'required'" class="messag error" i18n="Default error message for required form fields that have been left blank">
+		This field is not allowed to be empty.
+	</div>
+	<div *ngIf="!message && type == 'email'" class="messag error" i18n="Default error message for form fields which contain an invalid email address">
+		Please provide a valid email.
+	</div>
+	<div *ngIf="!message && type == 'minlength'" class="messag error" i18n="Default error message for form fields that don't have the required length">
+		Your input is too short.
+	</div>
+	<div *ngIf="!message && type == 'maxlength'" class="messag error" i18n="Default error message for form fields that exceeds the maximum length">
+		Your input is too long.
+	</div>
+	<div *ngIf="!message && type == 'sameAs'" class="messag error" i18n="Default error message for form fields whose input needs to be the same as other fields (Think of <verify your password> fields)">
+		Your input does not match the requirements.
+	</div>
+</tekkl-vertical-slide>
+
+
+
