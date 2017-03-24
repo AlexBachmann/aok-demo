@@ -1,6 +1,6 @@
 {
-    "name": "alex/tekkl",
-    "license": "proprietary",
+    "name": "tekkl/tekkl-core",
+    "license": "MIT",
     "type": "project",
     "autoload": {
         "psr-4": {
