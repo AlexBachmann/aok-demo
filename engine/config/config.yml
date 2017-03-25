@@ -4,8 +4,8 @@ imports:
     - { resource: components/doctrine.yml }
     - { resource: components/twig.yml }
     - { resource: components/swift.yml }
-    - { resource: bundles/fos_rest.yml }
-    - { resource: bundles/fos_user.yml }
+    - { resource: bundles/fos-rest.yml }
+    - { resource: bundles/fos-user.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
