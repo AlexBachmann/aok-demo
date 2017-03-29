@@ -1,3 +1,6 @@
+api_login_check:
+    path: /api/login_check
+    
 tekkl_user:
     resource: "@TekklUserBundle/Resources/config/routing.yml"
     prefix:   /api/user/
@@ -5,5 +8,7 @@ tekkl_user:
 app:
     resource: "@TekklAppBundle/Controller/"
     type:     annotation
+
+
 
 

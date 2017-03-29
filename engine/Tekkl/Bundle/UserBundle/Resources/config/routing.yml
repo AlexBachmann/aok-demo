@@ -1,7 +1,3 @@
-tekkl_user_login:
-    type:     rest
-    resource: Tekkl\Bundle\UserBundle\Controller\LoginController
-
 tekkl_user_register:
     type:     rest
     resource: Tekkl\Bundle\UserBundle\Controller\RegistrationController

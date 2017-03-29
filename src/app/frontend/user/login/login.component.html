@@ -7,16 +7,16 @@
 					<span class="subtitle" i18n="The name of page, the user is currently on.">Login</span>
 				</div>
 				<form (ngSubmit)="onSubmit(form.getControlGroup().value)" [formGroup]="form.getControlGroup()">
-					<tekkl-text-field [field]="form.getField('username')" label="Username / Email" i18n-label="Input Field Label">
-						<tekkl-field-error [field]="form.getField('username')" type="required" message="Please provide your username or email" i18n-message="Error message for empty username form field"></tekkl-field-error>
+					<tekkl-text-field [field]="form.getField('_username')" label="Username / Email" i18n-label="Input Field Label">
+						<tekkl-field-error [field]="form.getField('_username')" type="required" message="Please provide your username or email" i18n-message="Error message for empty username form field"></tekkl-field-error>
 					</tekkl-text-field>
-					<tekkl-text-field [field]="form.getField('password')" label="Password" i18n-label="Input Field Label">
-						<tekkl-field-error [field]="form.getField('password')" type="required" message="Please provide your password" i18n-message></tekkl-field-error>
-						<tekkl-field-error [field]="form.getField('password')" type="minlength" message="Your password needs to be at least 8 characters long" i18n-message="Error message for password entry that is too short"></tekkl-field-error>
+					<tekkl-text-field [field]="form.getField('_password')" label="Password" i18n-label="Input Field Label">
+						<tekkl-field-error [field]="form.getField('_password')" type="required" message="Please provide your password" i18n-message></tekkl-field-error>
+						<tekkl-field-error [field]="form.getField('_password')" type="minlength" message="Your password needs to be at least 8 characters long" i18n-message="Error message for password entry that is too short"></tekkl-field-error>
 					</tekkl-text-field>
 					<div class="row">
 						<div class="columns small-12 medium-6">
-							<tekkl-checkbox-field [field]="form.getField('remember')" label="Remember me" i18n-label="Input Field Label" value="1"></tekkl-checkbox-field>
+							<tekkl-checkbox-field [field]="form.getField('_remember')" label="Remember me" i18n-label="Input Field Label" value="1"></tekkl-checkbox-field>
 						</div>
 						<div class="columns small-12 medium-6">
 							<div class="password-reset-container">

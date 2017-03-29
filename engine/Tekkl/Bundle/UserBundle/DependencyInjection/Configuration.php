@@ -32,6 +32,29 @@ class Configuration implements ConfigurationInterface
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
 
+        $rootNode
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->arrayNode('jwt')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->arrayNode('cookie')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('name')->defaultValue('BEARER')->end()
+                                ->scalarNode('ttl')->defaultValue(3600)->end()
+                            ->end()
+                        ->end()
+                        ->arrayNode('authorization_header')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('prefix')->defaultValue('Bearer')->end()
+                                ->scalarNode('name')->defaultValue('Authorization')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
         return $treeBuilder;
     }
 }

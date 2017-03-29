@@ -1,7 +1,7 @@
 export default {
 	fields: [
 		{
-			name: "username",
+			name: "_username",
 			type: "text",
 			validators: {
 				required: true,
@@ -9,7 +9,7 @@ export default {
 			}
 		},
 		{
-			name: "password",
+			name: "_password",
 			type: "password",
 			validators: {
 				minlength: 8,
@@ -17,7 +17,7 @@ export default {
 			}
 		},
 		{
-			name: "remember",
+			name: "_remember",
 			type: "checkbox"
 		}
 	]

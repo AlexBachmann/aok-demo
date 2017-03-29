@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
 	onSubmit(value){
 		this.loading = true;
-		this.http.post('/api/user/login/', JSON.stringify(value))
+		this.http.post('/api/login_check', JSON.stringify(value))
 			.subscribe((res) => console.log(res));
 	}
 }
