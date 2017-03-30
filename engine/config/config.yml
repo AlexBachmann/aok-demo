@@ -7,6 +7,7 @@ imports:
     - { resource: bundles/fos-rest.yml }
     - { resource: bundles/fos-user.yml }
     - { resource: bundles/lexik-jwt.yml }
+    - { resource: bundles/gesdinet-jwt-refresh-token.yml }
     - { resource: bundles/tekkl-user.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
