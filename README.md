@@ -1,5 +1,6 @@
 TEKKL Core - An Angular / Symfony application skeleton for the web, iOS and Android
 =====
+[![Build Status](https://travis-ci.org/Tekkl/tekkl-core.svg?branch=master)](https://travis-ci.org/Tekkl/tekkl-core)
 
 TEKKL Core is a project that aims to solve one mission: Create an Angular / Symfony application skeleton that enables you to create web, iOS and Android applications that can be packaged and distributed to as many servers as possible.
 

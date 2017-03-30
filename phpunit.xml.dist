@@ -1,30 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- https://phpunit.de/manual/current/en/appendixes.configuration.html -->
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.8/phpunit.xsd"
-         backupGlobals="false"
-         colors="true"
-         bootstrap="app/autoload.php"
->
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="always"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+         bootstrap="engine/autoload.php">
     <php>
         <ini name="error_reporting" value="-1" />
-        <server name="KERNEL_DIR" value="app/" />
+        <server name="KERNEL_DIR" value="engine/" />
     </php>
 
     <testsuites>
-        <testsuite name="Project Test Suite">
+        <testsuite name="TEKKL core test suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>src</directory>
+            <directory>engine</directory>
             <exclude>
-                <directory>src/*Bundle/Resources</directory>
-                <directory>src/*/*Bundle/Resources</directory>
-                <directory>src/*/Bundle/*Bundle/Resources</directory>
+                <directory>engine/*Bundle/Resources</directory>
+                <directory>engine/*/*Bundle/Resources</directory>
+                <directory>engine/*/Bundle/*Bundle/Resources</directory>
             </exclude>
         </whitelist>
     </filter>
