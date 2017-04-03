@@ -20,4 +20,10 @@ services:
     tekkl_user.listener.authentication_success.body_token_remover:
         class: Tekkl\Bundle\UserBundle\EventListener\Authentication\BodyTokenRemover
         tags:
-            - { name: kernel.event_listener, event: !php/const:Lexik\Bundle\JWTAuthenticationBundle\Events::AUTHENTICATION_SUCCESS, method: onAuthenticationSuccess }
+            - { name: kernel.event_listener, event: !php/const:Lexik\Bundle\JWTAuthenticationBundle\Events::AUTHENTICATION_SUCCESS, method: onAuthenticationSuccess, priority: -255 }
+
+    tekkl_user.listener.authentication_failure.reauthentication:
+        class: Tekkl\Bundle\UserBundle\EventListener\Authentication\RefreshTokenReauthentication
+        arguments: ['@request_stack', '@gesdinet.jwtrefreshtoken']
+        tags:
+            - { name: kernel.event_listener, event: !php/const:Lexik\Bundle\JWTAuthenticationBundle\Events::AUTHENTICATION_FAILURE, method: reauthenticate }
