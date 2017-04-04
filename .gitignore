@@ -20,3 +20,6 @@
 
 # Ignore PHP Backup files
 *.php~
+
+# Ignore generated files
+/src/assets/public/sprite/generated/*
