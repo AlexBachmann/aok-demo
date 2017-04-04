@@ -10,3 +10,4 @@ parameters:
     mailer_user: bachmann@loop-one.de
     mailer_password: testpasswort
     secret: 73b46dea0206bc4006982aaa8aed0a75596152f7
+    locale: en

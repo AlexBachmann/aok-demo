@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="6765b4c916060f6bc42d9bb69e80377dbcb5e4e9" datatype="html">
+        <source>Login</source>
+        <target/>
+        <note priority="1" from="description">The name of page, the user is currently on.</note>
+      </trans-unit>
+      <trans-unit id="1f1130ab4448249603f2cd90ad9c32fe5caccc87" datatype="html">
+        <source>Please provide your username or email</source>
+        <target>Bitte geben Sie Ihren Benutzernamen oder Ihre Email an</target>
+        <note priority="1" from="description">Error message for empty username form field</note>
+      </trans-unit>
+      <trans-unit id="6bebf480d1b91e4508036000818f93d24f14abc6" datatype="html">
+        <source>Username / Email</source>
+        <target>Benutzername / Email</target>
+        <note priority="1" from="description">Input Field Label</note>
+      </trans-unit>
+      <trans-unit id="ee758887a91d8742038e64587a805150cd8b4f17" datatype="html">
+        <source>Please provide your password</source>
+        <target>Bitte geben Sie Ihr Passwort an</target>
+      </trans-unit>
+      <trans-unit id="10bc5b46bbfad7c5c3f73553a1d0633976b27937" datatype="html">
+        <source>Your password needs to be at least 8 characters long</source>
+        <target>Ihr Passwort muss mindestens 8 Zeichen lang sein</target>
+        <note priority="1" from="description">Error message for password entry that is too short</note>
+      </trans-unit>
+      <trans-unit id="c32ef07f8803a223a83ed17024b38e8d82292407" datatype="html">
+        <source>Password</source>
+        <target>Passwort</target>
+        <note priority="1" from="description">Input Field Label</note>
+      </trans-unit>
+      <trans-unit id="3eb49d60bd859eb2d9d3a6d380cdf4e0b8252333" datatype="html">
+        <source>Remember me</source>
+        <target>Erinnere mich</target>
+        <note priority="1" from="description">Input Field Label</note>
+      </trans-unit>
+      <trans-unit id="6a6a5a45d7df5b7f0169fd2096d78910bb5d0b7d" datatype="html">
+        <source>Forgot your password?</source>
+        <target>Passwort vergessen?</target>
+        <note priority="1" from="description">Password reset link</note>
+      </trans-unit>
+      <trans-unit id="71c77bb8cecdf11ec3eead24dd1ba506573fa9cd" datatype="html">
+        <source>Submit</source>
+        <target>Absenden</target>
+        <note priority="1" from="description">Submit Button Label</note>
+      </trans-unit>
+      <trans-unit id="bfe8a765e87d39e56eb792c45e621d93421b5655" datatype="html">
+        <source>Don't have an account yet?</source>
+        <target>Noch kein Konto?</target>
+        <note priority="1" from="description">Question under the login screen that leads to registration page</note>
+      </trans-unit>
+      <trans-unit id="ff0fc5962df9e787394142819d9655647922432b" datatype="html">
+        <source>Sign up now</source>
+        <target>Jetzt anmelden</target>
+        <note priority="1" from="description">Link to registration page</note>
+      </trans-unit>
+      <trans-unit id="7d6573fb998f3a1cf1356623b85850d9d10edaa9" datatype="html">
+        <source>Registration</source>
+        <target>Anmeldung</target>
+        <note priority="1" from="description">The name of page, the user is currently on.</note>
+      </trans-unit>
+      <trans-unit id="964ac5711a245d3b71848f10997049817d0031d9" datatype="html">
+        <source>Please choose a username you'll use for login</source>
+        <target>Bitte wählen Sie einen Benutzernamen, den Sie zukünftig für das Login verwenden wollen</target>
+        <note priority="1" from="description">Error message for empty username form field</note>
+      </trans-unit>
+      <trans-unit id="08c74dc9762957593b91f6eb5d65efdfc975bf48" datatype="html">
+        <source>Username</source>
+        <target>Benutzername</target>
+        <note priority="1" from="description">Input Field Label</note>
+      </trans-unit>
+      <trans-unit id="e15f62812f7c5deea218818d8ba98f25784ebbc5" datatype="html">
+        <source>Please enter your email address</source>
+        <target>Email-Adresse</target>
+        <note priority="1" from="description">Error message for empty email form field</note>
+      </trans-unit>
+      <trans-unit id="bccf0dde2d0bb97ddc1d494f676be8d4321c6068" datatype="html">
+        <source>Unfortunately this is not a valid email address. Please check for typos.</source>
+        <target>Leider ist dies keine gültige Email-Adresse. Bitte prüfen Sie auf etwaige Tippfehler.</target>
+        <note priority="1" from="description">Error message for empty email form field</note>
+      </trans-unit>
+      <trans-unit id="244aae9346da82b0922506c2d2581373a15641cc" datatype="html">
+        <source>Email</source>
+        <target>Email</target>
+        <note priority="1" from="description">Input Field Label</note>
+      </trans-unit>
+      <trans-unit id="bde07c441c7e97cf227914101265945332befaf5" datatype="html">
+        <source>Please provide your password again</source>
+        <target>Bitte geben Sie Ihr Passwort erneut an.</target>
+      </trans-unit>
+      <trans-unit id="10f6e6802c48a57d9ee737b38f26e4fb5421f4ab" datatype="html">
+        <source>The two passwords do not match</source>
+        <target>Die beiden Passwörter stimmen nicht überein.</target>
+        <note priority="1" from="description">Error message for password verification that does not match original password</note>
+      </trans-unit>
+      <trans-unit id="bcd1e439caba9926b076fbcad03d4837a1674a8c" datatype="html">
+        <source>Verify Password</source>
+        <target>Passwort bestätigen</target>
+        <note priority="1" from="description">Input Field Label</note>
+      </trans-unit>
+      <trans-unit id="e19fcf996343543e13789f17b550ab0c08124b5c" datatype="html">
+        <source>Create Account</source>
+        <target>Konto erstellen</target>
+        <note priority="1" from="description">Submit Button Label</note>
+      </trans-unit>
+      <trans-unit id="a21b4e4b7c48dc611c3774abf8d163519991638d" datatype="html">
+        <source>Already have an account?</source>
+        <target>Sie haben bereits ein Konto?</target>
+        <note priority="1" from="description">Question under the registration screen that leads to login page</note>
+      </trans-unit>
+      <trans-unit id="b7467019d65ac199bef6a8c377d61f7fc487f6e4" datatype="html">
+        <source>Login now</source>
+        <target>Jetzt anmelden</target>
+        <note priority="1" from="description">Link to registration page</note>
+      </trans-unit>
+      <trans-unit id="6818e2b48259674810d8ae68686f18b966a2674a" datatype="html">
+        <source>
+		This field is not allowed to be empty.
+	</source>
+        <target>Dieses Feld darf nicht leer sein.</target>
+        <note priority="1" from="description">Default error message for required form fields that have been left blank</note>
+      </trans-unit>
+      <trans-unit id="b9533bac9e9bb69c2850a9066b2a5d86f6550aa9" datatype="html">
+        <source>
+		Please provide a valid email.
+	</source>
+        <target>Bitte geben Sie eine gültige Email-Adresse an.</target>
+        <note priority="1" from="description">Default error message for form fields which contain an invalid email address</note>
+      </trans-unit>
+      <trans-unit id="ce2e6f3924071de93fd92798d901058d007a4455" datatype="html">
+        <source>
+		Your input is too short.
+	</source>
+        <target>Ihre Eingabe ist zu kurz.</target>
+        <note priority="1" from="description">Default error message for form fields that don't have the required length</note>
+      </trans-unit>
+      <trans-unit id="2aae7ed9b0a804174bbde9ccf78da46c902059ed" datatype="html">
+        <source>
+		Your input is too long.
+	</source>
+        <target>Ihre Eingabe ist zu lang.</target>
+        <note priority="1" from="description">Default error message for form fields that exceeds the maximum length</note>
+      </trans-unit>
+      <trans-unit id="6b44c5aa69de83d199bd7e4710f912794622e917" datatype="html">
+        <source>
+		Your input does not match the requirements.
+	</source>
+        <target>Ihre Eingabe erfüllt nicht die Anforderungen.</target>
+        <note priority="1" from="description">Default error message for form fields whose input needs to be the same as other fields (Think of &lt;verify your password&gt; fields)</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
