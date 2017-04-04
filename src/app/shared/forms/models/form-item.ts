@@ -8,10 +8,11 @@
  */
 import { Form } from './form';
 
+
 export class FormItem {
 	protected requiredProperties: string[] = ['name'];
 	protected name: string;
-
+	type :string;
 	constructor(protected data: {}, protected form: Form) {
 
 		for (var property in data) {

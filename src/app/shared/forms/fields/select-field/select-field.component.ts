@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { Field } from '../../models/field';
+import { SelectField } from '../../models/select-field';
 
 @Component({
 	selector: 'tekkl-select-field',
@@ -15,7 +15,7 @@ import { Field } from '../../models/field';
 	styleUrls: ['./select-field.component.sass']
 })
 export class SelectFieldComponent implements OnInit {
-	@Input() field: Field;
+	@Input() field: SelectField;
 	@Output() change: EventEmitter<any> = new EventEmitter();
 	onChange($event){
 		this.change.emit($event.target.value);

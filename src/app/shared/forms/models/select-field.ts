@@ -12,6 +12,7 @@ import { Form } from './form';
 import { Validators } from '../validators/general';
 
 export class SelectField extends Field {
+	public label: string;
 	public options = new Map();
 	public initialOption = null;
 

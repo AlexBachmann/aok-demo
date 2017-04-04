@@ -1,5 +1,5 @@
 <div class="form-control" [formGroup]="field.getFormGroup()">
-	<div class="checkbox"  [class.checked]="isChecked()" (click)="toggle()"></div>
-	<label (click)="toggle()">{{label}}</label>
+	<div class="checkbox"  [class.checked]="isChecked()" (click)="toggle($event)"></div>
+	<label (click)="toggle($event)">{{label}}</label>
 	<ng-content></ng-content>
 </div>
