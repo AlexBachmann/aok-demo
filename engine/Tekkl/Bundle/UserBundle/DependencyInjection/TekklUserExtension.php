@@ -13,6 +13,7 @@ namespace Tekkl\Bundle\UserBundle\DependencyInjection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
 
 /**
@@ -20,10 +21,27 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class TekklUserExtension extends Extension {
-    /**
-     * {@inheritdoc}
-     */
+class TekklUserExtension extends Extension implements PrependExtensionInterface {
+    public function prepend(ContainerBuilder $container){
+        $lexikConfig = $container->getExtensionConfig('lexik_jwt_authentication');
+        $lexikConfig = $container->getParameterBag()->resolveValue($lexikConfig);
+        $lexitConfiguration = new \Lexik\Bundle\JWTAuthenticationBundle\DependencyInjection\Configuration();
+        $config = $this->processConfiguration($lexitConfiguration, $lexikConfig);
+
+        $tekklUserPrependConfig = array(
+            'jwt' => array(
+                'cookie' => array(
+                    'name' => $config['token_extractors']['cookie']['name'],
+                    'ttl' => $config['token_ttl']
+                ),
+                'authorization_header' => array(
+                    'prefix' => $config['token_extractors']['authorization_header']['prefix'],
+                    'name' => $config['token_extractors']['authorization_header']['name']
+                )
+            )
+        );
+        $container->prependExtensionConfig('tekkl_user', $tekklUserPrependConfig);
+    }
     public function load(array $configs, ContainerBuilder $container){
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
