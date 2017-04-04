@@ -6,7 +6,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-import { Component, Input, OnInit, trigger, state, transition, animate, style } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 @Component({
 	selector: 'tekkl-vertical-slide',

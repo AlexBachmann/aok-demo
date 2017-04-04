@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { VerticalSlideComponent } from './vertical-toggle.component';
+import { VerticalSlideComponent } from './vertical-slide.component';
 
 describe('VerticalSlideComponent', () => {
   let component: VerticalSlideComponent;

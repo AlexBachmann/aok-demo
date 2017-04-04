@@ -1,4 +1,4 @@
-<tekkl-vertical-slide [open]="!field.getControl().valid && field.getControl().touched && field.getControl().hasError(type)">
+<tekkl-vertical-slide [open]="(!field.getControl().valid && field.getControl().touched && field.getControl().hasError(type)).toString()">
 	<div *ngIf="message" class="message error">
 		{{message}}
 	</div>
