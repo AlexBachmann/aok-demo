@@ -13,7 +13,7 @@ namespace Tekkl\Bundle\AppBundle\EventListener\KernelRequest;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 
 class JsonRequestData {
-	public function __construct($methods = ['POST', 'PUT'], $pathPattern = null){
+	public function __construct($methods = ['POST', 'PUT', 'PATCH'], $pathPattern = null){
 		$this->methods = $methods;
 		$this->pathPattern = $pathPattern;
 	}
