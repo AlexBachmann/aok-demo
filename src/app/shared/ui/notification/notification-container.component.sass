@@ -1,0 +1,90 @@
+@import "./src/assets/private/sass/base";
+
+@keyframes hide_notification
+	0%
+		transform: translateX(0px)
+		margin: 5px 0
+		padding: 5px 30px
+		height: auto
+	50%
+		transform: translateX(4000px)
+		margin: 5px 0 
+		padding: 5px 30px
+		height: auto
+	100%
+		transform: translateX(4000px)
+		margin: -5px 0
+		padding: 0
+		height: 0
+
+.notification-container
+	position: fixed
+	top: -100px
+	width: 100%
+	z-index: 1000
+	transition: all 0.4s ease-in-out;
+
+	&.open
+		top: 0
+
+.notification
+	position: relative
+	margin: 5px 0
+	padding: 5px 30px
+	font-size: 14px
+	border-radius: 5px
+	background: scale-color($tekkl-blue, $lightness: 85%)
+	border: 1px solid $tekkl-blue
+	color: $tekkl-blue
+	font-weight: 700
+	text-align: center
+
+	.close
+		position: absolute
+		right: 5px
+		cursor: pointer
+		transform: scale(0.75)
+		+icon($icon:notification_close_info, $rootelementposition: absolute)
+
+	.controls
+		margin-top: 5px
+
+	button
+		margin-bottom: 0
+		font-size: 0.6rem
+		padding: 0.5em 1em
+		border-radius: 2px
+
+	&.inactive
+		animation-name: hide_notification
+		animation-duration: 1s
+		margin: -5px 0 0 2000px
+		padding: 0
+		height: 0
+
+	&.alert,
+	&.error
+		background: scale-color($red, $lightness: 85%)
+		border: 1px solid $red
+		color: $red
+
+		button
+			background: $red
+
+		.close
+			+icon($icon:notification_close_alert, $rootelementposition: absolute)
+
+	&.warning
+		background: scale-color($orange, $lightness: 85%)
+		border: 1px solid $orange
+		color: $orange
+
+		button
+			background: $orange
+
+		.close
+			+icon($icon:notification_close_warning, $rootelementposition: absolute)
+
+	button
+		&.cancel
+			background: $grey

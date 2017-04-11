@@ -13,12 +13,14 @@ import { RegisterComponent } from './register/register.component';
 import { ResetComponent } from './reset/reset.component';
 import { UserRoutingModule } from './routing.module';
 import { FormsModule } from '../../shared/forms/forms.module';
+import { UiModule } from '../../shared/ui/ui.module';
 
 @NgModule({
   imports: [
     CommonModule,
     UserRoutingModule,
-    FormsModule
+    FormsModule,
+    UiModule
   ],
   declarations: [LoginComponent, RegisterComponent, ResetComponent]
 })

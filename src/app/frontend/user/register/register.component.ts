@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsService } from '../../../shared/forms/forms.service';
 import { Form } from '../../../shared/forms/models/form';
 import { AuthHttp } from '../../../shared/authentication/http.service';
+import { NotificationService } from '../../../shared/ui/notification/notification.service';
 import FormData from './form';
 
 @Component({
@@ -24,7 +25,8 @@ export class RegisterComponent implements OnInit {
 
 	constructor(
 		private formsService: FormsService,
-		private http: AuthHttp
+		private http: AuthHttp,
+		private notificationService: NotificationService
 	) { }
 
 	ngOnInit() {

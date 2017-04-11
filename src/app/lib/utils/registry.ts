@@ -24,7 +24,7 @@ export class Registry {
 		});
 		return (ref !== undefined) ? ref : defaultValue;
 	}
-	set(key: string, value: any):void {	
+	set(key: string, value: string|number, overwrite: boolean = true):void {	
 		function setObjectProperty(key, value, object = undefined){
 			var keys = key.split('.'),
 				key = keys.shift(),
@@ -35,12 +35,27 @@ export class Registry {
 			}else if(object[key] && keys.length){
 				object[key] = setObjectProperty(keys.join('.'), value, object[key]);
 			}else{
-				object[key] = value;
+				if(overwrite || object[key] == undefined){
+					object[key] = value;
+				}
 			}
 			return object;
 		}
 
 		this.store = setObjectProperty(key, value, this.store);
+	}
+	load(key: string, value: any, overwrite: boolean = true){
+		if(['string', 'number'].indexOf(typeof(value))  >= 0){
+			this.set(key, value, overwrite);
+		}else{
+			if(typeof(value) != 'object'){
+				throw new Error('Cannot load an ' + typeof(value) + ' into position ' + key);
+			}
+			for (let prop in value){
+				let newKey = key + '.' + prop;
+				this.load(newKey, value[prop], overwrite);
+			}
+		}
 	}
 	getStore(){
 		return this.store;

@@ -14,6 +14,7 @@ import { HttpModule } from '@angular/http';
 import { Config } from './configuration.service';
 import { AppRoutingModule } from './routing.module';
 import { AuthenticationModule } from './shared/authentication/authentication.module';
+import { NotificationService } from './shared/ui/notification/notification.service';
 
 import { AppComponent } from './app.component';
 
@@ -30,7 +31,8 @@ import { AppComponent } from './app.component';
 		AppRoutingModule
 	],
 	providers: [
-		Config
+		Config,
+		NotificationService
 	],
 	bootstrap: [ AppComponent ]
 })

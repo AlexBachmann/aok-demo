@@ -6,10 +6,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormsService } from '../../../shared/forms/forms.service';
 import { Form } from '../../../shared/forms/models/form';
 import { AuthHttp } from '../../../shared/authentication/http.service';
+import { NotificationComponent } from '../../../shared/ui/notification/notification.component';
+import { NotificationService } from '../../../shared/ui/notification/notification.service';
 import FormData from './form';
 
 @Component({
@@ -20,10 +22,12 @@ import FormData from './form';
 export class LoginComponent implements OnInit {
 	public form: Form
 	public loading: boolean
+	@ViewChildren(NotificationComponent) notifications: QueryList<NotificationComponent>;
 
 	constructor(
 		private formsService: FormsService,
-		private http: AuthHttp
+		private http: AuthHttp,
+		private notificationService: NotificationService
 	) { }
 
 	ngOnInit() {
@@ -33,6 +37,11 @@ export class LoginComponent implements OnInit {
 	onSubmit(value){
 		this.loading = true;
 		this.http.post('/api/login_check', JSON.stringify(value))
-			.subscribe((res) => console.log(res));
+			.subscribe((res) => {
+				console.log(res);
+			}, (err) => {
+				var error = this.notifications.filter((notification: NotificationComponent) => notification.id == 'error')[0];
+				this.notificationService.show(error);
+			});
 	}
 }

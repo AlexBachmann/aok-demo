@@ -151,15 +151,11 @@ export class AuthHttp {
 	}
 
 	post(url: string, body: string, options?: RequestOptionsArgs) : Observable<Response> {
-		var headers = new Headers();
-		headers.set('content-type', 'application/json');
-		return this.requestHelper({ url: url, body: body, method: RequestMethod.Post, headers: headers }, options);
+		return this.requestHelper({ url: url, body: body, method: RequestMethod.Post }, options);
 	}
 
 	put(url: string, body: string, options ?: RequestOptionsArgs) : Observable<Response> {
-		var headers = new Headers();
-		headers.set('content-type', 'application/json');
-		return this.requestHelper({ url: url, body: body, method: RequestMethod.Put, headers: headers }, options);
+		return this.requestHelper({ url: url, body: body, method: RequestMethod.Put }, options);
 	}
 
 	delete(url: string, options ?: RequestOptionsArgs) : Observable<Response> {
@@ -167,9 +163,7 @@ export class AuthHttp {
 	}
 
 	patch(url: string, body:string, options?: RequestOptionsArgs) : Observable<Response> {
-		var headers = new Headers();
-		headers.set('content-type', 'application/json');
-		return this.requestHelper({ url: url, body: body, method: RequestMethod.Patch, headers: headers }, options);
+		return this.requestHelper({ url: url, body: body, method: RequestMethod.Patch }, options);
 	}
 
 	head(url: string, options?: RequestOptionsArgs) : Observable<Response> {

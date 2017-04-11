@@ -1,0 +1,14 @@
+<div class="row notification-container" [class.open]="notificationService.hasActiveNotifications()">
+	<div class="columns">
+		<div *ngFor="let notification of notificationService.getNotifications()" class="notification {{notification.getType()}}" [class.inactive]="!notification.isActive()" [class.lonely]="notificationService.getActiveNotifications().length == 1">
+			<div class="close" (click)="notification.cancel()" *ngIf="notification.allowClose()"></div>
+			<div class="message">
+				{{notification.getMessage()}}
+			</div>
+			<div class="controls" *ngIf="notification.getSubmitText() || notification.getCancelText()">
+				<button class="button submit" *ngIf="notification.getSubmitText()" (click)="notification.submit()">{{notification.getSubmitText()}}</button>
+				<button class="button cancel" *ngIf="notification.getCancelText()" (click)="notification.cancel()">{{notification.getCancelText()}}</button>
+			</div>
+		</div>
+	</div>
+</div>
