@@ -29,7 +29,6 @@ class RegistrationController extends FOSRestController
      */
     public function postRegisterAction(Request $request)
     {
-        $user = $this->getUser();
         /** @var $formFactory FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
         /** @var $userManager UserManagerInterface */
