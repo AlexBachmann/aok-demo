@@ -1,5 +1,5 @@
 {
-  "name": "tekkl",
+  "name": "tekkl-core",
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
@@ -44,9 +44,10 @@
     "karma": "~1.4.1",
     "karma-chrome-launcher": "^2.0.0",
     "karma-cli": "^1.0.1",
+    "karma-coverage-istanbul-reporter": "^0.2.0",
+    "karma-firefox-launcher": "^1.0.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "karma-coverage-istanbul-reporter": "^0.2.0",
     "mkdirp": "^0.5",
     "phantomjs": "^2.1.7",
     "protractor": "~5.1.0",

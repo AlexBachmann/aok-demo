@@ -34,7 +34,7 @@ gulp.task('build', function(done){
 });
 
 gulp.task('ng-cli.build', function(cb){
-  exec('ng build', {maxBuffer: 1024 * 500}, function (err, stdout, stderr) {
+  exec('node_modules/.bin/ng build', {maxBuffer: 1024 * 500}, function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);
