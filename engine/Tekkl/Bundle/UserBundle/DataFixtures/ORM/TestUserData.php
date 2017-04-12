@@ -21,7 +21,7 @@ class TestUserData extends TestEnvDataFixture {
         $userAdmin = $userManager->createUser();
         $userAdmin->setUsername('admin');
         $userAdmin->setEmail('admin@test.de');
-        $userAdmin->setPlainPassword('test');
+        $userAdmin->setPlainPassword('password');
         $userAdmin->setEnabled(true);
 
         $userManager->updateUser($userAdmin);
