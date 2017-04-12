@@ -1,14 +1,15 @@
-import { TekklPage } from './app.po';
+import { HomePage } from './app.po';
+import { browser, element, by } from 'protractor';
 
-describe('tekkl App', function() {
-  let page: TekklPage;
+describe('Home Page', function() {
+  let page: HomePage;
 
   beforeEach(() => {
-    page = new TekklPage();
+    page = new HomePage();
   });
 
-  it('should display message saying app works', () => {
+  it('should navigate to the homepage', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(browser.getCurrentUrl()).toBe('http://tekkl.local/');
   });
 });
