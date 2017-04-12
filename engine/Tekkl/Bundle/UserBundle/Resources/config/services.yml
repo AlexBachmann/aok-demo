@@ -27,3 +27,14 @@ services:
         arguments: ['@request_stack', '@gesdinet.jwtrefreshtoken']
         tags:
             - { name: kernel.event_listener, event: !php/const:Lexik\Bundle\JWTAuthenticationBundle\Events::AUTHENTICATION_FAILURE, method: reauthenticate }
+
+    tekkl_user.listener.registration_failure.form_exception:
+        class: Tekkl\Bundle\UserBundle\EventListener\Registration\RegistrationFailureFormException
+        tags:
+            - { name: kernel.event_listener, event: !php/const:FOS\UserBundle\FOSUserEvents::REGISTRATION_FAILURE, method: onRegistrationFailure }
+
+    tekkl_user.listener.registration_success.jwt_authentication:
+        class: Tekkl\Bundle\UserBundle\EventListener\Registration\JwtAuthentication
+        arguments: ['@lexik_jwt_authentication.handler.authentication_success', '@security.token_storage']
+        tags:
+            - { name: kernel.event_listener, event: !php/const:FOS\UserBundle\FOSUserEvents::REGISTRATION_COMPLETED, method: onRegistrationCompleted, priority: -255 }

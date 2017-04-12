@@ -6,11 +6,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormsService } from '../../../shared/forms/forms.service';
 import { Form } from '../../../shared/forms/models/form';
 import { AuthHttp } from '../../../shared/authentication/http.service';
 import { NotificationService } from '../../../shared/ui/notification/notification.service';
+import { NotificationComponent } from '../../../shared/ui/notification/notification.component';
 import FormData from './form';
 
 @Component({
@@ -22,11 +24,13 @@ export class RegisterComponent implements OnInit {
 
   	public form: Form
 	public loading: boolean
+	@ViewChildren(NotificationComponent) notifications: QueryList<NotificationComponent>;
 
 	constructor(
 		private formsService: FormsService,
 		private http: AuthHttp,
-		private notificationService: NotificationService
+		private notificationService: NotificationService,
+		private router: Router
 	) { }
 
 	ngOnInit() {
@@ -42,7 +46,21 @@ export class RegisterComponent implements OnInit {
 		delete(value.password);
 		delete(value.verify_password);
 		this.http.post('/api/user/register', JSON.stringify(value))
-			.subscribe((res) => console.log(res));
+			.subscribe((res) => {
+				var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == 'registration.success')[0];
+				this.notificationService.show(notification);
+				// Navigate to the homepage
+				this.router.navigate(['/']);
+			}, (err) => {
+				var response = err.json();
+				var errors = response.message.split('|');
+				errors.forEach((error) => {
+					var notifications = this.notifications.filter((notification: NotificationComponent) => notification.id == error);
+					if(notifications.length){
+						this.notificationService.show(notifications[0]);
+					}
+				});
+			});
 	}
 
 }

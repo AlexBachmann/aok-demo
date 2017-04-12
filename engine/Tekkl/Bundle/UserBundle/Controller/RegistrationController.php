@@ -17,7 +17,7 @@ use FOS\UserBundle\Form\Factory\FactoryInterface;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use FOS\UserBundle\Event\FilterUserResponseEvent;
+use Tekkl\Bundle\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -63,14 +63,18 @@ class RegistrationController extends FOSRestController
                     $response = new RedirectResponse('/');
                 }
 
-                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+                $event = new FilterUserResponseEvent($user, $request, $response);
+                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, $event);
 
-                return $user;
+                $response = $event->getResponse();
+
+                return $response;
             }
-
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_FAILURE, $event);
-			// throw Exception
+			if (null !== $response = $event->getResponse()) {
+                return $response;
+            }
         }
     }
 }

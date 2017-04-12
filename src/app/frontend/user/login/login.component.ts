@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 			.subscribe((res) => {
 				console.log(res);
 			}, (err) => {
-				var error = this.notifications.filter((notification: NotificationComponent) => notification.id == 'error')[0];
+				var error = this.notifications.filter((notification: NotificationComponent) => notification.id == 'login.failed')[0];
 				this.notificationService.show(error);
 			});
 	}
