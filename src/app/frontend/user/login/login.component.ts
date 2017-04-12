@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  */
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormsService } from '../../../shared/forms/forms.service';
 import { Form } from '../../../shared/forms/models/form';
 import { AuthHttp } from '../../../shared/authentication/http.service';
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
 	constructor(
 		private formsService: FormsService,
 		private http: AuthHttp,
-		private notificationService: NotificationService
+		private notificationService: NotificationService,
+		private router: Router
 	) { }
 
 	ngOnInit() {
@@ -38,7 +40,10 @@ export class LoginComponent implements OnInit {
 		this.loading = true;
 		this.http.post('/api/login_check', JSON.stringify(value))
 			.subscribe((res) => {
-				console.log(res);
+				var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == 'login.success')[0];
+				this.notificationService.show(notification);
+				// Navigate to the homepage
+				this.router.navigate(['/']);
 			}, (err) => {
 				var error = this.notifications.filter((notification: NotificationComponent) => notification.id == 'login.failed')[0];
 				this.notificationService.show(error);
