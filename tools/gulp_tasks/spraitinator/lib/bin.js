@@ -19,7 +19,8 @@ exports.svgToPng = function (svg, scale, callback) {
 	];
 
 	execFile(phantomjs, args, function (err, stdout, stderr) {
-		//console.log(args[2] + ' created');
+		console.log(args[2] + ' created');
+		console.log(stdout);
 		callback();
 	});
 }
