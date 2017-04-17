@@ -13,7 +13,7 @@ import { UserStorage } from './user-storage/user-storage.service';
 @Injectable()
 export class AuthenticationService {
 	private user: User = null
-	private redirectUrl: string;
+	private redirectUrl: string = '/';
 	constructor(private storage: UserStorage){}
 	getUser(): User{
 		return this.storage.getUser();
@@ -27,5 +27,8 @@ export class AuthenticationService {
 	}
 	getRedirectUrl():string{
 		return this.redirectUrl;
+	}
+	resetRedirectUrl(){
+		this.redirectUrl = '/';
 	}
 }
