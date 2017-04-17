@@ -9,12 +9,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 import { TekklHttpServiceFactory } from './shared/http/http.service';
 import { Config } from './configuration.service';
 import { AppRoutingModule } from './routing.module';
 import { AuthenticationModule } from './shared/authentication/authentication.module';
+import { AuthenticationService } from './shared/authentication/authentication.service';
 import { NotificationService } from './shared/ui/notification/notification.service';
 import { EventsModule } from './shared/events/events.module';
 
@@ -35,7 +37,7 @@ import { AppComponent } from './app.component';
 	],
 	providers: [
 		Config,
-		{ provide: Http, useFactory: TekklHttpServiceFactory, deps: [Config, XHRBackend, RequestOptions] },
+		{ provide: Http, useFactory: TekklHttpServiceFactory, deps: [ XHRBackend, RequestOptions, Config, AuthenticationService, Router ] },
 		NotificationService,
 	],
 	bootstrap: [ AppComponent ]
