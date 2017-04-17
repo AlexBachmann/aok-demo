@@ -11,7 +11,7 @@ namespace Tekkl\Bundle\UserBundle\EventListener\Authentication;
 
 use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
 
-class BodyTokenRemover {
+class BodyUserSetter {
 	public function onAuthenticationSuccess(AuthenticationSuccessEvent $event){
 		$data = $event->getData();
 		$user = $event->getUser();
