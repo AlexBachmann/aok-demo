@@ -14,6 +14,9 @@ import { Form } from '../../../shared/forms/models/form';
 import { NotificationService } from '../../../shared/ui/notification/notification.service';
 import { NotificationComponent } from '../../../shared/ui/notification/notification.component';
 import FormData from './form';
+import { UserStorage } from '../../../shared/authentication/user-storage/user-storage.service';
+import { AuthenticationService } from '../../../shared/authentication/authentication.service';
+import { User } from '../../../shared/authentication/user.entity';
 
 @Component({
   selector: 'app-register',
@@ -30,7 +33,9 @@ export class RegisterComponent implements OnInit {
 		private formsService: FormsService,
 		private http: Http,
 		private notificationService: NotificationService,
-		private router: Router
+		private router: Router,
+		private userStorage: UserStorage,
+		private authService: AuthenticationService
 	) { }
 
 	ngOnInit() {
@@ -47,20 +52,32 @@ export class RegisterComponent implements OnInit {
 		delete(value.verify_password);
 		this.http.post('/api/user/register', JSON.stringify(value))
 			.subscribe((res) => {
+				var response = res.json();
+				if(!response.user){
+					var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == 'server.error')[0];
+					this.notificationService.show(notification);
+					return;
+				}
+				var user = new User(response.user);
+				this.userStorage.storeUser(user);
+
 				var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == 'registration.success')[0];
 				this.notificationService.show(notification);
-				// Navigate to the homepage
-				this.router.navigate(['/']);
+
+				this.router.navigate([this.authService.getRedirectUrl()]);
+				this.authService.resetRedirectUrl();
 			}, (err) => {
+				this.userStorage.deleteUser();
 				var response = err.json();
-				var errors = response.message.split('|');
-				errors.forEach((error) => {
-					var notifications = this.notifications.filter((notification: NotificationComponent) => notification.id == error);
-					if(notifications.length){
-						this.notificationService.show(notifications[0]);
-					}
-				});
+				if(response.message){
+					var errors = response.message.split('|');
+					errors.forEach((error) => {
+						var notifications = this.notifications.filter((notification: NotificationComponent) => notification.id == error);
+						if(notifications.length){
+							this.notificationService.show(notifications[0]);
+						}
+					});
+				}
 			});
 	}
-
 }
