@@ -26,37 +26,17 @@ class User extends BaseUser
      */
     protected $id;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    protected $jwt_secret;
-
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * Set jwtSecret
-     *
-     * @param string $jwtSecret
-     *
-     * @return User
-     */
-    public function setJwtSecret($jwtSecret)
-    {
-        $this->jwt_secret = $jwtSecret;
-
-        return $this;
-    }
-
-    /**
-     * Get jwtSecret
-     *
-     * @return string
-     */
-    public function getJwtSecret()
-    {
-        return $this->jwt_secret;
+    public function getPublicData(){
+        return [
+            'id' => $this->getId(),
+            'username' => $this->getUsername(),
+            'email' => $this->getEmail(),
+            'roles' => $this->getRoles()
+        ]
     }
 }

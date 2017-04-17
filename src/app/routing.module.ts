@@ -10,8 +10,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
-	{ path: '', loadChildren:	'app/frontend/frontend.module#FrontendModule' },
-	{ path: 'backend', loadChildren:	'app/backend/backend.module#BackendModule' }
+	{ path: '', 		loadChildren:	'app/frontend/frontend.module#FrontendModule' },
+	{ path: 'backend', 	loadChildren:	'app/backend/backend.module#BackendModule' }
 ];
 
 @NgModule({

@@ -22,6 +22,11 @@ services:
         tags:
             - { name: kernel.event_listener, event: !php/const:Lexik\Bundle\JWTAuthenticationBundle\Events::AUTHENTICATION_SUCCESS, method: onAuthenticationSuccess, priority: -255 }
 
+    tekkl_user.listener.authentication_success.body_user_setter:
+        class: Tekkl\Bundle\UserBundle\EventListener\Authentication\BodyUserSetter
+        tags:
+            - { name: kernel.event_listener, event: !php/const:Lexik\Bundle\JWTAuthenticationBundle\Events::AUTHENTICATION_SUCCESS, method: onAuthenticationSuccess }
+
     tekkl_user.listener.authentication_failure.reauthentication:
         class: Tekkl\Bundle\UserBundle\EventListener\Authentication\RefreshTokenReauthentication
         arguments: ['@request_stack', '@gesdinet.jwtrefreshtoken']

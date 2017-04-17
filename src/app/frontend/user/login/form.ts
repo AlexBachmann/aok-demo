@@ -15,10 +15,6 @@ export default {
 				minlength: 8,
 				required: true
 			}
-		},
-		{
-			name: "_remember",
-			type: "checkbox"
 		}
 	]
 }

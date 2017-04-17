@@ -7,39 +7,25 @@
  * file that was distributed with this source code.
  */
 import { Injectable } from '@angular/core';
-import { JwtHelper } from './jwt.helper';
-import { Config } from '../../configuration.service';
 import { User } from './user.entity';
+import { UserStorage } from './user-storage/user-storage.service';
 
 @Injectable()
 export class AuthenticationService {
-	private setJWTToken:(token:string) => void
-	private getJWTToken:() => string
 	private user: User = null
-	constructor(private config: Config){
-		this.setJWTToken = config.get('jwt').tokenSetter;
-		this.getJWTToken = config.get('jwt').tokenGetter;
-	}
+	private redirectUrl: string;
+	constructor(private storage: UserStorage){}
 	getUser(): User{
-		if(!this.user){
-			var token = this.getJWTToken();
-			if(token){
-				var helper = new JwtHelper();
-				var claims = helper.decodeToken(token);
-				var user = {
-					id: claims.uid,
-					firstname: claims.ufn,
-					lastname: claims.uln
-				};
-				this.user = new User(user);
-			}else{
-				return new User({ id: 0 });
-			}
-		}
-		return this.user;
+		return this.storage.getUser();
 	}
-	loggedIn():boolean{
+	isLoggedIn():boolean{
 		var user = this.getUser();
 		return (user && user.id) ? true : false;
+	}
+	setRedirectUrl(url:string){
+		this.redirectUrl = url;
+	}
+	getRedirectUrl():string{
+		return this.redirectUrl;
 	}
 }

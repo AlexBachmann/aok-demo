@@ -8,11 +8,24 @@
  */
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { BackendComponent } from './backend.component';
+import { BackendRoutingModule } from './routing.module';
+import { UiModule } from '../shared/ui/ui.module';
+import { FormsModule } from '../shared/forms/forms.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    BackendRoutingModule,
+    UiModule,
+    FormsModule
   ],
-  declarations: []
+  declarations: [
+  	LoginComponent, 
+  	HeaderComponent, 
+  	BackendComponent
+  ]
 })
 export class BackendModule { }

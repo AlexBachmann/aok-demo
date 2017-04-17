@@ -8,9 +8,9 @@
  */
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
+import { Http } from '@angular/http';
 import { FormsService } from '../../../shared/forms/forms.service';
 import { Form } from '../../../shared/forms/models/form';
-import { AuthHttp } from '../../../shared/authentication/http.service';
 import { NotificationService } from '../../../shared/ui/notification/notification.service';
 import { NotificationComponent } from '../../../shared/ui/notification/notification.component';
 import FormData from './form';
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
 
 	constructor(
 		private formsService: FormsService,
-		private http: AuthHttp,
+		private http: Http,
 		private notificationService: NotificationService,
 		private router: Router
 	) { }
