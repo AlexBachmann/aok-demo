@@ -18,7 +18,7 @@ describe('LoginPage', function() {
   });
 
   it('should navigate to the Login Page', () => {
-    expect(browser.getCurrentUrl()).toBe('http://tekkl.local/user/login');
+    expect(browser.getCurrentUrl()).toMatch(/\/user\/login$/);
   });
   it('should contain the username input field', () => {
   	expect(page.getUserNameInput().isPresent()).toBeTruthy();
@@ -54,9 +54,9 @@ describe('LoginPage', function() {
   	submit.click();
   	browser.waitForAngular();
   	
-  	expect(browser.getCurrentUrl()).toBe('http://tekkl.local/');
+  	expect(browser.getCurrentUrl()).toMatch(/\/$/);
   	browser.manage().getCookie("BEARER").then(function(data){
-        expect(data.value).toBeTruthy();
+        expect(data && data.value).toBeTruthy();
     });
   });
 });

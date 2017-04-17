@@ -10,6 +10,6 @@ describe('Home Page', function() {
 
   it('should navigate to the homepage', () => {
     page.navigateTo();
-    expect(browser.getCurrentUrl()).toBe('http://tekkl.local/');
+    expect(browser.getCurrentUrl()).toMatch(/\/$/);
   });
 });
