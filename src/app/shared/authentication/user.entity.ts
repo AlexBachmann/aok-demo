@@ -17,6 +17,16 @@ export class User {
 	getRoles(){
 		return this.roles;
 	}
+	isAdmin(){
+		var roles = this.getRoles();
+		if(
+			roles.indexOf('ROLE_ADMIN') >= 0 || 
+			roles.indexOf('ROLE_SUPER_ADMIN') >= 0
+		){
+			return true;
+		}
+		return false;
+	}
 	toJson():string {
 		return JSON.stringify(this);
 	}
