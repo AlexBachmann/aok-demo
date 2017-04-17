@@ -37,6 +37,6 @@ class User extends BaseUser
             'username' => $this->getUsername(),
             'email' => $this->getEmail(),
             'roles' => $this->getRoles()
-        ]
+        ];
     }
 }
