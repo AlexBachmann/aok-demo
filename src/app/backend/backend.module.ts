@@ -14,6 +14,7 @@ import { BackendComponent } from './backend.component';
 import { BackendRoutingModule } from './routing.module';
 import { UiModule } from '../shared/ui/ui.module';
 import { FormsModule } from '../shared/forms/forms.module';
+import { MenuComponent } from './shared/menu/menu.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { FormsModule } from '../shared/forms/forms.module';
   declarations: [
   	LoginComponent, 
   	HeaderComponent, 
-  	BackendComponent
+  	BackendComponent, MenuComponent
   ]
 })
 export class BackendModule { }

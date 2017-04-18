@@ -47,7 +47,7 @@ security:
             anonymous: ~
 
     access_control:
-        - { path: ^/api,       roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
             # activate different ways to authenticate
 
