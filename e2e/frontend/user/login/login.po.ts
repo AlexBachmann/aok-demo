@@ -22,4 +22,15 @@ export class LoginPage {
   getSubmitButton(){
   	return element(by.css('app-login button[type="submit"]'));
   }
+  login(){
+    var username = this.getUserNameInput();
+    var password = this.getPasswordInput();
+    var submit = this.getSubmitButton();
+
+    username.sendKeys('user');
+    password.sendKeys('password');
+
+    submit.click();
+    browser.waitForAngular();
+  }
 }

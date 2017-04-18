@@ -44,16 +44,7 @@ describe('LoginPage', function() {
   	expect(submit.isEnabled()).toBeTruthy();
   });
   it('should be able to login', () => {
-  	var username = page.getUserNameInput();
-  	var password = page.getPasswordInput();
-  	var submit = page.getSubmitButton();
-
-  	username.sendKeys('admin');
-  	password.sendKeys('password');
-  	expect(submit.isEnabled()).toBeTruthy();
-  	submit.click();
-  	browser.waitForAngular();
-  	
+  	page.login();
   	expect(browser.getCurrentUrl()).toMatch(/\/$/);
   	browser.manage().getCookie("BEARER").then(function(data){
         expect(data && data.value).toBeTruthy();

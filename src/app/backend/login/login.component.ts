@@ -63,7 +63,9 @@ export class LoginComponent implements OnInit {
 				var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == 'login.success')[0];
 				this.notificationService.show(notification);
 
-				this.router.navigate([this.authService.getRedirectUrl()]);
+				var redirectUrl = this.authService.getRedirectUrl();
+				if(redirectUrl == '/') redirectUrl = '/backend';
+				this.router.navigate([redirectUrl]);
 				this.authService.resetRedirectUrl();
 			}, (err) => {
 				this.userStorage.deleteUser();
