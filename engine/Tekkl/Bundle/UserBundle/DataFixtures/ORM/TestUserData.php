@@ -17,16 +17,43 @@ use Tekkl\Bundle\UserBundle\Entity\User;
 
 class TestUserData extends TestEnvDataFixture {
 	public function doLoad(ObjectManager $manager){
-		$userManager = $this->container->get('fos_user.user_manager');
-        $userAdmin = $userManager->createUser();
-        $userAdmin->setUsername('admin');
-        $userAdmin->setEmail('admin@test.de');
-        $userAdmin->setPlainPassword('password');
-        $userAdmin->setEnabled(true);
-
-        $userManager->updateUser($userAdmin);
+		$this->createSimpleUser($manager);
+        $this->createAdminUser($manager);
+        $this->createSuperAdminUser($manager);
     }
     protected function getEnvironments(){
         return array('dev', 'test');
+    }
+    private function createSimpleUser(ObjectManager $manager){
+        $userManager = $this->container->get('fos_user.user_manager');
+        $user = $userManager->createUser();
+        $user->setUsername('user');
+        $user->setEmail('user@test.de');
+        $user->setPlainPassword('password');
+        $user->setEnabled(true);
+
+        $userManager->updateUser($user);
+    }
+    private function createAdminUser(ObjectManager $manager){
+        $userManager = $this->container->get('fos_user.user_manager');
+        $user = $userManager->createUser();
+        $user->setUsername('admin');
+        $user->setEmail('admin@test.de');
+        $user->setPlainPassword('password');
+        $user->addRole('ROLE_ADMIN');
+        $user->setEnabled(true);
+
+        $userManager->updateUser($user);
+    }
+    private function createSuperAdminUser(ObjectManager $manager){
+        $userManager = $this->container->get('fos_user.user_manager');
+        $user = $userManager->createUser();
+        $user->setUsername('superadmin');
+        $user->setEmail('superadmin@test.de');
+        $user->setPlainPassword('password');
+        $user->addRole('ROLE_SUPER_ADMIN');
+        $user->setEnabled(true);
+
+        $userManager->updateUser($user);
     }
 }
