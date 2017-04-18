@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 export class StringHelper {
-	static toBoolean(str: string){
+	static toBoolean(str: string|number):boolean{
 		if(typeof(str) == 'string'){
 			if( str.toLowerCase() === 'true' || str === '1' ) return true;
 		}else if(typeof(str) == 'number'){
@@ -15,11 +15,8 @@ export class StringHelper {
 		}
 		return false;
 	}
-	static leftPad(str: string, length?: number, pad?: string){
+	static leftPad(str: string|number, length: number = 2, pad: string = '0'):string{
 		str = '' + str;
-		if(!pad) pad = '0';
-		if(!length) length = 2;
-
 		while(str.length < length){
 			str = pad + str;
 		}

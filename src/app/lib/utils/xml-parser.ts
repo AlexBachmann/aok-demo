@@ -9,18 +9,18 @@
 import { Element, Text } from '@angular/compiler/src/ml_parser/ast';
 
 export interface XmlAttributes {
-    name?: string;
-    type?: string;
-    label?: string;
-    description?: string;
-    required?: string;
-    default?: any;
-    minLength?: number;
-    maxLength?: number;
-    placeholder?: string;
-    class?: string;
-    validation?: string;
-    value?: any;
+	name?: string;
+	type?: string;
+	label?: string;
+	description?: string;
+	required?: string;
+	default?: any;
+	minLength?: number;
+	maxLength?: number;
+	placeholder?: string;
+	class?: string;
+	validation?: string;
+	value?: any;
 }
 
 export class XmlParser {
