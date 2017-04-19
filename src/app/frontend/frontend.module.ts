@@ -13,7 +13,7 @@ import { FrontendRoutingModule } from './routing.module';
 import { FrontendComponent } from './frontend.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { UiModule } from '../shared/ui/ui.module'
+import { UiModule } from '../shared/ui/ui.module';
 
 @NgModule({
   imports: [
