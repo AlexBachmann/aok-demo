@@ -12,6 +12,7 @@ import { NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
+import { BrowserModule as TekklBrowserModule } from './shared/browser/browser.module';
 import { TekklHttpServiceFactory } from './shared/http/http.service';
 import { Config } from './configuration.service';
 import { AppRoutingModule } from './routing.module';
@@ -19,15 +20,18 @@ import { AuthenticationModule } from './shared/authentication/authentication.mod
 import { AuthenticationService } from './shared/authentication/authentication.service';
 import { NotificationService } from './shared/ui/notification/notification.service';
 import { EventsModule } from './shared/events/events.module';
+import { FacebookModule } from './shared/facebook/facebook.module';
+import { FacebookService } from './shared/facebook/facebook.service';
 
 import { AppComponent } from './app.component';
 
 @NgModule({
 	declarations: [
-		AppComponent
+		AppComponent,
 	],
 	imports: [
 		BrowserModule,
+		TekklBrowserModule,
 		BrowserAnimationsModule,
 		FormsModule,
 		HttpModule,
@@ -38,6 +42,13 @@ import { AppComponent } from './app.component';
 	providers: [
 		Config,
 		{ provide: Http, useFactory: TekklHttpServiceFactory, deps: [ XHRBackend, RequestOptions, Config, AuthenticationService, Router ] },
+		/*
+		 * The following services are registered at application root level and not
+		 * via the modules they ship with, because those modules are also being imported
+		 * by lazy loaded modules, which would cause those service to be reinstantitated 
+		 * in those module's child injectors.
+		 * See: https://angular.io/docs/ts/latest/cookbook/ngmodule-faq.html#!#q-lazy-loaded-module-provider-visibility
+		 */
 		NotificationService,
 	],
 	bootstrap: [ AppComponent ]
