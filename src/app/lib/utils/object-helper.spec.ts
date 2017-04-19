@@ -22,6 +22,7 @@ describe('ObjectHelper class', function(){
 		var date = new Date();
 		var arr = ['Hello', 2, 'Kitty', {date : date}];
 		var clone = ObjectHelper.clone(arr);
+		expect(clone).toEqual(arr);
 		expect(clone.length).toBe(4);
 		expect(clone[0]).toBe('Hello');
 		expect(clone[1]).toBe(2);
@@ -40,6 +41,7 @@ describe('ObjectHelper class', function(){
 			}
 		};
 		var clone = ObjectHelper.clone(object);
+		expect(clone).toEqual(object);
 		expect(clone.first.second.third.date.getTime()).toBe(date.getTime());
 	});
 });

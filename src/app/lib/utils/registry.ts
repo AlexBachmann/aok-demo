@@ -11,7 +11,7 @@ export class Registry {
 	constructor(store = null){
 		this.store = store || {};
 	}
-	get(key: string, defaultValue: string | number  = undefined): any {
+	get(key: string, defaultValue: string | number | undefined | null | boolean  = undefined): any {
 		var ref = this.store,
 			keys = key.split('.');
 
@@ -24,7 +24,7 @@ export class Registry {
 		});
 		return (ref !== undefined) ? ref : defaultValue;
 	}
-	set(key: string, value: string|number|undefined|null, overwrite: boolean = true):void {	
+	set(key: string, value: string|number|undefined|null|boolean, overwrite: boolean = true):void {	
 		function setObjectProperty(key, value, object = undefined){
 			var keys = key.split('.'),
 				key = keys.shift(),
@@ -45,7 +45,7 @@ export class Registry {
 		this.store = setObjectProperty(key, value, this.store);
 	}
 	load(key: string, value: any, overwrite: boolean = true){
-		if(['string', 'number', 'undefined', 'null'].indexOf(typeof(value))  >= 0){
+		if((['string', 'number', 'undefined', 'boolean'].indexOf(typeof(value))  >= 0) || value === null){
 			this.set(key, value, overwrite);
 		}else{
 			if(typeof(value) != 'object'){
