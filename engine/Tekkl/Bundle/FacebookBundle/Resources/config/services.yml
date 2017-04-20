@@ -1,0 +1,10 @@
+services:
+    tekkl_facebook.user_manager:
+        class: Tekkl\Bundle\FacebookBundle\Doctrine\FacebookUserManager
+        arguments: ['@fos_user.user_manager.default', '@fos_user.util.username_canonicalizer', '@doctrine.orm.entity_manager']
+
+    tekkl_facebook.listener.authentication:
+        class: Tekkl\Bundle\FacebookBundle\EventListener\Authentication\AuthenticationListener
+        arguments: ['@lexik_jwt_authentication.handler.authentication_success', '@security.token_storage']
+        tags:
+            - { name: kernel.event_listener, event: !php/const:Tekkl\Bundle\FacebookBundle\Events::AUTHENTICATION_SUCCESS, method: onAuthenticationSuccess }

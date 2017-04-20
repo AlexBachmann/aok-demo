@@ -15,18 +15,21 @@ import { BackendRoutingModule } from './routing.module';
 import { UiModule } from '../shared/ui/ui.module';
 import { FormsModule } from '../shared/forms/forms.module';
 import { MenuComponent } from './shared/menu/menu.component';
+import { FacebookModule } from '../shared/facebook/facebook.module';
 
 @NgModule({
   imports: [
     CommonModule,
     BackendRoutingModule,
     UiModule,
-    FormsModule
+    FormsModule,
+    FacebookModule,
   ],
   declarations: [
   	LoginComponent, 
   	HeaderComponent, 
-  	BackendComponent, MenuComponent
+  	BackendComponent, 
+    MenuComponent
   ]
 })
 export class BackendModule { }

@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  */
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Http } from '@angular/http';
 import { FacebookService } from '../facebook.service';
 import { NotificationComponent } from '../../../shared/ui/notification/notification.component';
 import { NotificationService } from '../../../shared/ui/notification/notification.service';
@@ -20,7 +21,8 @@ export class FacebookLoginComponent implements OnInit {
 	@ViewChildren(NotificationComponent) notifications: QueryList<NotificationComponent>;
 	constructor(
 		private facebookService: FacebookService, 
-		private notificationService: NotificationService
+		private notificationService: NotificationService,
+		private http: Http
 	) {}
 
 	ngOnInit(){}
@@ -36,6 +38,8 @@ export class FacebookLoginComponent implements OnInit {
 		}
 		var userData = await this.facebookService.api('/me?fields=email,name,id').toPromise();
 		console.log(userData);
+		var response2 = await this.http.post('/api/facebook/login', JSON.stringify(userData)).toPromise();
+		console.log(response2);
 	}
 
 }

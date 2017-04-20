@@ -23,35 +23,19 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class TekklUserExtension extends Extension implements PrependExtensionInterface {
     public function prepend(ContainerBuilder $container){
-        $lexikConfig = $container->getExtensionConfig('lexik_jwt_authentication');
-        $lexikConfig = $container->getParameterBag()->resolveValue($lexikConfig);
-        $lexitConfiguration = new \Lexik\Bundle\JWTAuthenticationBundle\DependencyInjection\Configuration();
-        $config = $this->processConfiguration($lexitConfiguration, $lexikConfig);
-
-        $tekklUserPrependConfig = array(
-            'jwt' => array(
-                'cookie' => array(
-                    'name' => $config['token_extractors']['cookie']['name'],
-                    'ttl' => $config['token_ttl']
-                ),
-                'authorization_header' => array(
-                    'prefix' => $config['token_extractors']['authorization_header']['prefix'],
-                    'name' => $config['token_extractors']['authorization_header']['name']
-                )
-            )
-        );
-        $container->prependExtensionConfig('tekkl_user', $tekklUserPrependConfig);
+        $this->importFromLexikJwtConfig($container);
+        $this->prependDoctrineConfig($container);
     }
     public function load(array $configs, ContainerBuilder $container){
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.yml');
         $this->remapParametersNamespaces($config['jwt'], $container, [
             'cookie' => 'tekkl_user.jwt.cookie.%s',
             'authorization_header' => 'tekkl_user.jwt.authorization_header.%s',
         ]);
-        $loader->load('services.yml');
     }
 
     /**
@@ -92,5 +76,38 @@ class TekklUserExtension extends Extension implements PrependExtensionInterface 
                 }
             }
         }
+    }
+    private function importFromLexikJwtConfig(ContainerBuilder $container){
+        $lexikConfig = $container->getExtensionConfig('lexik_jwt_authentication');
+        $lexikConfig = $container->getParameterBag()->resolveValue($lexikConfig);
+        $lexitConfiguration = new \Lexik\Bundle\JWTAuthenticationBundle\DependencyInjection\Configuration();
+        $config = $this->processConfiguration($lexitConfiguration, $lexikConfig);
+        $tekklUserPrependConfig = array(
+            'jwt' => array(
+                'cookie' => array(
+                    'name' => $config['token_extractors']['cookie']['name'],
+                    'ttl' => $config['token_ttl']
+                ),
+                'authorization_header' => array(
+                    'prefix' => $config['token_extractors']['authorization_header']['prefix'],
+                    'name' => $config['token_extractors']['authorization_header']['name']
+                )
+            )
+        );
+        $container->prependExtensionConfig('tekkl_user', $tekklUserPrependConfig);
+    }
+    private function prependDoctrineConfig(ContainerBuilder $container){
+        $fosUserConfig = $container->getExtensionConfig('fos_user');
+        $fosUserConfig = $container->getParameterBag()->resolveValue($fosUserConfig);
+        $fosUserConfiguration = new \FOS\UserBundle\DependencyInjection\Configuration();
+        $config = $this->processConfiguration($fosUserConfiguration, $fosUserConfig);
+        $doctrinePrependConfig = array(
+            'orm' => [
+                'resolve_target_entities' => [
+                    'Symfony\\Component\\Security\\Core\User\\UserInterface' => $config['user_class']
+                ]
+            ]
+        );
+        $container->prependExtensionConfig('doctrine', $doctrinePrependConfig);
     }
 }

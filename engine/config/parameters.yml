@@ -10,3 +10,5 @@ parameters:
     mailer_user: bachmann@loop-one.de
     mailer_password: testpasswort
     secret: 73b46dea0206bc4006982aaa8aed0a75596152f7
+    facebook_app_id: '%env(TEKKL_FACEBOOK_APPID)%'
+    facebook_app_secret: '%env(TEKKL_FACEBOOK_APPSECRET)%'

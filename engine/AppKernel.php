@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
             new Gesdinet\JWTRefreshTokenBundle\GesdinetJWTRefreshTokenBundle(),
             new Tekkl\Bundle\UserBundle\TekklUserBundle(),
+            new Tekkl\Bundle\FacebookBundle\TekklFacebookBundle(),
             new Tekkl\Bundle\AppBundle\TekklAppBundle(),
         ];
 

@@ -1,0 +1,3 @@
+tekkl_facebook_login:
+    type:     rest
+    resource: Tekkl\Bundle\FacebookBundle\Controller\LoginController

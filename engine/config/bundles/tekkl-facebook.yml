@@ -1,0 +1,4 @@
+tekkl_facebook:
+  appId: '%facebook_app_id%'
+  appSecret: '%facebook_app_secret%'
+  version: 'v2.9'
