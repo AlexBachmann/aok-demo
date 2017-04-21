@@ -6,11 +6,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren, EventEmitter, Output } from '@angular/core';
 import { Http } from '@angular/http';
 import { FacebookService } from '../facebook.service';
-import { NotificationComponent } from '../../../shared/ui/notification/notification.component';
-import { NotificationService } from '../../../shared/ui/notification/notification.service';
+import { NotificationComponent } from '../../ui/notification/notification.component';
+import { NotificationService } from '../../ui/notification/notification.service';
+import { User } from '../../authentication/user.entity';
 
 @Component({
 	selector: 'tekkl-facebook-login',
@@ -19,6 +20,7 @@ import { NotificationService } from '../../../shared/ui/notification/notificatio
 })
 export class FacebookLoginComponent implements OnInit {
 	@ViewChildren(NotificationComponent) notifications: QueryList<NotificationComponent>;
+	@Output('afterLogin') loginEventEmitter: EventEmitter<User> = new EventEmitter()
 	constructor(
 		private facebookService: FacebookService, 
 		private notificationService: NotificationService,
@@ -27,19 +29,36 @@ export class FacebookLoginComponent implements OnInit {
 
 	ngOnInit(){}
 	async login(){
-		var response = await this.facebookService.getLoginStatus().toPromise();
-		if(!response.authResponse){
-			response = await this.facebookService.login({scope: 'email'}).toPromise();
-			if(!response.authResponse){
-				var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == 'login-failure')[0];
-				this.notificationService.show(notification);
-				return;
-			}
+		if(!await this.createFacebookConnection()){
+			this.showError('login-failure');
 		}
-		var userData = await this.facebookService.api('/me?fields=email,name,id').toPromise();
-		console.log(userData);
-		var response2 = await this.http.post('/api/facebook/login', JSON.stringify(userData)).toPromise();
-		console.log(response2);
+		var facebookUserData = await this.facebookService.api('/me?fields=email,name,id').toPromise();
+		try {
+			var response = await this.http.post('/api/facebook/login', JSON.stringify(facebookUserData)).toPromise();
+			var data = response.json();
+			if(!data.user){
+				throw new Error('No user data received from server');
+			}
+			var user = new User(data.user);
+			this.loginEventEmitter.emit(user);
+		}catch(error){
+			console.log(error);
+			this.showError('login-failure');
+		}
 	}
 
+	private async createFacebookConnection():Promise<boolean>{
+		var loginStatus = await this.facebookService.getLoginStatus().toPromise();
+		if(!loginStatus.authResponse){
+			loginStatus = await this.facebookService.login({scope: 'email'}).toPromise();
+			if(!loginStatus.authResponse){
+				return false;
+			}
+		}
+		return true;
+	}
+	private showError(id:string){
+		var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == id)[0];
+		this.notificationService.show(notification);
+	}
 }

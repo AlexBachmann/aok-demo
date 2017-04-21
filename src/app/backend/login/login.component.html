@@ -18,7 +18,7 @@
 						</tekkl-text-field>
 						<div class="actions">
 							<button class="button" type="submit" [disabled]="!form.getControlGroup().valid" i18n="Submit Button Label">Submit</button>
-							<tekkl-facebook-login></tekkl-facebook-login>
+							<tekkl-facebook-login (afterLogin)="handleAuthenticatedUser($event)"></tekkl-facebook-login>
 						</div>
 					</form>
 				</div>

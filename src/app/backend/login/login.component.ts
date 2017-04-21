@@ -47,30 +47,34 @@ export class LoginComponent implements OnInit {
 			.subscribe((res) => {
 				var response = res.json();
 				if(!response.user){
-					var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == 'server.error')[0];
-					this.notificationService.show(notification);
+					this.showError('server.error');
 					return;
 				}
 				var user = new User(response.user);
-				this.userStorage.storeUser(user);
-
-				if(!user.isAdmin()){
-					var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == 'missing.authorization')[0];
-					this.notificationService.show(notification);
-					return;
-				}
-
-				var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == 'login.success')[0];
-				this.notificationService.show(notification);
-
-				var redirectUrl = this.authService.getRedirectUrl();
-				if(redirectUrl == '/') redirectUrl = '/backend';
-				this.router.navigate([redirectUrl]);
-				this.authService.resetRedirectUrl();
+				this.handleAuthenticatedUser(user);
 			}, (err) => {
 				this.userStorage.deleteUser();
-				var error = this.notifications.filter((notification: NotificationComponent) => notification.id == 'login.failed')[0];
-				this.notificationService.show(error);
+				this.showError('login.failed');
 			});
+	}
+	handleAuthenticatedUser(user: User){
+		this.userStorage.storeUser(user);
+
+		if(!user.isAdmin()){
+			this.showError('missing.authorization');
+			return;
+		}
+
+		var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == 'login.success')[0];
+		this.notificationService.show(notification);
+
+		var redirectUrl = this.authService.getRedirectUrl();
+		if(redirectUrl == '/') redirectUrl = '/backend';
+		this.router.navigate([redirectUrl]);
+		this.authService.resetRedirectUrl();
+	}
+	private showError(id){
+		var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == id)[0];
+		this.notificationService.show(notification);
 	}
 }

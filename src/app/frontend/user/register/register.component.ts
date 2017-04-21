@@ -54,18 +54,11 @@ export class RegisterComponent implements OnInit {
 			.subscribe((res) => {
 				var response = res.json();
 				if(!response.user){
-					var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == 'server.error')[0];
-					this.notificationService.show(notification);
+					this.showNotification('server.error');
 					return;
 				}
 				var user = new User(response.user);
-				this.userStorage.storeUser(user);
-
-				var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == 'registration.success')[0];
-				this.notificationService.show(notification);
-
-				this.router.navigate([this.authService.getRedirectUrl()]);
-				this.authService.resetRedirectUrl();
+				this.handleAuthenticatedUser(user);
 			}, (err) => {
 				this.userStorage.deleteUser();
 				var response = err.json();
@@ -79,5 +72,16 @@ export class RegisterComponent implements OnInit {
 					});
 				}
 			});
+	}
+	handleAuthenticatedUser(user: User){
+		this.userStorage.storeUser(user);
+		this.showNotification('registration.success');
+
+		this.router.navigate([this.authService.getRedirectUrl()]);
+		this.authService.resetRedirectUrl();
+	}
+	showNotification(id:string){
+		var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == id)[0];
+		this.notificationService.show(notification);
 	}
 }
