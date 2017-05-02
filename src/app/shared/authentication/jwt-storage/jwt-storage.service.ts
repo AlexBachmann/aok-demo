@@ -7,10 +7,8 @@
  * file that was distributed with this source code.
  */
 
-import { User } from '../user.entity';
-
-export abstract class UserStorage {
-	abstract storeUser(user: User);
-	abstract getUser(): User;
-	abstract deleteUser();
+export abstract class JwtStorage {
+	abstract storeJwtToken(jwt: string);
+	abstract getJwtToken(): string;
+	abstract deleteJwtToken();
 }

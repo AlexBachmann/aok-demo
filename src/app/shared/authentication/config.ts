@@ -16,5 +16,15 @@ export default {
 		localStorage: {
 			key: 'tekkl-user'
 		}
+	},
+	jwtStorage: {
+		localStorage: {
+			key: 'tekkl-jwt-token'
+		}
+	},
+	refreshTokenStorage: {
+		localStorage: {
+			key: 'tekkl-refresh-token'
+		}
 	}
 }

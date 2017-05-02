@@ -1,16 +1,4 @@
 services:
-    tekkl_user.listener.authentication_success.cookie:
-        class: Tekkl\Bundle\UserBundle\EventListener\Authentication\CookieSetter
-        arguments: ['%tekkl_user.jwt.cookie.name%', '%tekkl_user.jwt.cookie.ttl%']
-        tags:
-            - { name: kernel.event_listener, event: !php/const:Lexik\Bundle\JWTAuthenticationBundle\Events::AUTHENTICATION_SUCCESS, method: onAuthenticationSuccess }
-
-    tekkl_user.listener.authentication_failure.cookie:
-        class: Tekkl\Bundle\UserBundle\EventListener\Authentication\CookieSetter
-        arguments: ['%tekkl_user.jwt.cookie.name%', '%tekkl_user.jwt.cookie.ttl%']
-        tags:
-            - { name: kernel.event_listener, event: !php/const:Lexik\Bundle\JWTAuthenticationBundle\Events::AUTHENTICATION_FAILURE, method: onAuthenticationFailure }
-
     tekkl_user.listener.authentication_success.authorization_header:
         class: Tekkl\Bundle\UserBundle\EventListener\Authentication\AuthorizationHeaderSetter
         arguments: ['%tekkl_user.jwt.authorization_header.name%', '%tekkl_user.jwt.authorization_header.prefix%']

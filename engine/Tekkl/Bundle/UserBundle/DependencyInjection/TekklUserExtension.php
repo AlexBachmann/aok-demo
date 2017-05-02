@@ -84,10 +84,6 @@ class TekklUserExtension extends Extension implements PrependExtensionInterface 
         $config = $this->processConfiguration($lexitConfiguration, $lexikConfig);
         $tekklUserPrependConfig = array(
             'jwt' => array(
-                'cookie' => array(
-                    'name' => $config['token_extractors']['cookie']['name'],
-                    'ttl' => $config['token_ttl']
-                ),
                 'authorization_header' => array(
                     'prefix' => $config['token_extractors']['authorization_header']['prefix'],
                     'name' => $config['token_extractors']['authorization_header']['name']

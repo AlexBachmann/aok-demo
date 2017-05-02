@@ -9,11 +9,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { BrowserModule as TekklBrowserModule } from './shared/browser/browser.module';
-import { TekklHttpServiceFactory } from './shared/http/http.service';
 import { Config } from './configuration.service';
 import { AppRoutingModule } from './routing.module';
 import { AuthenticationModule } from './shared/authentication/authentication.module';
@@ -41,7 +39,6 @@ import { AppComponent } from './app.component';
 	],
 	providers: [
 		Config,
-		{ provide: Http, useFactory: TekklHttpServiceFactory, deps: [ XHRBackend, RequestOptions, Config, AuthenticationService, Router ] },
 		/*
 		 * The following services are registered at application root level and not
 		 * via the modules they ship with, because those modules are also being imported
