@@ -28,9 +28,16 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('tekkl_app');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->scalarNode('app_name')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('app_email')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('host')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('path')->defaultValue('')->end()
+                ->scalarNode('use_ssl')->defaultValue(false)->end()
+                ->scalarNode('dev_mode')->defaultValue(false)->end()
+            ->end();
 
         return $treeBuilder;
     }

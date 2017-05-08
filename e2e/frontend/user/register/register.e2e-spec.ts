@@ -79,8 +79,5 @@ describe('RegisterPage', function() {
   	browser.waitForAngular();
   	
   	expect(browser.getCurrentUrl()).toMatch(/\/$/);
-  	browser.manage().getCookie("BEARER").then(function(data){
-        expect(data && data.value).toBeTruthy();
-    });
   });
 });

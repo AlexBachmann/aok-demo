@@ -32,4 +32,5 @@ monolog:
         #    level:  info
 
 swiftmailer:
+    disable_delivery: true
     delivery_addresses: ["%mailer_dev_delivery_address%"]

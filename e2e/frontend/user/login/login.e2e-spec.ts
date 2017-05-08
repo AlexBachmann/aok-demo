@@ -46,8 +46,15 @@ describe('LoginPage', function() {
   it('should be able to login', () => {
   	page.login();
   	expect(browser.getCurrentUrl()).toMatch(/\/$/);
-  	browser.manage().getCookie("BEARER").then(function(data){
-        expect(data && data.value).toBeTruthy();
-    });
+    var value: Promise<string>;
+
+    value = browser.executeScript("return window.localStorage.getItem('tekkl-jwt-token');");
+    expect(value).toBeTruthy();
+
+    value = browser.executeScript("return window.localStorage.getItem('tekkl-refresh-token');");
+    expect(value).toBeTruthy();
+
+    value = browser.executeScript("return window.localStorage.getItem('tekkl-user');");
+    expect(value).toBeTruthy();
   });
 });
