@@ -1,0 +1,9 @@
+parameters: 
+  tekkl_app_email: '%env(TEKKL_APP_EMAIL)%'
+
+tekkl_app:
+  app_name: 'TEKKL core App'
+  app_email: '%tekkl_app_email%'
+  host: 'tekkl.local'
+  path: ''
+  use_ssl: false

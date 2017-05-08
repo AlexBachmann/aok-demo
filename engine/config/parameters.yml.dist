@@ -19,5 +19,3 @@ parameters:
 
     secret: ThisTokenIsNotSoSecretChangeIt
 
-    facebook_app_id: ~
-    facebook_app_secret: ~

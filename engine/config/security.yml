@@ -25,6 +25,21 @@ security:
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
 
+        facebook_login:
+            pattern:  ^/api/facebook/login
+            stateless: true
+            anonymous: true
+
+        user_registration:
+            pattern:  ^/api/user/register
+            stateless: true
+            anonymous: true
+
+        user_registration_confirm:
+            pattern:  ^/api/user/confirm
+            stateless: true
+            anonymous: true
+
         refresh:
             pattern:  ^/api/token/refresh
             stateless: true

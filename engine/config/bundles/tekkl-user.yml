@@ -1,1 +1,4 @@
 tekkl_user:
+  registration:
+    confirmation:
+      enabled: true

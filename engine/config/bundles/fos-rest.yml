@@ -10,4 +10,4 @@ fos_rest:
     exception:
         enabled: true
     service:
-        inflector: app.util.inflector
+        inflector: tekkl.util.inflector
