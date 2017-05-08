@@ -47,6 +47,18 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
+                ->arrayNode('registration')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->arrayNode('confirmation')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('enabled')->defaultValue(true)->end()
+                                ->scalarNode('linkTemplate')->defaultValue('/user/confirm/%s')->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
             ->end();
         return $treeBuilder;
     }

@@ -1,3 +1,7 @@
 tekkl_user_register:
     type:     rest
     resource: Tekkl\Bundle\UserBundle\Controller\RegistrationController
+
+tekkl_user_confirm:
+    type:     rest
+    resource: Tekkl\Bundle\UserBundle\Controller\ConfirmationController

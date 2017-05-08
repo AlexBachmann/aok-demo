@@ -1,0 +1,30 @@
+<div class="backdrop">
+	<div class="row">
+		<div class="small-12 large-6 large-offset-3 columns">
+			<div class="confirm-container">
+				<div class="logo-container">
+					<div class="logo"></div>
+					<span class="subtitle" i18n="The name of page, the user is currently on.">Confirm Registration</span>
+				</div>
+				<div *ngIf="confirmed === false" class="message wait" i18n>
+					Your account registration is beeing confirmed. Please hold on, until we receive a response.
+					<div class="icon"></div>
+				</div>
+				<div *ngIf="confirmed === true" class="message success" i18n>
+					Your registration has been successfully confirmed. Have fun!
+					<div class="actions">
+						<a class="button" routerLink="/" i18n>Back to the Home Page</a>
+					</div>
+					<div class="icon"></div>
+				</div>
+				<div *ngIf="confirmed === 'error'" class="message error" i18n>
+					The confirmation failed. This could mean, that you used this confirmation link before. This could mean, that your confirmation link expired. It could mean, that you are trying to trick us.
+					<div class="actions">
+						<a class="button" routerLink="/" i18n>Back to the Home Page</a>
+					</div>
+					<div class="icon"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

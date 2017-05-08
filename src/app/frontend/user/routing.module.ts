@@ -11,11 +11,13 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { ResetComponent } from './reset/reset.component';
 import { RegisterComponent } from './register/register.component';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 const routes: Routes = [
 	{ path: 'login', component: LoginComponent }, 
 	{ path: 'register', component: RegisterComponent },
-	{ path: 'reset', component: ResetComponent }
+	{ path: 'reset', component: ResetComponent },
+	{ path: 'confirm/:token', component: ConfirmComponent }
 ];
 
 @NgModule({

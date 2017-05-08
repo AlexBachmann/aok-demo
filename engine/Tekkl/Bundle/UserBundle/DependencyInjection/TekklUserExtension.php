@@ -32,6 +32,17 @@ class TekklUserExtension extends Extension implements PrependExtensionInterface 
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        if ($config['registration']['confirmation']['enabled']) {
+            $loader->load('email_confirmation.yml');
+
+            $container
+                ->getDefinition('tekkl_user.registration.confirmation')
+                ->addArgument($config['registration']['confirmation']['linkTemplate']);
+        }else {
+            $loader->load('registration_jwt_authentication.yml');
+        }
+        
         $this->remapParametersNamespaces($config['jwt'], $container, [
             'cookie' => 'tekkl_user.jwt.cookie.%s',
             'authorization_header' => 'tekkl_user.jwt.authorization_header.%s',
@@ -100,7 +111,7 @@ class TekklUserExtension extends Extension implements PrependExtensionInterface 
         $doctrinePrependConfig = array(
             'orm' => [
                 'resolve_target_entities' => [
-                    'Symfony\\Component\\Security\\Core\User\\UserInterface' => $config['user_class']
+                    'Symfony\\Component\\Security\\Core\\User\\UserInterface' => $config['user_class']
                 ]
             ]
         );

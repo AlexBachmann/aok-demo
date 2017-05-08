@@ -53,6 +53,10 @@ export class RegisterComponent implements OnInit {
 		this.http.post('/api/user/register', JSON.stringify(value))
 			.subscribe((res) => {
 				var response = res.json();
+				if(response.confirmation_required){
+					this.handleRequiredConfirmation();
+					return;
+				}
 				if(!response.user){
 					this.showNotification('server.error');
 					return;
@@ -61,6 +65,7 @@ export class RegisterComponent implements OnInit {
 				this.handleAuthenticatedUser(user);
 			}, (err) => {
 				this.userStorage.deleteUser();
+				this.clearFormPassword(value);
 				var response = err.json();
 				if(response.message){
 					var errors = response.message.split('|');
@@ -80,8 +85,17 @@ export class RegisterComponent implements OnInit {
 		this.router.navigate([this.authService.getRedirectUrl()]);
 		this.authService.resetRedirectUrl();
 	}
+	handleRequiredConfirmation(){
+		this.showNotification('confirmation.required');
+		this.authService.resetRedirectUrl();
+		this.router.navigate([this.authService.getRedirectUrl()]);
+	}
 	showNotification(id:string){
 		var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == id)[0];
 		this.notificationService.show(notification);
+	}
+	clearFormPassword(value){
+		this.form.getControl('password').setValue('');
+		this.form.getControl('verify_password').setValue('');
 	}
 }

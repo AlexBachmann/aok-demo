@@ -16,11 +16,11 @@ use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Form\Factory\FactoryInterface;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserManagerInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Tekkl\Bundle\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Tekkl\Bundle\UserBundle\Event\FilterUserResponseEvent;
 
 class RegistrationController extends FOSRestController
 {
@@ -59,7 +59,16 @@ class RegistrationController extends FOSRestController
                 $userManager->updateUser($user);
 
                 if (null === $response = $event->getResponse()) {
-                    $response = new RedirectResponse('/');
+                    $response = new JsonResponse();
+                    if($user->isEnabled()){
+                        $response->setData([
+                            'user' => $user->getPublicData()
+                        ]);
+                    }else{
+                        $response->setData([
+                            'confirmation_required' => true
+                        ]);
+                    }
                 }
 
                 $event = new FilterUserResponseEvent($user, $request, $response);

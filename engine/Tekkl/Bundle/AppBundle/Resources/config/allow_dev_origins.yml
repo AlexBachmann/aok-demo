@@ -1,0 +1,6 @@
+services:
+    tekkl.listeners.kernel.response.allow_origin:
+        class: Tekkl\Bundle\AppBundle\EventListener\KernelResponse\AllowXOrigin
+        arguments: ["*", "^/api"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }

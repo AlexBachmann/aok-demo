@@ -1,0 +1,5 @@
+services:
+    tekkl_user.listener.registration_failure.form_exception:
+        class: Tekkl\Bundle\UserBundle\EventListener\Registration\RegistrationFailureFormException
+        tags:
+            - { name: kernel.event_listener, event: !php/const:FOS\UserBundle\FOSUserEvents::REGISTRATION_FAILURE, method: onRegistrationFailure }

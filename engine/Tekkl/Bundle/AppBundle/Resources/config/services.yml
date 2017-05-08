@@ -1,13 +1,10 @@
 services:
-    app.util.inflector:
+    tekkl.mailer:
+        class: Tekkl\Bundle\AppBundle\Service\Mailer
+        arguments: ['@mailer']
+    tekkl.util.inflector:
         class: Tekkl\Bundle\AppBundle\Util\Inflector\RestInflector
-    app.listeners.kernel.response.allow_origin:
-        class: Tekkl\Bundle\AppBundle\EventListener\KernelResponse\AllowXOrigin
-        arguments: ["*", "^/api"]
-        tags:
-            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
-            
-    app.listeners.kernel.request.json_request_data:
+    tekkl.listeners.kernel.request.json_request_data:
         class: Tekkl\Bundle\AppBundle\EventListener\KernelRequest\JsonRequestData
         arguments: [["POST", "PUT", "PATCH"], "^/api"]
         tags:

@@ -1,0 +1,62 @@
+@import "./src/assets/private/sass/base";
+.backdrop
+	padding: 150px 0
+	background: url('/assets/public/images/frontend/user/login_backdrop.jpg') 50% 100% no-repeat
+	background-size: cover
+	position: relative
+
+.confirm-container
+	padding: 20px
+	margin: 0 auto
+	max-width: 600px
+	width: 100%
+	background: rgba(255,255,255,0.9)
+	border-radius: $global-radius
+
+	.message
+		font-size: 14px
+		position: relative
+		padding-left: 30px
+		min-height: 25px
+
+		&.wait
+			.icon
+				position: absolute
+				top: 0
+				left: 0
+				width: 25px
+				height: 25px
+				background: url('/assets/public/images/shared/loading_16x16.gif') 50% 50% no-repeat
+
+		&.success
+			.icon
+				top: 4px
+				left: 4px
+				+icon($icon: icon-success, $rootelementposition: absolute)
+
+		&.error
+			.icon
+				top: 4px
+				left: 4px
+				+icon($icon: icon-error, $rootelementposition: absolute)
+
+	.actions
+		text-align: center
+		margin-top: 10px
+					
+
+.logo-container
+	text-align: center
+	margin-top: 20px
+	margin-bottom: 10px
+	.logo
+		display: inline-block
+		+icon(logo)
+
+	.subtitle
+		line-height: 32px
+		padding-top: 5px
+		margin-left: 10px
+		color: $grey-dark
+		display: inline-block
+		vertical-align: top
