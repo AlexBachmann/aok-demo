@@ -16,6 +16,7 @@ import { UserRoutingModule } from './routing.module';
 import { FormsModule } from '../../shared/forms/forms.module';
 import { UiModule } from '../../shared/ui/ui.module';
 import { FacebookModule } from '../../shared/facebook/facebook.module';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 @NgModule({
 	imports: [
@@ -25,6 +26,6 @@ import { FacebookModule } from '../../shared/facebook/facebook.module';
 		UiModule,
 		FacebookModule,
 	],
-	declarations: [LoginComponent, RegisterComponent, ResetComponent]
+	declarations: [LoginComponent, RegisterComponent, ResetComponent, ConfirmComponent]
 })
 export class UserModule { }
