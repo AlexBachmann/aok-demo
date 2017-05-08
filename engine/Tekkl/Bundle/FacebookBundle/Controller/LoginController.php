@@ -15,10 +15,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Tekkl\Bundle\FacebookBundle\Events;
 use Tekkl\Bundle\FacebookBundle\Event\FacebookAuthenticationEvent;
-use FOS\UserBundle\FOSUserEvents;
 use Tekkl\Bundle\UserBundle\Event\FilterUserResponseEvent;
+use FOS\UserBundle\FOSUserEvents;
 
 class LoginController extends FOSRestController
 {
@@ -62,6 +63,7 @@ class LoginController extends FOSRestController
             $response = new JsonResponse();
             $event = new FilterUserResponseEvent($user, $request, $response);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, $event);
+            $this->sendRegistrationEmail($user, $request->getLocale());
         }
 
         $facebookUser = $userManager->createUser();
@@ -74,5 +76,18 @@ class LoginController extends FOSRestController
     	if(!isset($vars['id']) || !isset($vars['email']) || !isset($vars['name'])){
     		throw new BadRequestHttpException('The passed Facebook user data is not valid');
     	}
+    }
+    private function sendRegistrationEmail(UserInterface $user, $locale){
+        $mail = $this->get('tekkl.mailer');
+        $mail
+            ->setTo($user->getEmail())
+            ->setHtmlTemplate(sprintf('@TekklFacebook/Email/%s/registration.html', $locale))
+            ->setPlainTemplate(sprintf('@TekklFacebook/Email/%s/registration.txt.html', $locale))
+            ->loadVars(
+                [
+                    'username'  => $user->getUsername(),
+                    'email'     => $user->getEmail()
+                ])
+            ->send();
     }
 }

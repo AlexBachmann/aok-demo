@@ -1,0 +1,18 @@
+{% extends "@TekklApp/Email/layout.html" %}
+
+{% block subject %}
+	Your new {{ appName }} account has been created
+{% endblock %}
+{% block content %}
+	<p>Hi there,</p>
+	<p>we are so happy that you decided to register to {{ appName }}. Since you decided to use the Facebook button to log into this site for the first time, we automatically created a new account for you:</p>
+	<p>
+		Username: {{ username }}<br />
+		Email: {{ email }}
+	</p>
+
+	<p>For the moment, you can only log in, using the Facebook Button on our site. If you want to log in using your username and a password, you need to click on the &quot;<a href="{{ baseUrl }}/user/password-reset">Forgot your password?</a>&quot; link on the login screen. You will then be prompted to enter your email address (the one listed above), and the process of giving you a new password is started.</p>
+	<p>We hope you'll be very happy using our app. If you have the time to give us feedback, we would appreciate it very much. Just send us a mail to <a href="mailto:{{ appEmail }}">{{ appEmail }}</a> and we will come back to you as soon as possible.</p>
+	<p>Have a great day!</p>
+	<p>Your team from {{ appName }}</p>
+{% endblock %}
