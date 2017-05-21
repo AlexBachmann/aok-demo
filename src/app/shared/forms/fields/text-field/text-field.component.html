@@ -1,6 +1,6 @@
-<div class="form-control" [formGroup]="field.getFormGroup()" [class.label-top]="hasValue()">
+<div class="form-control" [class.label-top]="hasValue()">
 	<label>{{label}}</label>
-	<input type="{{field.type}}" [formControlName]="field.getName()" />
+	<input type="{{type}}" [formControl]="control" />
 	<ng-content></ng-content>
 </div>
 

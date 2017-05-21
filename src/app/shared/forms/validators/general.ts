@@ -6,8 +6,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-import { Validators as ng2Validators, FormControl } from '@angular/forms';
-import { Field } from '../models/field';
+import { Validators as ng2Validators, FormControl, FormGroup } from '@angular/forms';
 
 export class Validators extends ng2Validators {
 	static email(control: FormControl): { [key: string]: any } {
@@ -18,16 +17,28 @@ export class Validators extends ng2Validators {
 			return { 'email': true };
 		}
 	}
-	static sameAs(name: string, field: Field) {
-		return function(control: FormControl){
-			// Ignore empty fields => use 'required' validation for these cases
-			if(!control.value) return;
-			var referenceField = field.getForm().getField(name);
-			if(!referenceField){
-				throw new Error('The form does not have a field with the name "' + name + '" that the field "' + field.getName() + '" can be compared to.');
+	static matching(names: string[]){
+		return function(group: FormGroup){
+			var matching = true,
+				prev = undefined;
+
+			for(var name of names){
+				var control = group.get(name);
+				if(!control){
+					throw new Error('The form does not have a field with the name ' + name + '. Comparison failed.');
+				}
+				if(!control.value) continue;
+
+				if(prev !== undefined){
+					if(prev != control.value){
+						matching = false;
+						break;
+					}
+				}
+				prev = control.value;
 			}
-			if(control.value != referenceField.getControl().value){
-				return { 'sameAs': { 'name': name } };
+			if(!matching){
+				return { 'matching': { names: names } };
 			}
 		}
 	}

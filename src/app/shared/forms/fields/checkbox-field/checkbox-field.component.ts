@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { Field } from '../../models/field';
+import { FormControl } from '@angular/forms';
 
 @Component({
 	selector: 'tekkl-checkbox-field',
@@ -15,7 +15,7 @@ import { Field } from '../../models/field';
 	styleUrls: ['./checkbox-field.component.sass']
 })
 export class CheckboxFieldComponent implements OnInit {
-	@Input() field: Field
+	@Input() control: FormControl
 	@Input() value: any
 	@Input() label: string
 	@Input() multiple: any
@@ -39,19 +39,19 @@ export class CheckboxFieldComponent implements OnInit {
 	check(){
 		if(this.isChecked()) return;
 		if(this.multiple){
-			var values = this.field.getControl().value;
+			var values = this.control.value;
 			if(!values || !values.length){
 				values = [];
 			}
 			values.push(this.value);
-			this.field.getControl().setValue(values);
+			this.control.setValue(values);
 		}else{
-			this.field.getControl().setValue(this.value);
+			this.control.setValue(this.value);
 		}
 	}
 	uncheck(){
 		if(this.multiple){
-			var values = this.field.getControl().value;
+			var values = this.control.value;
 			if(!values || !values.length){
 				values = [];
 			}
@@ -59,13 +59,13 @@ export class CheckboxFieldComponent implements OnInit {
 			if(index >= 0){
 				values.splice(index, 1);
 			}
-			this.field.getControl().setValue(values);
+			this.control.setValue(values);
 		}else{
-			this.field.getControl().setValue(null);
+			this.control.setValue(null);
 		}
 	}
 	isChecked(){
-		var values = this.field.getControl().value;
+		var values = this.control.value;
 		if(!this.multiple){
 			values = [values];
 		}else if(!values || !values.length){

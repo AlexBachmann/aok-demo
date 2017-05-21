@@ -1,3 +1,0 @@
-<tekkl-text-field *ngIf="field.type == 'text' || field.type == 'email' || field.type == 'password'" [field]='field' (valueChanged)="onChange($event)"></tekkl-text-field>
-<tekkl-select-field *ngIf="field.type == 'list' || field.type == 'numlist'" [field]='field' (valueChanged)="onChange($event)"></tekkl-select-field>
-<tekkl-hidden-field *ngIf="field.type == 'hidden'" [field]='field' (valueChanged)="onChange($event)"></tekkl-hidden-field>

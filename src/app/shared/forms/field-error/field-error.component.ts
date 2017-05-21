@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { Field } from '../models/field';
+import { AbstractControl } from '@angular/forms';
 
 @Component({
 	selector: 'tekkl-field-error',
@@ -15,7 +15,7 @@ import { Field } from '../models/field';
 	styleUrls: ['./field-error.component.sass']
 })
 export class FieldErrorComponent implements OnInit {
-	@Input() field: Field;
+	@Input() control: AbstractControl;
 	@Input() type: string;
 	@Input() message: string;
 	constructor() { }

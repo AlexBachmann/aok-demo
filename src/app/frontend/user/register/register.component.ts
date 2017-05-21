@@ -8,12 +8,11 @@
  */
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Validators } from '../../../shared/forms/validators/general';
 import { Http } from '@angular/http';
-import { FormsService } from '../../../shared/forms/forms.service';
-import { Form } from '../../../shared/forms/models/form';
 import { NotificationService } from '../../../shared/ui/notification/notification.service';
 import { NotificationComponent } from '../../../shared/ui/notification/notification.component';
-import FormData from './form';
 import { UserStorage } from '../../../shared/authentication/user-storage/user-storage.service';
 import { AuthenticationService } from '../../../shared/authentication/authentication.service';
 import { User } from '../../../shared/authentication/user.entity';
@@ -25,12 +24,12 @@ import { User } from '../../../shared/authentication/user.entity';
 })
 export class RegisterComponent implements OnInit {
 
-  	public form: Form
+  	public form: FormGroup
 	public loading: boolean
 	@ViewChildren(NotificationComponent) notifications: QueryList<NotificationComponent>;
 
 	constructor(
-		private formsService: FormsService,
+		private fb: FormBuilder,
 		private http: Http,
 		private notificationService: NotificationService,
 		private router: Router,
@@ -39,17 +38,11 @@ export class RegisterComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.form = this.formsService.getFormFromDataObject(FormData);
+		this.form = this.createForm();
 	}
 
 	onSubmit(value){
 		this.loading = true;
-		value.plainPassword = {
-			first: value.password,
-			second: value.verify_password
-		};
-		delete(value.password);
-		delete(value.verify_password);
 		this.http.post('/api/user/register', JSON.stringify(value))
 			.subscribe((res) => {
 				var response = res.json();
@@ -95,7 +88,17 @@ export class RegisterComponent implements OnInit {
 		this.notificationService.show(notification);
 	}
 	clearFormPassword(value){
-		this.form.getControl('password').setValue('');
-		this.form.getControl('verify_password').setValue('');
+		this.form.get('plainPassword').get('first').setValue('');
+		this.form.get('plainPassword').get('second').setValue('');
+	}
+	createForm(): FormGroup {
+		return this.fb.group({
+			username: ['', [Validators.required, Validators.minLength(2)]],
+			email: ['', [Validators.required, Validators.email]],
+			plainPassword: this.fb.group({
+				first: ['', [Validators.required, Validators.minLength(8)]],
+				second: ['', [Validators.required, Validators.minLength(8)]]
+			}, {validator: Validators.matching(['first', 'second'])})
+		});
 	}
 }

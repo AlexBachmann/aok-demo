@@ -8,16 +8,16 @@
 						<div class="logo"></div>
 						<span class="subtitle" i18n="The name of page, the user is currently on.">Backend</span>
 					</div>
-					<form (ngSubmit)="onSubmit(form.getControlGroup().value)" [formGroup]="form.getControlGroup()">
-						<tekkl-text-field [field]="form.getField('_username')" label="Username / Email" i18n-label="Input Field Label">
-							<tekkl-field-error [field]="form.getField('_username')" type="required" message="Please provide your username or email" i18n-message="Error message for empty username form field"></tekkl-field-error>
+					<form (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
+						<tekkl-text-field [control]="form.get('_username')" label="Username / Email" i18n-label="Input Field Label">
+							<tekkl-field-error [control]="form.get('_username')" type="required" message="Please provide your username or email" i18n-message="Error message for empty username form field"></tekkl-field-error>
 						</tekkl-text-field>
-						<tekkl-text-field [field]="form.getField('_password')" label="Password" i18n-label="Input Field Label">
-							<tekkl-field-error [field]="form.getField('_password')" type="required" message="Please provide your password" i18n-message></tekkl-field-error>
-							<tekkl-field-error [field]="form.getField('_password')" type="minlength" message="Your password needs to be at least 8 characters long" i18n-message="Error message for password entry that is too short"></tekkl-field-error>
+						<tekkl-text-field [control]="form.get('_password')" label="Password" i18n-label="Input Field Label" type="password">
+							<tekkl-field-error [control]="form.get('_password')" type="required" message="Please provide your password" i18n-message></tekkl-field-error>
+							<tekkl-field-error [control]="form.get('_password')" type="minlength" message="Your password needs to be at least 8 characters long" i18n-message="Error message for password entry that is too short"></tekkl-field-error>
 						</tekkl-text-field>
 						<div class="actions">
-							<button class="button" type="submit" [disabled]="!form.getControlGroup().valid" i18n="Submit Button Label">Submit</button>
+							<button class="button" type="submit" [disabled]="!form.valid" i18n="Submit Button Label">Submit</button>
 							<tekkl-facebook-login (afterLogin)="handleAuthenticatedUser($event)"></tekkl-facebook-login>
 						</div>
 					</form>

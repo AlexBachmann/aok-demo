@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { Field } from '../../models/field';
+import { FormControl } from '@angular/forms';
 
 @Component({
 	selector: 'tekkl-text-field',
@@ -15,8 +15,9 @@ import { Field } from '../../models/field';
 	styleUrls: ['./text-field.component.sass']
 })
 export class TextFieldComponent implements OnInit {
-	@Input() field: Field;
+	@Input() control: FormControl;
 	@Input() label: string;
+	@Input() type: string = 'text';
 	@Output() change: EventEmitter<any> = new EventEmitter();
 	onChange($event){
 		this.change.emit($event.target.value);
@@ -25,6 +26,6 @@ export class TextFieldComponent implements OnInit {
 	
 	}
 	hasValue(){
-		return this.field.getControl().value ? true : false
+		return this.control.value ? true : false
 	}
 }

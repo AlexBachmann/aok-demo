@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { Field } from '../../models/field';
+import { FormControl } from '@angular/forms';
 
 @Component({
 	selector: 'tekkl-radio-field',
@@ -15,7 +15,7 @@ import { Field } from '../../models/field';
 	styleUrls: ['./radio-field.component.sass']
 })
 export class RadioFieldComponent implements OnInit {
-	@Input() field: Field;
+	@Input() control: FormControl;
 	@Output() change: EventEmitter<any> = new EventEmitter();
 	onChange($event){
 		this.change.emit($event.target.value);

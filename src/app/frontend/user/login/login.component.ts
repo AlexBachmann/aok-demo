@@ -8,12 +8,11 @@
  */
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Validators } from '../../../shared/forms/validators/general';
 import { Http } from '@angular/http';
-import { FormsService } from '../../../shared/forms/forms.service';
-import { Form } from '../../../shared/forms/models/form';
 import { NotificationComponent } from '../../../shared/ui/notification/notification.component';
 import { NotificationService } from '../../../shared/ui/notification/notification.service';
-import FormData from './form';
 import { UserStorage } from '../../../shared/authentication/user-storage/user-storage.service';
 import { AuthenticationService } from '../../../shared/authentication/authentication.service';
 import { User } from '../../../shared/authentication/user.entity';
@@ -24,12 +23,12 @@ import { User } from '../../../shared/authentication/user.entity';
 	styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit {
-	public form: Form
+	public form: FormGroup
 	public loading: boolean
 	@ViewChildren(NotificationComponent) notifications: QueryList<NotificationComponent>;
 
 	constructor(
-		private formsService: FormsService,
+		private fb: FormBuilder,
 		private http: Http,
 		private notificationService: NotificationService,
 		private router: Router,
@@ -38,7 +37,7 @@ export class LoginComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.form = this.formsService.getFormFromDataObject(FormData);
+		this.form = this.createForm();
 	}
 
 	onSubmit(value){
@@ -66,5 +65,11 @@ export class LoginComponent implements OnInit {
 	private showNotification(id){
 		var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == id)[0];
 		this.notificationService.show(notification);
+	}
+	createForm(): FormGroup {
+		return this.fb.group({
+			_username: ['', [Validators.required, Validators.minLength(2)]],
+			_password: ['', [Validators.required, Validators.minLength(8)]]
+		});
 	}
 }
