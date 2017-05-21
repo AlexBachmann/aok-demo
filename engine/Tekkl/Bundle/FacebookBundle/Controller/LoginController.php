@@ -63,7 +63,9 @@ class LoginController extends FOSRestController
             $response = new JsonResponse();
             $event = new FilterUserResponseEvent($user, $request, $response);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, $event);
-            $this->sendRegistrationEmail($user, $request->getLocale());
+
+            $mailHelper = $this->get('tekkl.facebook.helper.registration_confirmation_mail');
+            $mailHelper->sendRegistrationConfirmationMail($user, $request);
         }
 
         $facebookUser = $userManager->createUser();
@@ -76,18 +78,5 @@ class LoginController extends FOSRestController
     	if(!isset($vars['id']) || !isset($vars['email']) || !isset($vars['name'])){
     		throw new BadRequestHttpException('The passed Facebook user data is not valid');
     	}
-    }
-    private function sendRegistrationEmail(UserInterface $user, $locale){
-        $mail = $this->get('tekkl.mailer');
-        $mail
-            ->setTo($user->getEmail())
-            ->setHtmlTemplate(sprintf('@TekklFacebook/Email/%s/registration.html', $locale))
-            ->setPlainTemplate(sprintf('@TekklFacebook/Email/%s/registration.txt.html', $locale))
-            ->loadVars(
-                [
-                    'username'  => $user->getUsername(),
-                    'email'     => $user->getEmail()
-                ])
-            ->send();
     }
 }

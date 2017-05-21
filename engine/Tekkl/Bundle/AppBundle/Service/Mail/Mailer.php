@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Tekkl\Bundle\AppBundle\Service;
+namespace Tekkl\Bundle\AppBundle\Service\Mail;
 
 class Mailer implements MailerInterface {
 
@@ -24,9 +24,10 @@ class Mailer implements MailerInterface {
 	private $plainBody = '';
 	private $vars = [];
 
-	public function __construct($mailer, $viewRenderer, $defaultVars){
+	public function __construct($mailer, $viewRenderer, $urlService, $defaultVars){
 		$this->mailer = $mailer;
 		$this->viewRenderer = $viewRenderer;
+		$this->urlService = $urlService;
 		$this->defaultVars = $defaultVars;
 
 		$this->loadDefaultVars();
@@ -208,7 +209,7 @@ class Mailer implements MailerInterface {
 		$this->parseSubject();
 		$this->check();
 
-		$message = \Swift_Message::newInstance();
+		$message = new \Swift_Message();
 
 		foreach($this->from as $address){
 			$message->addFrom($address['email'], $address['name']);
@@ -256,7 +257,7 @@ class Mailer implements MailerInterface {
 		return $this;
 	}
 	protected function parseSubject(){
-		$regex = '/<!--SUBJECT:([^-->]+)-->/';
+		$regex = '/<!--SUBJECT:(.+?)-->/s';
 		if(!$this->subject){
 			// First try to retrieve subject of htmlBody
 			if(!preg_match($regex, $this->htmlBody, $matches)) preg_match($regex, $this->plainBody, $matches);

@@ -13,7 +13,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators } from '../../shared/forms/validators/general';
 import { NotificationComponent } from '../../shared/ui/notification/notification.component';
 import { NotificationService } from '../../shared/ui/notification/notification.service';
-import FormData from './form';
 import { UserStorage } from '../../shared/authentication/user-storage/user-storage.service';
 import { AuthenticationService } from '../../shared/authentication/authentication.service';
 import { User } from '../../shared/authentication/user.entity';

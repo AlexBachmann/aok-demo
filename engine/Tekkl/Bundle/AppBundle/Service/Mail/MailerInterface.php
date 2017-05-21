@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Tekkl\Bundle\AppBundle\Service;
+namespace Tekkl\Bundle\AppBundle\Service\Mail;
 
 interface MailerInterface {
 	public function setFrom($address, $name = null);

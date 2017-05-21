@@ -1,4 +1,4 @@
-{% extends "@TekklApp/Email/layout.txt.html" %}
+{% extends "@TekklApp/Email/layout.txt" %}
 
 {% block subject %}
 	Your new {{ appName }} account has been created
@@ -9,7 +9,7 @@
 
 	we are so happy that you decided to register to {{ appName }}. For security reasons, you need to enable your account by clicking on the confirmation link below:
 
-	{{ baseUrl }}{{ confirmationLink }}
+	{{ confirmationLink }}
 
 
 	In the future you can log into the site ({{ baseUrl }}) using a combination of your username or email address and the password you provided.

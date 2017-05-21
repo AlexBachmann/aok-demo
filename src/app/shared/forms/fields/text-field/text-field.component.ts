@@ -17,6 +17,7 @@ import { FormControl } from '@angular/forms';
 export class TextFieldComponent implements OnInit {
 	@Input() control: FormControl;
 	@Input() label: string;
+	@Input() name: string;
 	@Input() type: string = 'text';
 	@Output() change: EventEmitter<any> = new EventEmitter();
 	onChange($event){

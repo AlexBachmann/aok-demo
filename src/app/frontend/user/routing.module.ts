@@ -9,15 +9,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { ResetComponent } from './reset/reset.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { RegisterComponent } from './register/register.component';
 import { ConfirmComponent } from './confirm/confirm.component';
+import { NewPasswordComponent } from './new-password/new-password.component';
 
 const routes: Routes = [
 	{ path: 'login', component: LoginComponent }, 
 	{ path: 'register', component: RegisterComponent },
-	{ path: 'reset', component: ResetComponent },
-	{ path: 'confirm/:token', component: ConfirmComponent }
+	{ path: 'reset-password', component: ResetPasswordComponent },
+	{ path: 'confirm/:token', component: ConfirmComponent },
+	{ path: 'new-password/:token', component: NewPasswordComponent }
 ];
 
 @NgModule({

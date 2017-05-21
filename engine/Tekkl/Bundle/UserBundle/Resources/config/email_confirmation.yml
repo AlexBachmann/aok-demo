@@ -1,6 +1,6 @@
 services: 
     tekkl_user.registration.confirmation:
         class: Tekkl\Bundle\UserBundle\EventListener\Registration\EmailConfirmation
-        arguments: ['@tekkl.mailer', '@fos_user.util.token_generator']
+        arguments: ['@tekkl.helper.registration_confirmation_mail', '@fos_user.util.token_generator']
         tags:
             - { name: kernel.event_subscriber }

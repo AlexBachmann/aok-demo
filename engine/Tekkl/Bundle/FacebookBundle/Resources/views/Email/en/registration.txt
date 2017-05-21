@@ -1,4 +1,4 @@
-{% extends "@TekklApp/Email/layout.txt.html" %}
+{% extends "@TekklApp/Email/layout.txt" %}
 
 {% block subject %}
 	Your new {{ appName }} account has been created
@@ -12,7 +12,7 @@
 	Username: {{ username }}
 	Email: {{ email }}
 
-	For the moment, you can only log in, using the Facebook Button on our site. If you want to log in using your username and a password, you need to click on the "Forgot your password?" link ({{ baseUrl }}/user/password-reset) on the login screen. You will then be prompted to enter your email address (the one listed above), and the process of giving you a new password is started.
+	For the moment, you can only log in, using the Facebook Button on our site. If you want to log in using your username and a password, you need to click on the "Forgot your password?" link ({{ passwordResetLink }}) on the login screen. You will then be prompted to enter your email address (the one listed above), and the process of giving you a new password is started.
 
 	We hope you'll be very happy using our app. If you have the time to give us feedback, we would appreciate it very much. Just send us a mail to {{ appEmail }} and we will come back to you as soon as possible.
 

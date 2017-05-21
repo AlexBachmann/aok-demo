@@ -14,16 +14,16 @@ export class RegisterPage {
     return browser.get('/user/register');
   }
   getUserNameInput(){
-    return element(by.css('app-register input[ng-reflect-name="username"]'));
+    return element(by.css('app-register input[name="username"]'));
   }
   getEmailInput(){
-    return element(by.css('app-register input[ng-reflect-name="email"]'));
+    return element(by.css('app-register input[name="email"]'));
   }
   getPasswordInput(){
-    return element(by.css('app-register input[ng-reflect-name="password"]'));
+    return element(by.css('app-register input[name="first"]'));
   }
   getPasswordVerifyInput(){
-    return element(by.css('app-register input[ng-reflect-name="verify_password"]'));
+    return element(by.css('app-register input[name="second"]'));
   }
   getSubmitButton(){
   	return element(by.css('app-register button[type="submit"]'));

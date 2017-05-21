@@ -47,9 +47,9 @@ install:
 
 script:
   # run unit tests
-  ##- composer test
+  - composer test
   # run karma unit tests
-  ##- node_modules/.bin/ng test --single-run true
+  - node_modules/.bin/ng test --single-run true
   
   # install apache server
   - sudo bash tools/travis/apache-setup.sh -h="127.0.1.1" -u="tekkl.local" -d="$(pwd)/web" -p="$(phpenv version-name)"

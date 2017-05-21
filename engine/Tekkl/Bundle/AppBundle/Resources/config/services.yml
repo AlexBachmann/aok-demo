@@ -1,6 +1,6 @@
 services:
     tekkl.mailer:
-        class: Tekkl\Bundle\AppBundle\Service\Mailer
+        class: Tekkl\Bundle\AppBundle\Service\Mail\Mailer
         arguments: ['@mailer']
     tekkl.util.inflector:
         class: Tekkl\Bundle\AppBundle\Util\Inflector\RestInflector

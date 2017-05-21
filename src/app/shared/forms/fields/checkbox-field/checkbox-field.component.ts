@@ -18,6 +18,7 @@ export class CheckboxFieldComponent implements OnInit {
 	@Input() control: FormControl
 	@Input() value: any
 	@Input() label: string
+	@Input() name: string;
 	@Input() multiple: any
 	@Output() change: EventEmitter<any> = new EventEmitter()
 	onChange($event){

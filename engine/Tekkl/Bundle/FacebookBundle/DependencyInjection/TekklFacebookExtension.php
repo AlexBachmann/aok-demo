@@ -13,6 +13,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * This is the class that loads and manages your bundle configuration.
@@ -30,5 +31,13 @@ class TekklFacebookExtension extends Extension {
         $container
             ->getDefinition('tekkl_facebook.user_manager')
             ->addArgument($config['facebook_user_class']);
+
+        $this->registerRegistrationConfirmationMailHelper($config, $container);
+    }
+    protected function registerRegistrationConfirmationMailHelper($config, ContainerBuilder $container){
+        $mailHelper = $container->register('tekkl.facebook.helper.registration_confirmation_mail', 'Tekkl\\Bundle\\FacebookBundle\\Helper\\Mail\\RegistrationConfirmationMailHelper');
+        $mailHelper->addArgument(new Reference('tekkl.mailer'));
+        $mailHelper->addArgument(new Reference('tekkl.url.service'));
+        $mailHelper->addMethodCall('setPasswordResetLinkTemplate', [$config['registration']['password_reset_link_template']]);
     }
 }

@@ -13,10 +13,10 @@ export class LoginPage {
 		return browser.get('/backend/login');
 	}
 	getUserNameInput(){
-		return element(by.css('app-login input[ng-reflect-name="_username"]'));
+		return element(by.css('app-login input[name="_username"]'));
 	}
 	getPasswordInput(){
-		return element(by.css('app-login input[ng-reflect-name="_password"]'));
+		return element(by.css('app-login input[name="_password"]'));
 	}
 	getSubmitButton(){
 		return element(by.css('app-login button[type="submit"]'));

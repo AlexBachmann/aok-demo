@@ -38,6 +38,12 @@ class Configuration implements ConfigurationInterface
 	            ->scalarNode('appSecret')->isRequired()->cannotBeEmpty()->end()
 	            ->scalarNode('version')->defaultValue('v2.9')->end()
 	            ->scalarNode('facebook_user_class')->defaultValue('\\Tekkl\\Bundle\\FacebookBundle\\Entity\\FacebookUser')->end()
+                ->arrayNode('registration')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('password_reset_link_template')->defaultValue('/user/reset-password')->end() 
+                    ->end()
+                ->end()
 	        ->end();
         return $treeBuilder;
     }

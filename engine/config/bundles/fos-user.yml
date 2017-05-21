@@ -8,3 +8,6 @@ fos_user:
     registration:
         form:
             name: ''
+    resetting:
+        form:
+            name: 'reset_form'

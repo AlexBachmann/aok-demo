@@ -1,6 +1,6 @@
 <div class="form-control" [class.label-top]="hasValue()">
 	<label>{{label}}</label>
-	<input type="{{type}}" [formControl]="control" />
+	<input [name]="name" [type]="type" [formControl]="control" />
 	<ng-content></ng-content>
 </div>
 

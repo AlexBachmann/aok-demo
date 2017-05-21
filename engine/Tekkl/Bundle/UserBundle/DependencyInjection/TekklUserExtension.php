@@ -15,6 +15,7 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * This is the class that loads and manages your bundle configuration.
@@ -33,12 +34,11 @@ class TekklUserExtension extends Extension implements PrependExtensionInterface 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        if ($config['registration']['confirmation']['enabled']) {
-            $loader->load('email_confirmation.yml');
+        $this->registerPasswordResetMailHelper($config, $container);
 
-            $container
-                ->getDefinition('tekkl_user.registration.confirmation')
-                ->addArgument($config['registration']['confirmation']['linkTemplate']);
+        if ($config['registration']['confirmation']['enabled']) {
+            $this->registerRegistrationConfirmationMailHelper($config, $container);
+            $loader->load('email_confirmation.yml');
         }else {
             $loader->load('registration_jwt_authentication.yml');
         }
@@ -116,5 +116,17 @@ class TekklUserExtension extends Extension implements PrependExtensionInterface 
             ]
         );
         $container->prependExtensionConfig('doctrine', $doctrinePrependConfig);
+    }
+    protected function registerPasswordResetMailHelper($config, ContainerBuilder $container){
+        $mailHelper = $container->register('tekkl.helper.password_reset_mail', 'Tekkl\\Bundle\\UserBundle\\Helper\\Mail\\PasswordResetMailHelper');
+        $mailHelper->addArgument(new Reference('tekkl.mailer'));
+        $mailHelper->addArgument(new Reference('tekkl.url.service'));
+        $mailHelper->addMethodCall('setPasswordResetLinkTemplate', [$config['password']['reset']['link_template']]);
+    }
+    protected function registerRegistrationConfirmationMailHelper($config, ContainerBuilder $container){
+        $mailHelper = $container->register('tekkl.helper.registration_confirmation_mail', 'Tekkl\\Bundle\\UserBundle\\Helper\\Mail\\RegistrationConfirmationMailHelper');
+        $mailHelper->addArgument(new Reference('tekkl.mailer'));
+        $mailHelper->addArgument(new Reference('tekkl.url.service'));
+        $mailHelper->addMethodCall('setRegistrationConfirmationLinkTemplate', [$config['registration']['confirmation']['link_template']]);
     }
 }

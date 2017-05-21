@@ -37,53 +37,34 @@ class TekklAppExtension extends Extension
         if($config['dev_mode']){
             $loader->load('allow_dev_origins.yml');
         }
-
+        $this->registerUrlService($config, $container);
         $this->registerMailer($config, $container);        
     }
+    protected function registerUrlService($config, ContainerBuilder $container){
+        $urlService = $container->register('tekkl.url.service', 'Tekkl\\Bundle\\AppBundle\\Service\\Url\\UrlService');
+        $urlService->addMethodCall('setScheme', [($config['use_ssl']) ? 'https' : 'http']);
+        $urlService->addMethodCall('setHost', [$config['host']]);
+        if($config['path']){
+            $urlService->addMethodCall('setBasePath', [$config['path']]);
+        }
+        $urlService->setShared(false);
+    }
     protected function registerMailer($config, ContainerBuilder $container){
-        $tekklMailer = $container->register('tekkl.mailer', 'Tekkl\\Bundle\\AppBundle\\Service\\Mailer');
+        $tekklMailer = $container->register('tekkl.mailer', 'Tekkl\\Bundle\\AppBundle\\Service\\Mail\\Mailer');
         $tekklMailer->addArgument(new Reference('mailer'));
         $tekklMailer->addArgument(new Reference('templating'));
+        $tekklMailer->addArgument(new Reference('tekkl.url.service'));
 
         $tekklMailer->addArgument(
             $this->getMailerVars($config)
         );
-        $tekklMailer->addArgument($config['app_name']);
         $tekklMailer->setShared(false);
     }
     protected function getMailerVars($config){
         $vars = [
             'appName' => $config['app_name'],
-            'appEmail' => $config['app_email'],
-            'baseUrl' => $this->getBaseUrl($config),
-            'appHost' => $this->getHost($config),
-            'appSchema' => $this->getSchema($config),
-            'appPath' => $this->getPath($config),
-            'useSsl' => $config['use_ssl']
+            'appEmail' => $config['app_email']
         ];
         return $vars;
-    }
-    protected function getBaseUrl($config){
-        $schema = $this->getSchema($config);
-        $host = $this->getHost($config);
-        $path = $this->getPath($config);
-
-        return $schema . $host . $path;
-    }
-    protected function getSchema($config){
-        if($config['use_ssl']){
-            return 'https://';
-        }
-        return 'http://';
-    }
-    protected function getHost($config){
-        $regex = '/http[s]?:\/\//';
-        if(preg_match($regex, $config['host'])){
-           $config['host'] = preg_replace($regex, '', $config['host']);
-        }
-        return trim($config['host'], '/');
-    }
-    protected function getPath($config){
-        return rtrim($config['path'], '/');
     }
 }
