@@ -20,6 +20,7 @@ class TestUserData extends TestEnvDataFixture {
 		$this->createSimpleUser($manager);
         $this->createAdminUser($manager);
         $this->createSuperAdminUser($manager);
+        $this->createPasswordResetUser($manager);
     }
     protected function getEnvironments(){
         return array('dev', 'test');
@@ -52,6 +53,16 @@ class TestUserData extends TestEnvDataFixture {
         $user->setEmail('superadmin@test.de');
         $user->setPlainPassword('password');
         $user->addRole('ROLE_SUPER_ADMIN');
+        $user->setEnabled(true);
+
+        $userManager->updateUser($user);
+    }
+    private function createPasswordResetUser(ObjectManager $manager){
+        $userManager = $this->container->get('fos_user.user_manager');
+        $user = $userManager->createUser();
+        $user->setUsername('password_reset_user');
+        $user->setEmail('password_reset@test.de');
+        $user->setPlainPassword('old_password');
         $user->setEnabled(true);
 
         $userManager->updateUser($user);

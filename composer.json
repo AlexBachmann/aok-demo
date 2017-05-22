@@ -60,7 +60,7 @@
             "@symfony-scripts"
         ],
         "test": [
-            "vendor/bin/simple-phpunit"
+            ". ./tools/tests/set_env_variables.sh && vendor/bin/simple-phpunit"
         ]
     },
     "extra": {

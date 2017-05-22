@@ -18,7 +18,7 @@
 
     <testsuites>
         <testsuite name="TEKKL core test suite">
-            <directory>tests</directory>
+            <directory>engine</directory>
         </testsuite>
     </testsuites>
 
