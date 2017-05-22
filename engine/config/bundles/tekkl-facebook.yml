@@ -1,8 +1,0 @@
-parameters: 
-  facebook_app_id: '%env(TEKKL_FACEBOOK_APPID)%'
-  facebook_app_secret: '%env(TEKKL_FACEBOOK_APPSECRET)%'
-
-tekkl_facebook:
-  appId: '%facebook_app_id%'
-  appSecret: '%facebook_app_secret%'
-  version: 'v2.9'

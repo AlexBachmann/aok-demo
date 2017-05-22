@@ -1,6 +1,0 @@
-tekkl_app:
-  app_name: 'TEKKL core App'
-  app_email: 'email.bachmann@gmail.com'
-  host: 'tekkl.local'
-  path: ''
-  use_ssl: false

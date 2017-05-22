@@ -2,11 +2,11 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
-    database_host: '%env(TEKKL_DATABASE_HOST)%'
-    database_port: '%env(TEKKL_DATABASE_PORT)%'
-    database_name: '%env(TEKKL_DATABASE_NAME)%'
-    database_user: '%env(TEKKL_DATABASE_USER)%'
-    database_password: '%env(TEKKL_DATABASE_PASSWORD)%'
+    database_host: 127.0.0.1
+    database_port: ~
+    database_name: ~
+    database_user: ~
+    database_password: ~
 
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
@@ -19,3 +19,10 @@ parameters:
 
     secret: ThisTokenIsNotSoSecretChangeIt
 
+    jwt_private_key_path: '%kernel.root_dir%/../var/jwt/private.pem' # ssh private key path
+    jwt_public_key_path:  '%kernel.root_dir%/../var/jwt/public.pem'  # ssh public key path
+    jwt_key_pass_phrase:  'tekkl'                                         # ssh key pass phrase
+    jwt_token_ttl:        3600
+
+    facebook_app_id: YourFacebookAppID
+    facebook_app_secret: YourFacebookAppSecret

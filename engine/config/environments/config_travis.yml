@@ -1,6 +1,5 @@
 imports:
     - { resource: ../config.yml }
-    - { resource: ../bundles/dev/tekkl-app.yml }
 
 framework:
     router:
@@ -34,3 +33,6 @@ monolog:
 swiftmailer:
     disable_delivery: true
     delivery_addresses: ["%mailer_dev_delivery_address%"]
+
+tekkl_app:
+    dev_mode: true
