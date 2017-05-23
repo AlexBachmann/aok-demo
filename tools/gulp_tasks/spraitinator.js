@@ -9,12 +9,10 @@ module.exports = function (gulp, plugins, options) {
     del.sync(config.sprite.out);
   	spraitinator.generate({
       iconsPathSvg: config.sprite.iconsPathSvg,
-      iconsPathPng: config.sprite.iconsPathPng,
       out: config.sprite.out,
       scssPath: config.sprite.scssPath,
       cssSpritePath: config.sprite.cssSpritePath,
-      spritePath: config.sprite.spritePath,
-      scales: [1, 2]
+      spritePath: config.sprite.spritePath
     }, function (error) {
       if(cb){
         cb(error);

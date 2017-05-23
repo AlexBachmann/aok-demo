@@ -54,23 +54,4 @@
 			}
 		}
 	}
-	//if no-svg or no-svg-safari is set, then use png sprite, and if its a retina display use 2x png
-	.ie9 &:before,
-	.ie9 &:after,
-	.no-svg-safari &:before,
-	.no-svg-safari &:after,
-	.no-svg &:before,
-	.no-svg &:after {
-		background-image: url('{{pngSpriteX1}}');
-		//retina.
-		@media only screen and (-webkit-min-device-pixel-ratio: 2),
-				only screen and ( min--moz-device-pixel-ratio: 2),
-				only screen and ( -o-min-device-pixel-ratio: 2/1),
-				only screen and ( min-device-pixel-ratio: 2),
-				only screen and ( min-resolution: 192dpi),
-				only screen and ( min-resolution: 2dppx) {
-					background-image: url('{{pngSpriteX2}}');
-					background-size: {{dimX}}px {{dimY}}px; //replace with image-size values
-		}
-	}
 }
