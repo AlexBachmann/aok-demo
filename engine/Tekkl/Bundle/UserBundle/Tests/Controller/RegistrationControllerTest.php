@@ -33,11 +33,15 @@ class RegistrationControllerTest extends WebTestCase
 
         $collectedMessages = $mailCollector->getMessages();
         $message = $collectedMessages[0];
+        $devDeliveryAddress = $client->getContainer()->getParameter('mailer_dev_delivery_address');
 
         // Asserting email data
         $this->assertInstanceOf('Swift_Message', $message);
         $this->assertRegExp('/Your new .+ account has been created/', $message->getSubject());
-        $this->assertEquals($payload['email'], key($message->getTo()));
+        
+        // Depending on the environment we are in, the message receiver can either be the true receiver
+        // or the development delivery address
+        $this->assertTrue(($payload['email'] == key($message->getTo())) || ($devDeliveryAddress == key($message->getTo())));
         $this->assertRegExp(
             '/(.+\/user\/confirm\/(.+))/',
             $message->getBody()

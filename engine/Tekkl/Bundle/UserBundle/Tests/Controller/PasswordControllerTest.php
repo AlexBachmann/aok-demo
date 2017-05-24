@@ -27,6 +27,7 @@ class PasswordControllerTest extends WebTestCase
         $this->assertTrue($response->email_sent);
 
         $mailCollector = $client->getProfile()->getCollector('swiftmailer');
+        $devDeliveryAddress = $client->getContainer()->getParameter('mailer_dev_delivery_address');
 
         // Check that an email was sent
         $this->assertEquals(1, $mailCollector->getMessageCount());
@@ -37,7 +38,9 @@ class PasswordControllerTest extends WebTestCase
         // Asserting email data
         $this->assertInstanceOf('Swift_Message', $message);
         $this->assertRegExp('/Reset your password/', $message->getSubject());
-        $this->assertEquals($payload['email'], key($message->getTo()));
+        // Depending on the environment we are in, the message receiver can either be the true receiver
+        // or the development delivery address
+        $this->assertTrue(($payload['email'] == key($message->getTo())) || ($devDeliveryAddress == key($message->getTo())));
         $this->assertRegExp(
             '/(.+\/user\/new-password\/([a-zA-Z0-9_-]+))/',
             $message->getBody()
