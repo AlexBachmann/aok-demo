@@ -49,8 +49,8 @@ tekkl_user:
             enabled: true
 
 tekkl_facebook:
-    appId: '%facebook_app_id%'
-    appSecret: '%facebook_app_secret%'
+    app_id: '%facebook_app_id%'
+    app_secret: '%facebook_app_secret%'
     version: 'v2.9'
 
 # Configuration of the various bundles this app uses

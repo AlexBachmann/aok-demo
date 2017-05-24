@@ -33,11 +33,25 @@ class TekklFacebookExtension extends Extension {
             ->addArgument($config['facebook_user_class']);
 
         $this->registerRegistrationConfirmationMailHelper($config, $container);
+        $this->registerFacebookService($config, $container);
     }
     protected function registerRegistrationConfirmationMailHelper($config, ContainerBuilder $container){
         $mailHelper = $container->register('tekkl.facebook.helper.registration_confirmation_mail', 'Tekkl\\Bundle\\FacebookBundle\\Helper\\Mail\\RegistrationConfirmationMailHelper');
         $mailHelper->addArgument(new Reference('tekkl.mailer'));
         $mailHelper->addArgument(new Reference('tekkl.url.service'));
         $mailHelper->addMethodCall('setPasswordResetLinkTemplate', [$config['registration']['password_reset_link_template']]);
+    }
+    protected function registerFacebookService($config, ContainerBuilder $container){
+        $facebookService = $container->register('facebook.service', 'Facebook\\Facebook');
+        $serviceConfig = [
+            'app_id' => $config['app_id'],
+            'app_secret' => $config['app_secret'],
+            'default_graph_version' => $config['version']
+        ];
+        if($config['default_access_token']){
+            $serviceConfig['default_access_token'] = $config['default_access_token'];
+        }
+        $facebookService->addArgument($serviceConfig);
+        $facebookService->setShared(false);
     }
 }

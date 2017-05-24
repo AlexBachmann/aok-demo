@@ -75,8 +75,18 @@ class LoginController extends FOSRestController
         return $user;
     }
     private function checkRequestVars($vars){
-    	if(!isset($vars['id']) || !isset($vars['email']) || !isset($vars['name'])){
-    		throw new BadRequestHttpException('The passed Facebook user data is not valid');
+    	if(!isset($vars['id']) || !isset($vars['email']) || !isset($vars['name']) || !isset($vars['access_token'])){
+    		throw new BadRequestHttpException('An error occured. Your request is not valid.');
     	}
+        $this->isValidRequest($vars);
+    }
+    private function isValidRequest($vars){
+        $facebookService = $this->get('facebook.service');
+        $resp = $facebookService->get('/me?fields=email,name,id', $vars['access_token']);
+        $me = $resp->getGraphUser();
+
+        if($vars['id'] != $me->getId() || $vars['name'] != $me->getName() || $vars['email'] != $me->getEmail()){
+            throw new BadRequestHttpException('The passed Facebook user data is not valid.');
+        }
     }
 }

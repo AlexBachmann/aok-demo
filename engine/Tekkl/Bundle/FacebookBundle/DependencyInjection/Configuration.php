@@ -34,9 +34,10 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-	            ->scalarNode('appId')->isRequired()->cannotBeEmpty()->end()
-	            ->scalarNode('appSecret')->isRequired()->cannotBeEmpty()->end()
+	            ->scalarNode('app_id')->isRequired()->cannotBeEmpty()->end()
+	            ->scalarNode('app_secret')->isRequired()->cannotBeEmpty()->end()
 	            ->scalarNode('version')->defaultValue('v2.9')->end()
+                ->scalarNode('default_access_token')->defaultValue(null)->end()
 	            ->scalarNode('facebook_user_class')->defaultValue('\\Tekkl\\Bundle\\FacebookBundle\\Entity\\FacebookUser')->end()
                 ->arrayNode('registration')
                     ->addDefaultsIfNotSet()

@@ -35,7 +35,8 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "joomla/keychain": "~1.0",
         "lexik/jwt-authentication-bundle": "^2.2",
-        "gesdinet/jwt-refresh-token-bundle": "dev-event-token-extraction-setting"
+        "gesdinet/jwt-refresh-token-bundle": "dev-event-token-extraction-setting",
+        "facebook/graph-sdk": "^5.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8|^5.0",

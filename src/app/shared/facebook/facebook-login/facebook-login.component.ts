@@ -19,6 +19,7 @@ import { User } from '../../authentication/user.entity';
 	styleUrls: ['./facebook-login.component.sass']
 })
 export class FacebookLoginComponent implements OnInit {
+	accessToken: string = '';
 	@ViewChildren(NotificationComponent) notifications: QueryList<NotificationComponent>;
 	@Output('afterLogin') loginEventEmitter: EventEmitter<User> = new EventEmitter()
 	constructor(
@@ -31,8 +32,10 @@ export class FacebookLoginComponent implements OnInit {
 	async login(){
 		if(!await this.createFacebookConnection()){
 			this.showError('login-failure');
+			return;
 		}
 		var facebookUserData = await this.facebookService.api('/me?fields=email,name,id').toPromise();
+		facebookUserData['access_token'] = this.accessToken;
 		try {
 			var response = await this.http.post('/api/facebook/login', JSON.stringify(facebookUserData)).toPromise();
 			var data = response.json();
@@ -55,10 +58,14 @@ export class FacebookLoginComponent implements OnInit {
 				return false;
 			}
 		}
+		this.storeAccessToken(loginStatus.authResponse);
 		return true;
 	}
 	private showError(id:string){
 		var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == id)[0];
 		this.notificationService.show(notification);
+	}
+	private storeAccessToken(authResponse){
+		this.accessToken = authResponse.accessToken;
 	}
 }
