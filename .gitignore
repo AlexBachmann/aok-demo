@@ -12,15 +12,10 @@
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
-/web/dist/
-/tmp/
 /dump/
 
 # Ignore PHP Backup files
 *.php~
-
-# Ignore generated files
-/web/src/assets/public/sprite/generated/*
 
 # Ignore parameters 
 /engine/config/parameters.yml

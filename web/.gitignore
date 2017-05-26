@@ -1,0 +1,4 @@
+# Ignore generated files
+/tmp/
+/dist/
+/src/assets/public/sprite/generated/*
