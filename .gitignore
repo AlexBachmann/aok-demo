@@ -1,4 +1,3 @@
-/app/config/parameters.yml
 /build/
 /phpunit.xml
 /var/*
@@ -13,8 +12,7 @@
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
-/web/
-/dist/
+/web/dist/
 /tmp/
 /dump/
 
@@ -22,7 +20,7 @@
 *.php~
 
 # Ignore generated files
-/src/assets/public/sprite/generated/*
+/web/src/assets/public/sprite/generated/*
 
 # Ignore parameters 
 /engine/config/parameters.yml

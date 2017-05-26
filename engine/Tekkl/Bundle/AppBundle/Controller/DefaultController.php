@@ -22,7 +22,7 @@ class DefaultController extends Controller
      */
     public function indexAction($slug = null)
     {
-        $path = realpath($this->getParameter('kernel.root_dir').'/..'). DIRECTORY_SEPARATOR . 'web' . DIRECTORY_SEPARATOR . 'index.html';
+        $path = realpath($this->getParameter('kernel.root_dir').'/..'). DIRECTORY_SEPARATOR . 'web' . DIRECTORY_SEPARATOR . 'dist' . DIRECTORY_SEPARATOR . 'index.html';
         $content = file_get_contents($path);
         
         return new Response($content);

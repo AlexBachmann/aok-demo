@@ -37,11 +37,11 @@ install:
   - source tools/travis/setup_database.sh
   # Update Node to $TRAVIS_NODE_VERSION and run npm install
   - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
-  - npm install
-  - ./node_modules/protractor/bin/webdriver-manager update
+  - cd web && npm install && cd ..
+  - cd web && node_modules/protractor/bin/webdriver-manager update && cd ..
   - nohup bash -c "./node_modules/protractor/bin/webdriver-manager start 2>&1 &"
   # Build project
-  - node_modules/.bin/gulp build
+  - cd web && node_modules/.bin/gulp build && cd ..
   # Generate JWT Keys
   - source tools/travis/generate_jwt_keys.sh
 
@@ -49,16 +49,16 @@ script:
   # run unit tests
   - composer test
   # run karma unit tests
-  - node_modules/.bin/ng test --single-run true
+  - cd web && node_modules/.bin/ng test --single-run true && cd ..
   
   # install apache server
-  - sudo bash tools/travis/apache-setup.sh -h="127.0.1.1" -u="tekkl.local" -d="$(pwd)/web" -p="$(phpenv version-name)"
+  - sudo bash tools/travis/apache-setup.sh -h="127.0.1.1" -u="tekkl.local" -d="$(pwd)/web/dist" -p="$(phpenv version-name)"
   - source tools/travis/set_file_permissions.sh
   # - source tools/travis/curl.sh
   # - php -r '$content = file_get_contents("http://tekkl.local"); echo $content;'
   # - more web/apache-error.log
   # run e2e tests
-  - node_modules/.bin/protractor protractor.conf.js
+  - cd web && node_modules/.bin/protractor protractor.conf.js && cd ..
 
 after_failure:
   - cat var/logs/dev.log

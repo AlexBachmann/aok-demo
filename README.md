@@ -34,3 +34,15 @@ So why do we use [Angular](https://angular.io)? Angular applications are modular
 Why do we need [Symfony](http://symfony.com)? Symfony applications are modular, the framework has a great reputation of being stable and promoting good coding standards, and it's written in PHP. Since applications using TEKKL core are supposed to be distributable to many server environments, PHP is a good choice. No other server language enjoys support by so many hosting providers. 
 
 Finally why use [NativeScript](https://www.nativescript.org) instead of other frameworks like [ionic](https://ionicframework.com/)? We really don't know yet. Currently we prefer the philosophy of NativeScript over the one of ionic. But this might change in the future. We are just getting started.
+
+## Trouble Shooting
+
+### NativeScript
+
+#### iOS emulator cannot be started
+
+When you try to start the iOS emulator using a command like `$ tns run ios` or `$ tns run ios --emulate` you receive an error.
+
+1. Read again the NativeScript documentation on how to setup your system: http://docs.nativescript.org/angular/start/quick-setup
+
+2. If you are using Mac or Linux, run `$ which head` to find out which binary is associated with the `head` command. If it is not `/usr/bin/head` but a binary in XAMPP for example, you need to reorder your $PATH variable.

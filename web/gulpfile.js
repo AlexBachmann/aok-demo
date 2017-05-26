@@ -3,13 +3,13 @@
 // Gulp dev.
 var gulp = require('gulp');
 var watch = require('gulp-watch');
-var config = require('./tools/gulp_tasks/config');
+var config = require('./gulp_tasks/config');
 var plugins = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var exec = require('child_process').exec;
 
 function tasks(task, options) {
-    return require('./tools/gulp_tasks/' + task)(gulp, plugins, options);
+    return require('./gulp_tasks/' + task)(gulp, plugins, options);
 }
 
 //gulp.task('default', runSequence('sprite', 'sass'));

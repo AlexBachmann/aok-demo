@@ -16,7 +16,7 @@ module.exports = {
 	},
 	paths: {
 		src: srcPath,
-		dist: 'web',
+		dist: 'dist',
 		tmp: 'tmp'
 	}
 }
