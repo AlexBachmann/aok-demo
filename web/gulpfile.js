@@ -20,8 +20,23 @@ gulp.task('watch', function(done){
 });
 
 
-// Build Production
+// Build for Development
 gulp.task('build', function(done){
+    console.log('Build web application in Dev-Mode. Run "gulp build_prod" to build for production.')
+    runSequence(
+      'clean.dist',
+      'sprite',
+      'ng-cli.build',
+      'copy.build',
+      'copy.assets',
+      'clean.tmp',
+      done
+    );
+});
+
+// Build for Development
+gulp.task('build_prod', function(done){
+    console.log('Build web application for Production. Run "gulp build" to build in Dev-Mode.')
     runSequence(
       'clean.dist',
       'sprite',

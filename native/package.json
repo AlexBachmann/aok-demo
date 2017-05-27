@@ -23,7 +23,12 @@
     "zone.js": "~0.8.2"
   },
   "devDependencies": {
+    "gulp": "^3.9.*",
+    "gulp-load-plugins": "^1.4",
+    "gulp-watch": "4.3.*",
     "nativescript-dev-typescript": "~0.4.0",
+    "phantomjs": "^2.1.7",
+    "run-sequence": "^1.2",
     "typescript": "~2.2.1"
   }
 }
