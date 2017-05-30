@@ -2,3 +2,4 @@
 /platforms/
 /app/App_Resources/iOS/*.png
 /app/App_Resources/Android/drawable-*/*.png
+/app/**/*.js

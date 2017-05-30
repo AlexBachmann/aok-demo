@@ -6,12 +6,12 @@ var exports = module.exports = {};
 
 
 exports.generate = function (config, callback) {
-	var sourceDir = config.svg.iconsPathSvg,
-		outDir = config.svg.out;
+	var icon = config.app_icon.svg,
+		outDir = config.app_icon.out;
 
 	var args = [
 		path.join(__dirname, 'converter.js'),
-		sourceDir,
+		icon,
 		outDir
 	];
 

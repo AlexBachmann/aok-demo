@@ -6,15 +6,16 @@ var exports = module.exports = {};
 
 
 exports.generate = function (config, callback) {
-	var sourceDir = config.svg.iconsPathSvg,
-		outDir = config.svg.out;
+	var aspectFillTemplate = config.storyBoard.aspectFillTemplate,
+		centerTemplate = config.storyBoard.centerTemplate,
+		outDir = config.launchImage.out;
 
 	var args = [
 		path.join(__dirname, 'converter.js'),
-		sourceDir,
+		aspectFillTemplate,
+		centerTemplate,
 		outDir
 	];
-
 	execFile(phantomjs, args, function (err, stdout, stderr) {
 		if(stdout) console.log(stdout);
 		callback();
