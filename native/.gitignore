@@ -1,5 +1,8 @@
 /node_modules/
+
+# Ignore generated files
 /platforms/
 /app/App_Resources/iOS/*.png
 /app/App_Resources/Android/drawable-*/*.png
 /app/**/*.js
+/app/**/*.css
