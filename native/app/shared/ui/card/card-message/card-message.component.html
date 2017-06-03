@@ -1,0 +1,12 @@
+<GridLayout [rows]="getRowDefinition()" [columns]="getColumnsDefinition()">
+	<StackLayout *ngIf="avatar" row="0" col="0" class="avatar">
+		<ng-content select="[avatar]"></ng-content>
+	</StackLayout>
+
+	<StackLayout *ngIf="text" row="0" [col]="getCol('text')" class="text-container">
+		<ng-content select="[text]"></ng-content>
+	</StackLayout>
+	<StackLayout *ngIf="settings" row="0" [col]="getCol('settings')" class="settings">
+		<ng-content select="[#settings]"></ng-content>
+	</StackLayout>
+</GridLayout>
