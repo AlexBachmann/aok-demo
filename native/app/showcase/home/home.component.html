@@ -1,7 +1,19 @@
 <ActionBar title="Home" class="action-bar">
 	<StackLayout orientation="horizontal"
-	ios:horizontalAlignment="center"
-	android:horizontalAlignment="left">
+		ios:horizontalAlignment="center"
+		android:horizontalAlignment="left"
+	>
 		<Image src="res://logo" class="action-image"></Image>
 	</StackLayout>
 </ActionBar>
+<StackLayout>
+	<tekkl-card>
+		<tekkl-card-message>
+			<Image src="res://logo_icon" #avatar avatar></Image>
+			<StackLayout text #text>
+				<Label text="Welcome to the TEKKL core native showcase" class="header" textWrap="true"></Label>
+				<Label text="On this page we collect examples to some of the many application features you can create using NativeScript in combination with TEKKL core." textWrap="true" class="description"></Label>
+			</StackLayout>
+		</tekkl-card-message>
+	</tekkl-card>
+</StackLayout>

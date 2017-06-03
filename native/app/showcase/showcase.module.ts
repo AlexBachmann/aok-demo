@@ -12,11 +12,13 @@ import { ShowcaseRoutingModule } from './routing.module';
 import { ShowcaseComponent } from './showcase.component';
 import { HomeComponent } from './home/home.component';
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { UiModule } from '../shared/ui/ui.module';
 
 @NgModule({
   imports: [
     CommonModule,
     NativeScriptModule,
+    UiModule,
     ShowcaseRoutingModule
   ],
   declarations: [
