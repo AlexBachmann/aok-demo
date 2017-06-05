@@ -1,8 +1,6 @@
-<ActionBar title="My App2">
+<ActionBar title="My App3" class="action-bar">
 </ActionBar>
 <StackLayout class="page">
-	<Label [nsRouterLink]="['/showcase']" text="Showcase"
-                class="list-group-item"></Label>
     <ListView [items]="items" class="list-group">
         <ng-template let-item="item">
             <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"

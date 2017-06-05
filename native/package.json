@@ -4,8 +4,11 @@
   "readme": "NativeScript Application",
   "repository": "<fill-your-repository-here>",
   "nativescript": {
-    "id": "org.nativescript.native",
+    "id": "com.tekkl.nativescript",
     "tns-ios": {
+      "version": "3.0.1"
+    },
+    "tns-android": {
       "version": "3.0.1"
     }
   },
@@ -23,12 +26,17 @@
     "reflect-metadata": "~0.1.8",
     "rxjs": "~5.3.0",
     "tns-core-modules": "~3.0.0",
+    "tns-template-hello-world-ng": "3.0.0",
     "zone.js": "~0.8.2"
   },
   "devDependencies": {
     "gulp": "^3.9.*",
     "gulp-load-plugins": "^1.4",
     "gulp-watch": "4.3.*",
+    "babel-traverse": "6.24.1",
+    "babel-types": "6.24.1",
+    "babylon": "6.17.2",
+    "lazy": "1.0.11",
     "nativescript-dev-sass": "^1.1.1",
     "nativescript-dev-typescript": "~0.4.0",
     "phantomjs": "^2.1.7",
