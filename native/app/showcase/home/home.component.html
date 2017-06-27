@@ -6,13 +6,22 @@
 		<Image src="res://logo" class="action-image"></Image>
 	</StackLayout>
 </ActionBar>
-<StackLayout>
+<StackLayout class="cards">
 	<tekkl-card>
 		<tekkl-card-message>
 			<Image src="res://logo_icon" #avatar avatar></Image>
 			<StackLayout text #text>
 				<Label text="Welcome to the TEKKL core native showcase" class="header" textWrap="true"></Label>
 				<Label text="On this page we collect examples to some of the many application features you can create using NativeScript in combination with TEKKL core." textWrap="true" class="description"></Label>
+			</StackLayout>
+		</tekkl-card-message>
+	</tekkl-card>
+	<tekkl-card>
+		<tekkl-card-message>
+			<Image src="res://camera" class="avatar camera" #avatar avatar></Image>
+			<StackLayout text #text>
+				<Label text="Camera & Gallery" class="header" textWrap="true"></Label>
+				<Label text="Take advantage of your user's smartphone camera. Take pictures, retrieve picutres from the gallery and send them to your servers." textWrap="true" class="description"></Label>
 			</StackLayout>
 		</tekkl-card-message>
 	</tekkl-card>
