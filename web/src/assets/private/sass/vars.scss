@@ -1,0 +1,21 @@
+$primary-color 		: $tekkl-blue;
+$global-radius		: 2px;
+
+$form-spacing		: 0.75rem;
+$input-font-size	: 0.875rem;
+$input-shadow		: none;
+
+$tooltip-padding	: 0.2rem 0.5rem;
+$tooltip-pip-width	: 0.5rem;
+
+$button-padding		: 0.5em 0.8em;
+
+$breakpoints: (
+  small: 0,
+  mobile: 480px,
+  medium: 640px,
+  tablet: 764px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
+);
