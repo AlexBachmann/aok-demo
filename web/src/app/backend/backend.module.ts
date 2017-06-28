@@ -5,7 +5,7 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- */
+**/
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
@@ -18,18 +18,18 @@ import { FacebookModule } from '../shared/facebook/facebook.module';
 import { NotificationModule } from '../shared/ui/notification/notification.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    BackendRoutingModule,
-    FormsModule,
-    FacebookModule,
-    NotificationModule
-  ],
-  declarations: [
-  	LoginComponent, 
-  	HeaderComponent, 
-  	BackendComponent, 
-    MenuComponent
-  ]
+	imports: [
+		CommonModule,
+		BackendRoutingModule,
+		FormsModule,
+		FacebookModule,
+		NotificationModule
+	],
+	declarations: [
+		LoginComponent, 
+		HeaderComponent, 
+		BackendComponent, 
+		MenuComponent
+	]
 })
 export class BackendModule { }

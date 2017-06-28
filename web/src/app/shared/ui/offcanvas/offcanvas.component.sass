@@ -1,0 +1,49 @@
+@import "./src/assets/private/sass/base";
+
+.offcanvas-container-outer
+	position: fixed
+	top: 0
+	left: 0
+	z-index: 990 /* 5 less than the header */
+	height: 100%
+	width: 100%
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s 1s, opacity 0s 1s
+	transition-delay: 1s
+	
+	.backdrop
+		position: fixed
+		z-index: 991
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		background-color: rgba(0,0,0, 0)
+		transition: background-color 1s
+		cursor: pointer
+
+	.offcanvas-container
+		position: absolute
+		z-index: 992
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		width: 400px
+		max-width: 95%
+		padding-top: 50px
+		background: $grey-black
+		transition: transform 1s
+		transform: translateX(-400px)
+
+	&.active
+		visibility: visible
+		opacity: 1
+		transition: visibility 0s, opacity 0s
+		transition-delay: 0s
+		.offcanvas-container
+			transform: translateX(0)
+
+		.backdrop
+			background-color: rgba(0,0,0, 0.3)

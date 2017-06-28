@@ -1,5 +1,28 @@
 <div class="wrapper">
 	<tekkl-notification-container></tekkl-notification-container>
+	<tekkl-offcanvas>
+		<ul class="offcanvas-menu">
+			<li>
+				<span i18n="Offcanvas Menu Label">Account</span>
+				<ul class="submenu">
+					<li>
+						<a routerLink="/user/login" i18n="Offcanvas Submenu Label">Login</a>
+						<ul>
+							<li>
+								<a routerLink="/user/reset-password" i18n="Offcanvas Submenu Label">Change Password</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a routerLink="/user/register" i18n="Offcanvas Submenu Label">Register</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a routerLink="/backend" i18n="Offcanvas Menu Label">Backend</a>
+			</li>
+		</ul>
+	</tekkl-offcanvas>
 	<tekkl-header></tekkl-header>
 	<router-outlet></router-outlet>
 	<tekkl-footer></tekkl-footer>

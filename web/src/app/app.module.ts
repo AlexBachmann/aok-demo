@@ -6,11 +6,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { StoreModule } from '@ngrx/store';
 import { BrowserModule as TekklBrowserModule } from './shared/browser/browser.module';
 import { Config } from './configuration.service';
 import { AppRoutingModule } from './routing.module';
@@ -20,6 +21,8 @@ import { NotificationService } from './shared/ui/notification/notification.servi
 import { EventsModule } from './shared/events/events.module';
 import { FacebookModule } from './shared/facebook/facebook.module';
 import { FacebookService } from './shared/facebook/facebook.service';
+import { OutsideClickEvent } from './shared/events/outside-click.event';
+import { offcanvasReducer } from './shared/ui/offcanvas/offcanvas.state';
 
 import { AppComponent } from './app.component';
 
@@ -36,6 +39,7 @@ import { AppComponent } from './app.component';
 		AuthenticationModule,
 		AppRoutingModule,
 		EventsModule,
+		StoreModule.provideStore({ offcanvas: offcanvasReducer })
 	],
 	providers: [
 		Config,
@@ -47,6 +51,7 @@ import { AppComponent } from './app.component';
 		 * See: https://angular.io/docs/ts/latest/cookbook/ngmodule-faq.html#!#q-lazy-loaded-module-provider-visibility
 		 */
 		NotificationService,
+		{ provide: EVENT_MANAGER_PLUGINS, useClass: OutsideClickEvent, multi: true },
 	],
 	bootstrap: [ AppComponent ]
 })
