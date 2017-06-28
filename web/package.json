@@ -34,6 +34,7 @@
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "async": "^2.1",
+    "bourbon": "^4.3.4",
     "codelyzer": "~2.0.0",
     "datauri": "^1.0",
     "del": "^2.2",
