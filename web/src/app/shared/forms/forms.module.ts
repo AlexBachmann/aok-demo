@@ -16,14 +16,14 @@ import { SelectFieldComponent } from './fields/select-field/select-field.compone
 import { RadioFieldComponent } from './fields/radio-field/radio-field.component';
 import { CheckboxFieldComponent } from './fields/checkbox-field/checkbox-field.component';
 import { InputDebounceComponent } from './input-debounce/input-debounce.component';
-import { UiModule } from '../ui/ui.module';
+import { VerticalSlideModule } from '../ui/vertical-slide/vertical-slide.module';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		NgFormsModule,
 		ReactiveFormsModule,
-		UiModule
+		VerticalSlideModule
 	],
 	declarations: [
 		FieldErrorComponent, 

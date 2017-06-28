@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UiModule } from '../ui/ui.module';
 import { FacebookLoginComponent } from './facebook-login/facebook-login.component';
 import { FacebookService } from './facebook.service';
+import { NotificationModule } from '../ui/notification/notification.module';
 
 @NgModule({
 	imports: [
 		CommonModule,
-		UiModule
+		NotificationModule
 	],
 	providers: [ FacebookService ],
 	declarations: [ FacebookLoginComponent ],

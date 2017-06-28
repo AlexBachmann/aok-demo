@@ -13,19 +13,19 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserRoutingModule } from './routing.module';
 import { FormsModule } from '../../shared/forms/forms.module';
-import { UiModule } from '../../shared/ui/ui.module';
 import { FacebookModule } from '../../shared/facebook/facebook.module';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
+import { NotificationModule } from '../../shared/ui/notification/notification.module';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		UserRoutingModule,
 		FormsModule,
-		UiModule,
 		FacebookModule,
+		NotificationModule
 	],
 	declarations: [LoginComponent, RegisterComponent, ConfirmComponent, ResetPasswordComponent, NewPasswordComponent]
 })

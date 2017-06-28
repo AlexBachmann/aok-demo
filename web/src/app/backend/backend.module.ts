@@ -12,18 +12,18 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { BackendComponent } from './backend.component';
 import { BackendRoutingModule } from './routing.module';
-import { UiModule } from '../shared/ui/ui.module';
 import { FormsModule } from '../shared/forms/forms.module';
 import { MenuComponent } from './shared/menu/menu.component';
 import { FacebookModule } from '../shared/facebook/facebook.module';
+import { NotificationModule } from '../shared/ui/notification/notification.module';
 
 @NgModule({
   imports: [
     CommonModule,
     BackendRoutingModule,
-    UiModule,
     FormsModule,
     FacebookModule,
+    NotificationModule
   ],
   declarations: [
   	LoginComponent, 
