@@ -1,8 +1,8 @@
-<div class="dropdown-container" [class.trigger-hover]="trigger == 'hover'" [class.trigger-click]="trigger == 'click'" [class.active]="active" (clickOutside)="close()">
+<div class="dropdown-container" [class.trigger-hover]="trigger == 'hover'" [class.trigger-click]="trigger == 'click'" [class.active]="active" [class.is-closing]="isClosing" [class.hide-body]="hide" (clickOutside)="close()">
 	<div class="dropdown-header" (click)="toggle()">
 		<ng-content select="tekkl-dropdown-header" ></ng-content>
 	</div>
-	<div class="dropdown-body {{ position }}" (click)="close()">
+	<div class="dropdown-body {{ position }}" (close)="close()">
 		<ng-content select="tekkl-dropdown-body" ></ng-content>
 	</div>
 </div>

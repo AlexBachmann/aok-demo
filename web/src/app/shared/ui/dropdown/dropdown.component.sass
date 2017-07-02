@@ -21,19 +21,25 @@
 
 
 	&.trigger-click
-		&.active
-			.dropdown-body
-				visibility: visible
-				opacity: 1
-				transition: visibility 0s, opacity 0.4s ease-in-out
+		&:not(.is-closing)
+			&.active,
+				.dropdown-body
+					visibility: visible
+					opacity: 1
+					transition: visibility 0s, opacity 0.4s ease-in-out
 
 	&.trigger-hover
-		&:hover
-			.dropdown-body
-				visibility: visible
-				opacity: 1
-				transition: visibility 0s, opacity 0.4s ease-in-out
-				transition-delay: 0.4s
+		&:not(.is-closing)
+			&:hover
+				.dropdown-body
+					visibility: visible
+					opacity: 1
+					transition: visibility 0s, opacity 0.4s ease-in-out
+					transition-delay: 0.4s
+
+	&.hide-body 
+		.dropdown-body
+			display: none
 
 
 	

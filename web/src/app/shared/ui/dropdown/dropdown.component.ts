@@ -8,7 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DropdownComponent implements OnInit {
 	@Input() trigger: string = 'hover';
 	@Input() position: string = 'center';
-	private active: boolean;
+	active: boolean;
+	isClosing: boolean;
+	hide: boolean;
 	constructor() { }
 
 	ngOnInit() {
@@ -27,5 +29,11 @@ export class DropdownComponent implements OnInit {
 	}
 	close(){
 		this.active = false;
+		this.isClosing = true;
+		setTimeout(() => {
+			this.isClosing = false;
+			this.hide = true;
+			setTimeout(() => {this.hide = false;}, 200);
+		}, 400);
 	}
 }
