@@ -23,8 +23,38 @@
 			</li>
 		</ul>
 	</tekkl-offcanvas>
-	<tekkl-header></tekkl-header>
-	<router-outlet></router-outlet>
+	<tekkl-header>
+		<ul class="top-navi">
+			<li>
+				<tekkl-dropdown trigger="hover" position="right">
+					<tekkl-dropdown-header>
+						<span i18n="Top-Navigation Label">Account</span>
+					</tekkl-dropdown-header>
+					<tekkl-dropdown-body>
+						<ul class="submenu">
+							<li>
+								<a close-on-click routerLink="/user/login" i18n="Submenu Label">Login</a>
+								<ul>
+									<li>
+										<a close-on-click routerLink="/user/reset-password" i18n="Submenu Label">Change Password</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a close-on-click routerLink="/user/register" i18n="Submenu Label">Register</a>
+							</li>
+						</ul>
+					</tekkl-dropdown-body>
+				</tekkl-dropdown>
+			</li>
+			<li>
+				<a routerLink="/backend" i18n="Top-Navigation Label">Backend</a>
+			</li>
+		</ul>
+	</tekkl-header>
+	<div class="content">
+		<router-outlet></router-outlet>
+	</div>
 	<tekkl-footer></tekkl-footer>
 </div>
 
