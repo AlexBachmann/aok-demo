@@ -5,17 +5,19 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- */
+**/
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WindowRef } from './window-ref.service';
 import { DocumentRef } from './document-ref.service';
+import { CloseOnClickDirective } from '../directives/close-on-click.directive';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  providers: [ WindowRef, DocumentRef ],
-  declarations: []
+	imports: [
+		CommonModule
+	],
+	providers: [ WindowRef, DocumentRef ],
+	declarations: [ CloseOnClickDirective ],
+	exports: [ CloseOnClickDirective ]
 })
 export class BrowserModule { }
