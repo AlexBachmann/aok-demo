@@ -35,12 +35,12 @@ gulp.task('build', function(done){
 });
 
 // Build for Development
-gulp.task('build_prod', function(done){
+gulp.task('build.prod', function(done){
     console.log('Build web application for Production. Run "gulp build" to build in Dev-Mode.')
     runSequence(
       'clean.dist',
       'sprite',
-      'ng-cli.build',
+      'ng-cli.build.prod',
       'copy.build',
       'copy.assets',
       'clean.tmp',
@@ -50,6 +50,14 @@ gulp.task('build_prod', function(done){
 
 gulp.task('ng-cli.build', function(cb){
   exec('node_modules/.bin/ng build', {maxBuffer: 1024 * 500}, function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+});
+
+gulp.task('ng-cli.build.prod', function(cb){
+  exec('node_modules/.bin/ng build -prod -aot', {maxBuffer: 1024 * 500}, function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);
