@@ -1,0 +1,63 @@
+@import "./src/assets/private/sass/base";
+
+.backdrop
+	padding: 150px 0
+	background-position: 50% 50%
+	background-size: cover
+	position: relative
+
+	/deep/
+		.view-container
+			padding: 20px
+			margin: 0 auto
+			max-width: 600px
+			width: 100%
+			background: rgba(255,255,255,0.9)
+			border-radius: 2px
+
+			&.bottom-sharp
+				border-bottom-left-radius: 0
+				border-bottom-right-radius: 0
+
+			.logo-container
+				text-align: center
+				margin-top: 20px
+				margin-bottom: 10px
+
+				.logo
+					display: inline-block
+					+icon(logo)
+				
+				.subtitle
+					line-height: 32px
+					padding-top: 5px
+					margin-left: 10px
+					color: #999
+					display: inline-block
+					vertical-align: top
+
+			h1
+				text-align: center
+				color: $primary
+				font-size: 28px
+				text-transform: uppercase
+
+			h2
+				font-size: 18px
+				text-align: center
+				padding-bottom: 5px
+				border-bottom: 1px solid $grey-light-highlight
+
+			.actions
+				text-align: center
+				margin-top: 10px
+
+		.sub-container
+			background: rgba(220,220,220,0.9)
+			text-align: center
+			margin: 0 auto
+			max-width: 600px
+			padding: 15px 0
+			font-size: 14px
+			border-top: 1px solid $grey-light
+			border-bottom-left-radius: $global-radius

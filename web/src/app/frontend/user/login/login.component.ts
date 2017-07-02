@@ -7,6 +7,8 @@
  * file that was distributed with this source code.
  */
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { PageComponent } from '../../../shared/browser/page/page.component';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators } from '../../../shared/forms/validators/general';
@@ -22,21 +24,24 @@ import { User } from '../../../shared/authentication/user.entity';
 	templateUrl: './login.component.html',
 	styleUrls: ['./login.component.sass']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends PageComponent implements OnInit {
 	public form: FormGroup
 	public loading: boolean
-	@ViewChildren(NotificationComponent) notifications: QueryList<NotificationComponent>;
 
 	constructor(
 		private fb: FormBuilder,
 		private http: Http,
-		private notificationService: NotificationService,
 		private router: Router,
 		private userStorage: UserStorage,
-		private authService: AuthenticationService
-	) { }
+		private authService: AuthenticationService,
+		title: Title,
+		notificationService: NotificationService
+	) { 
+		super(title, notificationService);
+	}
 
 	ngOnInit() {
+		this.setPageTitle();
 		this.form = this.createForm();
 	}
 
@@ -61,10 +66,6 @@ export class LoginComponent implements OnInit {
 		this.showNotification('login.success');	
 		this.router.navigate([this.authService.getRedirectUrl()]);
 		this.authService.resetRedirectUrl();
-	}
-	private showNotification(id){
-		var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == id)[0];
-		this.notificationService.show(notification);
 	}
 	createForm(): FormGroup {
 		return this.fb.group({

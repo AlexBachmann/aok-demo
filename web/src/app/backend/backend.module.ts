@@ -15,6 +15,7 @@ import { BackendRoutingModule } from './routing.module';
 import { FormsModule } from '../shared/forms/forms.module';
 import { MenuComponent } from './shared/menu/menu.component';
 import { FacebookModule } from '../shared/facebook/facebook.module';
+import { BrowserModule } from '../shared/browser/browser.module';
 import { NotificationModule } from '../shared/ui/notification/notification.module';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { NotificationModule } from '../shared/ui/notification/notification.modul
 		BackendRoutingModule,
 		FormsModule,
 		FacebookModule,
+		BrowserModule,
 		NotificationModule
 	],
 	declarations: [

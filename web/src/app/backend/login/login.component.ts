@@ -7,6 +7,8 @@
  * file that was distributed with this source code.
  */
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { PageComponent } from '../../shared/browser/page/page.component';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -22,7 +24,7 @@ import { User } from '../../shared/authentication/user.entity';
 	templateUrl: './login.component.html',
 	styleUrls: ['./login.component.sass']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends PageComponent implements OnInit {
 	public form: FormGroup
 	public loading: boolean
 	@ViewChildren(NotificationComponent) notifications: QueryList<NotificationComponent>;
@@ -30,13 +32,17 @@ export class LoginComponent implements OnInit {
 	constructor(
 		private fb: FormBuilder,
 		private http: Http,
-		private notificationService: NotificationService,
 		private router: Router,
 		private userStorage: UserStorage,
-		private authService: AuthenticationService
-	) { }
+		private authService: AuthenticationService,
+		title: Title,
+		notificationService: NotificationService,
+	){
+		super(title, notificationService);
+	}
 
 	ngOnInit() {
+		this.setPageTitle();
 		this.form = this.createForm();
 	}
 
@@ -46,21 +52,21 @@ export class LoginComponent implements OnInit {
 			.subscribe((res) => {
 				var response = res.json();
 				if(!response.user){
-					this.showError('server.error');
+					this.showNotification('server.error');
 					return;
 				}
 				var user = new User(response.user);
 				this.handleAuthenticatedUser(user);
 			}, (err) => {
 				this.userStorage.deleteUser();
-				this.showError('login.failed');
+				this.showNotification('login.failed');
 			});
 	}
 	handleAuthenticatedUser(user: User){
 		this.userStorage.storeUser(user);
 
 		if(!user.isAdmin()){
-			this.showError('missing.authorization');
+			this.showNotification('missing.authorization');
 			return;
 		}
 
@@ -71,10 +77,6 @@ export class LoginComponent implements OnInit {
 		if(redirectUrl == '/') redirectUrl = '/backend';
 		this.router.navigate([redirectUrl]);
 		this.authService.resetRedirectUrl();
-	}
-	private showError(id){
-		var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == id)[0];
-		this.notificationService.show(notification);
 	}
 	createForm(): FormGroup {
 		return this.fb.group({

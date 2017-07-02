@@ -17,16 +17,26 @@ import { FacebookModule } from '../../shared/facebook/facebook.module';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
+import { BrowserModule } from '../../shared/browser/browser.module';
 import { NotificationModule } from '../../shared/ui/notification/notification.module';
+import { FormViewComponent } from '../shared/ui/form-view/form-view.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
+		BrowserModule,
+		NotificationModule,
 		UserRoutingModule,
 		FormsModule,
 		FacebookModule,
-		NotificationModule
 	],
-	declarations: [LoginComponent, RegisterComponent, ConfirmComponent, ResetPasswordComponent, NewPasswordComponent]
+	declarations: [
+		LoginComponent, 
+		RegisterComponent, 
+		ConfirmComponent, 
+		ResetPasswordComponent, 
+		NewPasswordComponent,
+		FormViewComponent
+	]
 })
 export class UserModule { }

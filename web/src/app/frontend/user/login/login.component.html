@@ -1,38 +1,36 @@
-<div class="backdrop">
-	<div class="row">
-		<div class="small-12 large-6 large-offset-3 columns">
-			<div class="login-container">
-				<div class="logo-container">
-					<div class="logo"></div>
-					<span class="subtitle" i18n="The name of page, the user is currently on.">Login</span>
-				</div>
-				<form (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
-					<tekkl-text-field name="_username" [control]="form.get('_username')" label="Username / Email" i18n-label="Input Field Label">
-						<tekkl-field-error [control]="form.get('_username')" type="required" message="Please provide your username or email" i18n-message="Error message for empty username form field"></tekkl-field-error>
-					</tekkl-text-field>
-					<tekkl-text-field name="_password" [control]="form.get('_password')" label="Password" i18n-label="Input Field Label" type="password">
-						<tekkl-field-error [control]="form.get('_password')" type="required" message="Please provide your password" i18n-message></tekkl-field-error>
-						<tekkl-field-error [control]="form.get('_password')" type="minlength" message="Your password needs to be at least 8 characters long" i18n-message="Error message for password entry that is too short"></tekkl-field-error>
-					</tekkl-text-field>
-					<div class="row">
-						<div class="columns small-12">
-							<div class="password-reset-container">
-								<a routerLink="/user/reset-password" class="password-reset" i18n="Password reset link">Forgot your password?</a>
-							</div>
-						</div>
-					</div>
-					<div class="actions">
-						<button class="button" type="submit" [disabled]="!form.valid" i18n="Submit Button Label">Submit</button>
-						<tekkl-facebook-login (afterLogin)="handleAuthenticatedUser($event)"></tekkl-facebook-login>
-					</div>
-				</form>
-			</div>
-			<div class="register-container">
-				<ng-container i18n="Question under the login screen that leads to registration page">Don't have an account yet?</ng-container> <a routerLink="/user/register" i18n="Link to registration page">Sign up now</a>
-			</div>
+<tekkl-page-title i18n="PageTitle: Login Page">Login</tekkl-page-title>
+<tekkl-form-view background="/assets/public/images/frontend/user/login_backdrop.jpg">
+	<div class="view-container bottom-sharp">
+		<div class="logo-container">
+			<div class="logo"></div>
+			<span class="subtitle" i18n="The name of page, the user is currently on.">Login</span>
 		</div>
+		<form (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
+			<tekkl-text-field name="_username" [control]="form.get('_username')" label="Username / Email" i18n-label="Input Field Label">
+				<tekkl-field-error [control]="form.get('_username')" type="required" message="Please provide your username or email" i18n-message="Error message for empty username form field"></tekkl-field-error>
+			</tekkl-text-field>
+			<tekkl-text-field name="_password" [control]="form.get('_password')" label="Password" i18n-label="Input Field Label" type="password">
+				<tekkl-field-error [control]="form.get('_password')" type="required" message="Please provide your password" i18n-message></tekkl-field-error>
+				<tekkl-field-error [control]="form.get('_password')" type="minlength" message="Your password needs to be at least 8 characters long" i18n-message="Error message for password entry that is too short"></tekkl-field-error>
+			</tekkl-text-field>
+			<div class="row">
+				<div class="columns small-12">
+					<div class="password-reset-container">
+						<a routerLink="/user/reset-password" class="password-reset" i18n="Password reset link">Forgot your password?</a>
+					</div>
+				</div>
+			</div>
+			<div class="actions">
+				<button class="button" type="submit" [disabled]="!form.valid" i18n="Submit Button Label">Submit</button>
+				<tekkl-facebook-login (afterLogin)="handleAuthenticatedUser($event)"></tekkl-facebook-login>
+			</div>
+		</form>
 	</div>
-</div>
+	<div class="sub-container">
+		<ng-container i18n="Question under the login screen that leads to registration page">Don't have an account yet?</ng-container> <a routerLink="/user/register" i18n="Link to registration page">Sign up now</a>
+	</div>
+</tekkl-form-view>
+
 <tekkl-notification id="login.success" type="info" i18n="Success Message">You have sucessfully logged in.</tekkl-notification>
 <tekkl-notification id="login.failed" type="alert" i18n="Error Message: Login has failed due to bad credentials">Your login has failed. Please check if you provided your correct username / email and password.</tekkl-notification>
 <tekkl-notification id="server.error" type="alert" i18n="Error Message: Something went wrong">Something went wrong. Please try it again later.</tekkl-notification>

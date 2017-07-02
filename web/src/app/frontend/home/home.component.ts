@@ -7,17 +7,25 @@
  * file that was distributed with this source code.
  */
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { PageComponent } from '../../shared/browser/page/page.component';
+import { NotificationService } from '../../shared/ui/notification/notification.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.sass']
+	selector: 'app-home',
+	templateUrl: './home.component.html',
+	styleUrls: ['./home.component.sass']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent extends PageComponent implements OnInit {
+	constructor(
+		title: Title,
+		notificationService: NotificationService
+	){
+		super(title, notificationService);
+	}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+	ngOnInit() {
+		this.setPageTitle();
+	}
 
 }

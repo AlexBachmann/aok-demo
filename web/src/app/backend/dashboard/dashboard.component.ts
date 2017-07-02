@@ -1,15 +1,32 @@
+/**
+ * This file is part of the TEKKL core package
+ *
+ * (c) Alexander Bachmann <email.bachmann@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+**/
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { PageComponent } from '../../shared/browser/page/page.component';
+import { NotificationService } from '../../shared/ui/notification/notification.service';
 
 @Component({
-  selector: 'tekkl-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.sass']
+	selector: 'tekkl-dashboard',
+	templateUrl: './dashboard.component.html',
+	styleUrls: ['./dashboard.component.sass']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent extends PageComponent implements OnInit {
 
-  constructor() { }
+	constructor(
+		title: Title,
+		notificationService: NotificationService
+	){
+		super(title, notificationService);
+	}
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+		this.setPageTitle();
+	}
 
 }

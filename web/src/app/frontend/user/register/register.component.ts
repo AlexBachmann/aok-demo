@@ -7,6 +7,8 @@
  * file that was distributed with this source code.
  */
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { PageComponent } from '../../../shared/browser/page/page.component';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators } from '../../../shared/forms/validators/general';
@@ -22,22 +24,25 @@ import { User } from '../../../shared/authentication/user.entity';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.sass']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent extends PageComponent implements OnInit {
 
   	public form: FormGroup
 	public loading: boolean
-	@ViewChildren(NotificationComponent) notifications: QueryList<NotificationComponent>;
 
 	constructor(
 		private fb: FormBuilder,
 		private http: Http,
-		private notificationService: NotificationService,
 		private router: Router,
 		private userStorage: UserStorage,
-		private authService: AuthenticationService
-	) { }
+		private authService: AuthenticationService,
+		title: Title,
+		notificationService: NotificationService,
+	) {
+		super(title, notificationService);
+	}
 
 	ngOnInit() {
+		this.setPageTitle();
 		this.form = this.createForm();
 	}
 

@@ -7,6 +7,8 @@
  * file that was distributed with this source code.
  */
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { PageComponent } from '../../../shared/browser/page/page.component';
 import { Router } from '@angular/router';
 import { Http, Response } from '@angular/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -19,20 +21,23 @@ import { Validators } from '../../../shared/forms/validators/general';
 	templateUrl: './reset-password.component.html',
 	styleUrls: ['./reset-password.component.sass']
 })
-export class ResetPasswordComponent implements OnInit {
+export class ResetPasswordComponent extends PageComponent implements OnInit {
 	public form: FormGroup
 	public loading: boolean
 	public success: boolean = false;
-	@ViewChildren(NotificationComponent) notifications: QueryList<NotificationComponent>;
 
 	constructor(
 		private fb: FormBuilder,
 		private http: Http,
-		private notificationService: NotificationService,
-		private router: Router
-	) { }
+		private router: Router,
+		title: Title,
+		notificationService: NotificationService
+	) {
+		super(title, notificationService);
+	}
 
 	ngOnInit() {
+		this.setPageTitle();
 		this.form = this.createForm();
 	}
 	onSubmit(value){
@@ -54,11 +59,6 @@ export class ResetPasswordComponent implements OnInit {
 						break;
 				}
 			});
-	}
-
-	private showNotification(id){
-		var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == id)[0];
-		this.notificationService.show(notification);
 	}
 	createForm(): FormGroup {
 		return this.fb.group({

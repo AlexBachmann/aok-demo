@@ -7,6 +7,8 @@
  * file that was distributed with this source code.
  */
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { PageComponent } from '../../../shared/browser/page/page.component';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Http, Response } from '@angular/http';
 import { NotificationService } from '../../../shared/ui/notification/notification.service';
@@ -20,19 +22,22 @@ import { User } from '../../../shared/authentication/user.entity';
 	templateUrl: './confirm.component.html',
 	styleUrls: ['./confirm.component.sass']
 })
-export class ConfirmComponent implements OnInit {
+export class ConfirmComponent extends PageComponent implements OnInit {
 	public confirmed: boolean | string = false;
-	@ViewChildren(NotificationComponent) notifications: QueryList<NotificationComponent>;
 	constructor(
 		private route: ActivatedRoute, 
 		private http: Http,
-		private notificationService: NotificationService,
 		private router: Router,
 		private userStorage: UserStorage,
-		private authService: AuthenticationService
-	) { }
+		private authService: AuthenticationService,
+		title: Title,
+		notificationService: NotificationService
+	) {
+		super(title, notificationService);
+	}
 
 	ngOnInit() {
+		this.setPageTitle();
 		this.route.params
 			.switchMap((params: Params) => {
 				return this.http.post('api/user/confirm', { token: params['token'] });

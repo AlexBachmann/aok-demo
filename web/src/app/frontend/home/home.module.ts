@@ -10,14 +10,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './routing.module';
 import { HomeComponent } from './home.component';
+import { BrowserModule } from '../../shared/browser/browser.module';
+import { NotificationModule } from '../../shared/ui/notification/notification.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    HomeRoutingModule
-  ],
-  declarations: [
-  	HomeComponent
-  ]
+	imports: [
+		CommonModule,
+		BrowserModule,
+		NotificationModule,
+		HomeRoutingModule
+	],
+	declarations: [
+		HomeComponent
+	]
 })
 export class HomeModule { }

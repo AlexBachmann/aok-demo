@@ -7,6 +7,8 @@
  * file that was distributed with this source code.
  */
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { PageComponent } from '../../../shared/browser/page/page.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Http, Response } from '@angular/http';
 import { Validators } from '../../../shared/forms/validators/general';
@@ -19,21 +21,24 @@ import { NotificationService } from '../../../shared/ui/notification/notificatio
 	templateUrl: './new-password.component.html',
 	styleUrls: ['./new-password.component.sass']
 })
-export class NewPasswordComponent implements OnInit {
+export class NewPasswordComponent extends PageComponent implements OnInit {
 	public form: FormGroup
 	public success: boolean = false;
 	public error: string = '';
-	@ViewChildren(NotificationComponent) notifications: QueryList<NotificationComponent>;
 
 	constructor(
 		private fb: FormBuilder,
 		private http: Http,
-		private notificationService: NotificationService,
 		private router: Router,
-		private route: ActivatedRoute
-	) { }
+		private route: ActivatedRoute,
+		title: Title,
+		notificationService: NotificationService,
+	) { 
+		super(title, notificationService);
+	}
 
 	ngOnInit() {
+		this.setPageTitle();
 		this.form = this.createForm();
 		this.route.params.subscribe((params) => {
 			this.form.get('confirmation_token').setValue(params['token']);
@@ -51,12 +56,6 @@ export class NewPasswordComponent implements OnInit {
 				this.error = error.message;
 			});
 	}
-
-	private showNotification(id){
-		var notification = this.notifications.filter((notification: NotificationComponent) => notification.id == id)[0];
-		this.notificationService.show(notification);
-	}
-
 	createForm(): FormGroup {
 		return this.fb.group({
 			reset_form: this.fb.group({
