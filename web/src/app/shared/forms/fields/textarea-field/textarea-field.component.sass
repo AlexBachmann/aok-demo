@@ -1,0 +1,43 @@
+@import "./src/assets/private/sass/base";
+.form-control
+	position: relative
+
+	label
+		position: absolute
+		top: 0px
+		left: 8px
+		right: 6px
+		white-space: nowrap
+		overflow: hidden
+		color: $grey
+		pointer-events: none
+		transition: 0.2s ease all
+		font-size: 0.875rem
+
+	&.label-top
+		label
+			top: -18px
+			font-size: 12px
+			opacity: 0.8
+
+	textarea
+		font-size: 16px
+		color: $grey
+		padding: 0px 8px 0px 6px
+		display: block
+		width: 100%
+		border: none
+		border-left: 2px solid $grey-light-highlight
+		border-bottom: 2px solid $grey-light-highlight
+		min-height: 80px
+		border-radius: 0
+		margin-bottom: 0
+		background: transparent
+		margin-top: 18px
+
+		&:focus
+			outline: none
+			border-bottom-color: $grey
+			border-left-color: $grey
+			box-shadow: none
+

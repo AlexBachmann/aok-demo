@@ -1,3 +1,5 @@
-<p>
-  textarea-field works!
-</p>
+<div class="form-control" [class.label-top]="hasValue()">
+	<label>{{label}}</label>
+	<textarea [name]="name" [formControl]="control"></textarea>
+	<ng-content></ng-content>
+</div>

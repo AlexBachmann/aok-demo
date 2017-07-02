@@ -16,11 +16,16 @@ import { FormControl } from '@angular/forms';
 })
 export class TextareaFieldComponent implements OnInit {
 	@Input() control: FormControl;
+	@Input() label: string;
 	@Input() name: string;
 	@Output() change: EventEmitter<any> = new EventEmitter();
 	onChange($event){
 		this.change.emit($event.target.value);
 	}
 	ngOnInit() {
+	
+	}
+	hasValue(){
+		return this.control.value ? true : false
 	}
 }
