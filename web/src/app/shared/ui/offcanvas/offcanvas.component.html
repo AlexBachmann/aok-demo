@@ -1,6 +1,6 @@
 <div class="offcanvas-container-outer" [class.active]="state|async">
 	<div class="backdrop" (click)="close()"></div>
-	<div class="offcanvas-container">
+	<div class="offcanvas-container" (close)="close()">
 		<ng-content></ng-content>
 	</div>
 </div>

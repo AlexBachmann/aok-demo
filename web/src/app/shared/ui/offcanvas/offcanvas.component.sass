@@ -33,10 +33,10 @@
 		width: 400px
 		max-width: 95%
 		padding-top: 50px
-		background: $grey-black
+		background: $secondary
 		transition: transform 1s
 		transform: translateX(-400px)
-
+		overflow-y: scroll
 	&.active
 		visibility: visible
 		opacity: 1
@@ -47,3 +47,44 @@
 
 		.backdrop
 			background-color: rgba(0,0,0, 0.3)
+
+	/deep/
+		.offcanvas-menu
+			list-style: none
+			margin: 0
+			color: white
+			font-size: 16px
+
+			a,
+			span
+				color: white
+
+			a:hover
+				text-decoration: underline
+
+			ul
+				list-style: none
+
+			> li
+				border-bottom: 1px dashed lighten($secondary, 15%)
+				&:last-child
+					border-bottom: none
+				> a,
+				> span
+					font-weight: 700
+					padding: 5px 15px
+					display: block
+
+				ul
+					margin: 0
+
+				.submenu
+					margin-left: 30px
+					margin-bottom: 10px
+					font-size: 14px
+
+					ul
+						font-size: 10px
+
+						li
+							padding-left: 20px
