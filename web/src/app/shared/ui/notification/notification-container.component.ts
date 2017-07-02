@@ -16,7 +16,7 @@ import { NotificationService } from './notification.service';
 	styleUrls: ['./notification-container.component.sass']
 })
 export class NotificationContainerComponent implements OnInit {
-	constructor(private notificationService: NotificationService) { 
+	constructor(public notificationService: NotificationService) { 
 		
 	}
 

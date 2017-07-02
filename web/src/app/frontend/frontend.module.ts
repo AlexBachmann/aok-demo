@@ -16,12 +16,14 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NotificationModule } from '../shared/ui/notification/notification.module';
 import { DropdownModule } from '../shared/ui/dropdown/dropdown.module';
 import { OffcanvasModule } from '../shared/ui/offcanvas/offcanvas.module';
+import { BrowserModule } from '../shared/browser/browser.module';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FrontendRoutingModule,
 		NotificationModule,
+		BrowserModule,
 		DropdownModule,
 		OffcanvasModule
 	],

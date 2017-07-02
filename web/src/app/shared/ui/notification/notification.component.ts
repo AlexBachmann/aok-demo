@@ -33,7 +33,7 @@ import defaultConfig from './config';
  	constructor(
  		private el: ElementRef, 
  		private renderer: Renderer,
- 		private service: NotificationService,
+ 		public service: NotificationService,
  		private config: Config
  	) { 
  		this.config.load('notification', defaultConfig, false);
