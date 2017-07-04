@@ -12,16 +12,30 @@ import { HomeRoutingModule } from './routing.module';
 import { HomeComponent } from './home.component';
 import { BrowserModule } from '../../shared/browser/browser.module';
 import { NotificationModule } from '../../shared/ui/notification/notification.module';
+import { VideoModule } from '../../shared/video/video.module';
+import { VerticalSlideModule } from '../../shared/ui/vertical-slide/vertical-slide.module';
+import { VideoDetailComponent } from './video-detail/video-detail.component';
+import { HistoryComponent } from './history/history.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { SettingsComponent } from './settings/settings.component';
+import { FormsModule } from '../../shared/forms/forms.module';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		BrowserModule,
 		NotificationModule,
-		HomeRoutingModule
+		VideoModule,
+		HomeRoutingModule,
+		VerticalSlideModule,
+		FormsModule
 	],
 	declarations: [
-		HomeComponent
+		HomeComponent,
+		VideoDetailComponent,
+		HistoryComponent,
+		FavoritesComponent,
+		SettingsComponent
 	]
 })
 export class HomeModule { }

@@ -1,0 +1,36 @@
+@import "./src/assets/private/sass/base";
+.toggle-container
+	position: relative
+	width: 30px
+	height: 18px
+	cursor: pointer
+
+	.slide
+		position: absolute
+		left: 0
+		top: 50%
+		transform: translateY(-50%)
+		width: 100%
+		height: 15px
+		border-radius: 10px
+		background: $grey-light-highlight
+		z-index: 0
+		transition: all 0.8s
+
+	.toggle
+		position: relative
+		width: 18px
+		height: 18px
+		border-radius: 50%
+		background: $grey
+		z-index: 2
+		margin-left: 0
+		transition: all 0.8s
+
+	&.active
+		.toggle
+			margin-left: 12px
+			background: $green
+
+		.slide
+			background: lighten($green, 60%)

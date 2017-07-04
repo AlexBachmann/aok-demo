@@ -9,8 +9,8 @@
 	width: 100%
 	visibility: hidden;
 	opacity: 0;
-	transition: visibility 0s 1s, opacity 0s 1s
-	transition-delay: 1s
+	transition: visibility 0s 0.4s, opacity 0s 0.4s
+	transition-delay: 0.4s
 	
 	.backdrop
 		position: fixed
@@ -20,7 +20,7 @@
 		width: 100%
 		height: 100%
 		background-color: rgba(0,0,0, 0)
-		transition: background-color 1s
+		transition: background-color 0.4s
 		cursor: pointer
 
 	.offcanvas-container
@@ -33,8 +33,8 @@
 		width: 400px
 		max-width: 95%
 		padding-top: 50px
-		background: $secondary
-		transition: transform 1s
+		background: $primary
+		transition: transform 0.4s
 		transform: translateX(-400px)
 		overflow-y: scroll
 	&.active
@@ -66,7 +66,7 @@
 				list-style: none
 
 			> li
-				border-bottom: 1px dashed lighten($secondary, 15%)
+				border-bottom: 1px dashed lighten($primary, 15%)
 				&:last-child
 					border-bottom: none
 				> a,

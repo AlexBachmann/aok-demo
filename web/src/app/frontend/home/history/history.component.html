@@ -1,0 +1,12 @@
+<div class="row column">
+	<h1>Verlauf</h1>
+	<p class="subtitle">Das sind die letzten Übungen, die Du Dir angeschaut hast</p>
+	<div *ngIf="history.length" class="row">
+		<div *ngFor="let entry of history" class="columns medium-3 small-6">
+			<tekkl-video [video]="entry.video"></tekkl-video>
+		</div>
+	</div>
+	<div class="no-results" *ngIf="!history.length">
+		Du hast noch keine Übungen in Deinem Verlauf. Schaue Dir Übungen an, um die Liste zu befüllen.
+	</div>
+</div>

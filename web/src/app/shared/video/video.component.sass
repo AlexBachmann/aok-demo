@@ -1,0 +1,73 @@
+@import "./src/assets/private/sass/base";
+
+.video-container
+	background: white
+	border-radius: $global-radius
+.overlay-container
+	position: relative
+
+	.overlay
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+.demo-image
+	position: relative
+	background: $grey-black
+	color: white
+	width: 100%
+	height: 0
+	padding-bottom: 56.25%
+
+	span
+		position: absolute
+		display: block
+		top: 50%
+		left: 50%
+		transform: translateX(-50%) translateY(-50%)
+
+.video-description
+	padding: 5px 10px 5px 10px
+
+	h3
+		position: relative
+		font-size: 14px
+		font-weight: 700
+		margin: 0
+		width: 100%
+		padding-right: 35px
+
+		+ellipsis()
+
+	p
+		font-size: 12px
+		color: $grey-dark
+		margin-bottom: 0
+		-webkit-line-clamp: 2
+		-webkit-box-orient: vertical
+
+	svg
+		position: absolute
+		right: 0
+		top: -5px
+		transform: scale(0.5)
+		
+		g
+			fill: $grey
+			cursor: pointer
+			transition: fill 0.4s
+
+		&.active
+			g
+				fill: $red
+
+	.categories
+		.category
+			display: inline-block
+			margin-right: 5px
+			margin-bottom: 5px
+			border-radius: $global-radius
+			background: $grey-light-highlight
+			padding: 2px 3px
+			font-size: 10px

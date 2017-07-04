@@ -23,35 +23,29 @@
 			</li>
 		</ul>
 	</tekkl-offcanvas>
-	<tekkl-header>
-		<ul class="top-navi">
+	<div class="side-nav">
+		<div class="logo-container">
+			<div class="logo"></div>
+		</div>
+		<div class="suptitle">
+			Aktiv-Pause
+		</div>
+		<ul>
 			<li>
-				<tekkl-dropdown trigger="hover" position="right">
-					<tekkl-dropdown-header>
-						<span i18n="Top-Navigation Label">Account</span>
-					</tekkl-dropdown-header>
-					<tekkl-dropdown-body>
-						<ul class="submenu">
-							<li>
-								<a close-on-click routerLink="/user/login" i18n="Submenu Label">Login</a>
-								<ul>
-									<li>
-										<a close-on-click routerLink="/user/reset-password" i18n="Submenu Label">Change Password</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a close-on-click routerLink="/user/register" i18n="Submenu Label">Register</a>
-							</li>
-						</ul>
-					</tekkl-dropdown-body>
-				</tekkl-dropdown>
+				<a routerLink="/"><div class="icon icon-recos"></div>Empfehlungen</a>
 			</li>
 			<li>
-				<a routerLink="/backend" i18n="Top-Navigation Label">Backend</a>
+				<a routerLink="/verlauf"><div class="icon icon-history"></div>Verlauf</a>
+			</li>
+			<li>
+				<a routerLink="/favoriten"><div class="icon icon-favs"></div>Favoriten</a>
+			</li>
+			<li>
+				<a routerLink="/einstellungen"><div class="icon icon-settings"></div>Einstellungen</a>
 			</li>
 		</ul>
-	</tekkl-header>
+	</div>
+	<tekkl-header></tekkl-header>
 	<div class="content">
 		<router-outlet></router-outlet>
 	</div>

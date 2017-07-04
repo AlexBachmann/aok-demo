@@ -1,0 +1,49 @@
+@import "./src/assets/private/sass/base";
+.offcanvas-trigger
+	+breakpoint(large up)
+		display: none
+
+	cursor: pointer
+	height: 50px
+	width: 50px
+	display: block
+	position: relative
+	&:before, &:after
+		content: ""
+		display: block
+		position: absolute
+		left: 50%
+		transform: translateX(-50%)
+		width: 30px
+		height: 3px
+		background-color: white
+		border-radius: 99px
+		transition: all 0.4s linear
+	&:before
+		top: 10px
+	&:after
+		bottom: 10px
+	.offcanvas-label
+		width: 30px
+		font-size: 12px
+		margin: 0 auto
+		display: inline-block
+		top: 50%
+		left: 50%
+		position: absolute
+		color: white
+		transform: translateY(-50%) translateX(-50%)
+		opacity: 1
+		transition: opacity 0.4s linear
+
+	&.open
+		&:after
+			transform: translateX(-50%) rotate(45deg)
+			top: 25px
+			bottom: auto
+		&:before
+			transform: translateX(-50%) rotate(-45deg)
+			top: 25px
+			bottom: auto
+		.offcanvas-label
+			opacity: 0

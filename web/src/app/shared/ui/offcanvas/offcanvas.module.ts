@@ -9,12 +9,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OffcanvasComponent } from './offcanvas.component';
+import { OffcanvasTriggerComponent } from './offcanvas-trigger/offcanvas-trigger.component';
 
 @NgModule({
 	imports: [
 		CommonModule
 	],
-	declarations: [ OffcanvasComponent ],
-	exports: [ OffcanvasComponent ]
+	declarations: [ OffcanvasComponent, OffcanvasTriggerComponent ],
+	exports: [ OffcanvasComponent, OffcanvasTriggerComponent ]
 })
 export class OffcanvasModule { }

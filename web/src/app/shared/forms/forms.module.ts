@@ -17,6 +17,7 @@ import { RadioFieldComponent } from './fields/radio-field/radio-field.component'
 import { CheckboxFieldComponent } from './fields/checkbox-field/checkbox-field.component';
 import { InputDebounceComponent } from './input-debounce/input-debounce.component';
 import { VerticalSlideModule } from '../ui/vertical-slide/vertical-slide.module';
+import { ToggleFieldComponent } from './fields/toggle-field/toggle-field.component';
 
 @NgModule({
 	imports: [
@@ -32,7 +33,8 @@ import { VerticalSlideModule } from '../ui/vertical-slide/vertical-slide.module'
 		SelectFieldComponent, 
 		RadioFieldComponent, 
 		CheckboxFieldComponent, 
-		InputDebounceComponent
+		InputDebounceComponent, 
+		ToggleFieldComponent
 	],
 	exports: [
 		NgFormsModule,
@@ -43,7 +45,8 @@ import { VerticalSlideModule } from '../ui/vertical-slide/vertical-slide.module'
 		SelectFieldComponent, 
 		RadioFieldComponent, 
 		CheckboxFieldComponent, 
-		InputDebounceComponent
+		InputDebounceComponent,
+		ToggleFieldComponent
 	]
 })
 export class FormsModule { }

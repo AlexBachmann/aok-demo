@@ -8,30 +8,24 @@
 	height: 50px
 	box-shadow: 0 0 4px 0 rgba(0,0,0,.25)
 	z-index: 1000
-	background: white
+	background: $primary
 
 .logo
 	margin: 9px 0
 	display: block
-	+icon(logo)
+	+icon(logo_small)
 
 header,
 nav,
-.offcanvas-toggle
+tekkl-offcanvas-trigger,
+.subtitle
 	display: inline-block
 	vertical-align: top
 
-.offcanvas-toggle
-	border-radius: $global-radius
-	border: 1px solid $grey
-	text-transform: uppercase
-	padding: 3px
-	margin: 10px 5px 5px 0
-	font-size: 14px
-	color: $grey-dark
-	cursor: pointer
-	+breakpoint(large up)
-		display: none
+.subtitle
+	color: white
+	padding: 17px 15px 0px 15px
+
 nav
 	padding-left: 25px
 	float: right

@@ -3,10 +3,85 @@
 	position: absolute
 	width: 100%
 	min-height: 100%
-	padding-top: 50px
+	background: $grey-light
+	+breakpoint(tablet down)
+		padding-top: 50px
+	+breakpoint(large up)
+		padding-left: 250px
 
 .content
-	min-height: 350px
+	min-height: 1400px
 
+.side-nav
+	position: absolute
+	top: 0
+	left: 0
+	width: 250px
+	height: 100%
+	overflow-y: scroll
+	background: $primary
+	color: white
+	+breakpoint(tablet down)
+		display: none
 
+	.logo-container
+		text-align: center
+
+		.logo
+			+icon(logo_large)
+			display: inline-block
+
+	.suptitle
+		font-style: italic
+		text-align: center
+
+	ul
+		list-style: none
+		margin-top: 50px
+		margin-left: 0
+
+		a
+			position: relative
+			display: block
+			padding: 12px 10px 12px 50px
+			border-bottom: 1px dashed lighten($green, 5%)
+			color: white
+			font-weight: 700
+			background-color: $green
+			transition: background-color 1s
+			font-size: 18px
+			&:hover
+				background-color: lighten($green, 5%)
+
+			.icon-recos
+				+icon($icon:icon-recos, $rootelementposition: absolute)
+				top: 50%
+				transform: translateY(-50%) scale(0.85)
+				left: 15px
+
+			.icon-history
+				+icon($icon:icon-history, $rootelementposition: absolute)
+				top: 50%
+				transform: translateY(-50%) scale(0.75)
+				left: 5px
+
+			.icon-favs
+				+icon($icon:icon-favorite, $rootelementposition: absolute)
+				top: 50%
+				transform: translateY(-50%) scale(0.65)
+				left: 7px
+
+			.icon-settings
+				+icon($icon:icon-settings, $rootelementposition: absolute)
+				top: 50%
+				transform: translateY(-50%) scale(0.65)
+				left: 8px
+			
+		li:first-child
+			a
+				border-top: 1px dashed lighten($green, 5%)
+
+tekkl-header
+	+breakpoint(large up)
+		display: none
 	

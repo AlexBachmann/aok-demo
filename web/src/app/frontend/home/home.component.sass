@@ -1,0 +1,76 @@
+@import "./src/assets/private/sass/base";
+.column:last-child:not(:first-child), 
+.columns:last-child:not(:first-child)
+	float: left
+	
+.section-header
+	text-transform: uppercase
+	font-size: 14px
+	font-weight: 700
+	margin-top: 15px
+	margin-bottom: 5px
+
+.intro-container
+	position: relative
+	margin-top: 11px
+	padding-bottom: 40px
+	transition: all 1s
+
+	h1
+		font-size: 34px
+		font-style: italic
+
+	p
+		font-style: italic
+
+	.intro-toggle
+		position: absolute
+		bottom: -11px
+		left: 50%
+		transform: translateY(-50%)
+		background-color: $grey-light-highlight
+		width: 65px
+		height: 22px
+		text-align: center
+		font-size: 12px
+		color: $grey-dark
+		cursor: pointer
+		transition: all 1s
+		span
+			display: inline-block
+			&.opened
+				padding-top: 2px
+
+	&.closed
+		padding-bottom: 0px
+		.intro-toggle
+			top: auto
+			bottom: -22px
+			border-radius: 50% / 100%
+			border-top-left-radius: 0
+			border-top-right-radius: 0
+
+
+	&.opened
+		.intro-toggle
+			width: 90px
+			border-radius: $global-radius
+
+.categories
+	.category
+		border-radius: $global-radius
+		background: $grey-light-highlight
+		color: black
+		cursor: pointer
+		margin: 0 5px 5px 0
+		font-size: 12px
+		padding: 3px 5px
+		display: inline-block
+
+		&.active
+			background: $grey-dark
+			color: white
+
+tekkl-video
+	display: block
+	margin-bottom: 10px

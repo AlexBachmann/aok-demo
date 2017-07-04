@@ -1,0 +1,12 @@
+<div class="row column">
+	<h1>Favoriten</h1>
+	<p class="subtitle">Das sind die Übungen, die Du als einem Herzen markiert hast.</p>
+	<div *ngIf="favorites.length" class="row">
+		<div *ngFor="let entry of favorites" class="columns medium-3 small-6">
+			<tekkl-video [video]="entry.video"></tekkl-video>
+		</div>
+	</div>
+	<div class="no-results" *ngIf="!favorites.length">
+		Du hast noch keine Übungen zu Deinen Favoriten hinzugefügt. Klicke auf das kleine Herz um Übungen zu Deinen Favoriten hinzuzufügen.
+	</div>
+</div>

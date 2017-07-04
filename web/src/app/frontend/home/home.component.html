@@ -1,5 +1,48 @@
-<tekkl-page-title i18n="Page Title: Homepage">Welcome to TEKKL - Home</tekkl-page-title>
+<tekkl-page-title i18n="Page Title: Homepage">AOK Plus - Aktiv Pause</tekkl-page-title>
 <div class="row column">
-	<h1>Welcome to TEKKL!</h1>
+	<div class="intro-container" [class.opened]="showIntro" [class.closed]="!showIntro">
+		<tekkl-vertical-slide [open]="showIntro">
+			<div class="intro-content">
+				<div class="row">
+					<div class="column medium-6">
+						<h1>Lernen Sie Ihre Trainer kennen</h1>
+						<p>
+							Patrick Verch (Sportökonom / Personal Trainier) und Gunnar Preuß (Sportwissenschaftler / Personal Trainer) vom Team <a href="https://www.bodyturn.de/" target="_blank">BODYTURN</a> helfen seit vielen Jahren sport- und fitnessinteressierten Menschen, ihre persönlichen Ziele zu erreichen. Hierfür verwenden sie vier verschiedene Traininsmethoden (Mindful Move, EMS Training, Five Rücken- und Gelenktraining, Functional Fitness), die Menschen mit unterschiedlichem Fitnesslevel und Zeitbudget ein auf sie zugeschnittenes Trainingsprogramm bieten können.
+						</p>
+					</div>
+					<div class="column medium-6">
+						<tekkl-responsive-iframe src="https://www.youtube.com/embed/bCsem0jjhBU"></tekkl-responsive-iframe>
+					</div>
+				</div>
+			</div>
+		</tekkl-vertical-slide>
+		<div class="intro-toggle" (click)="toggleIntro()">
+			<span *ngIf="!showIntro" class="closed">Zeigen</span>
+			<span *ngIf="showIntro" class="opened">Verbergen</span>
+		</div>
+	</div>
+	<h3 class="section-header">Demo Videos</h3>
+	<div class="row">
+		<div *ngFor="let video of enabled" class="columns medium-3 small-6">
+			<tekkl-video [video]="video"></tekkl-video>
+		</div>
+	</div>
+	<h3 class="section-header">Empfehlungen</h3>
+	<div class="row">
+		<div *ngFor="let video of recos" class="columns medium-3 small-6">
+			<tekkl-video [video]="video"></tekkl-video>
+		</div>
+	</div>
+	<h3 class="section-header">Kategorien</h3>
+	<div class="categories">
+		<div class="category" *ngFor="let category of categories" (click)="toggleCategory(category)" [class.active]="isSelectedCategory(category)">
+			{{category}}
+		</div>
+	</div>
+	<div class="row">
+		<div *ngFor="let video of getVideosByCategories()" class="columns medium-3 small-6">
+			<tekkl-video [video]="video"></tekkl-video>
+		</div>
+	</div>
 </div>
 

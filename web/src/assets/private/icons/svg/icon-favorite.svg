@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35px" height="32px" viewBox="0 0 35 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>heart_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-27.000000, -442.000000)" fill-rule="nonzero" fill="#FFFFFF">
+            <g id="Navigation">
+                <g id="heart_icon" transform="translate(27.000000, 442.000000)">
+                    <g id="Group" transform="translate(0.000000, 0.637820)">
+                        <path d="M9.58332343,0 C3.87359259,0 0,4.62460185 0,10.5105 C0,20.6006241 7.49998083,24.804837 17.5,31.1111241 C27.5000179,24.804837 35,20.6006241 35,10.5105 C35,4.62460185 31.1264068,7.36859133e-14 25.4166759,7.36859133e-14 C21.7416111,7.36859133e-14 18.7209815,2.10207407 17.5,3.36337037 C16.2790185,2.10207407 13.2584537,7.36859133e-14 9.58332407,7.36859133e-14 L9.58332343,0 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

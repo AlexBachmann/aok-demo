@@ -64,4 +64,12 @@ export class TimeHelper {
 
 		return format;
 	}
+	public static getMySQLDate(date?: Date): string{
+		if(!date) date = new Date();
+		return date.getFullYear + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+	}
+	public static getMySQLDateTime(date?: Date): string{
+		if(!date) date = new Date();
+		return TimeHelper.getMySQLDate(date) + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+	}
 }
