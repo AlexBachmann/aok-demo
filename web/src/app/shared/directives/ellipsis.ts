@@ -12,13 +12,13 @@ import { fireEvent } from '../../lib/utils/event-helper';
 @Directive({
 	selector: '[ellipsis]'
 })
-export class EllipsisDirective implements OnInit {
+export class EllipsisDirective {
 	@Input() ellipsis: string
 	@Input() rows: number
 	@Input() break: string = 'word'
 	originalText: string
 	constructor(private el: ElementRef) {}
-	ngOnInit(){
+	ngAfterViewInit(){
 		this.initInput();
 		this.originalText = this.el.nativeElement.textContent;
 		this.applyEllipsis();
@@ -26,13 +26,14 @@ export class EllipsisDirective implements OnInit {
 	initInput(){
 		if(!this.ellipsis) this.ellipsis = '...';
 		if(!this.rows) this.rows = 1;
+		this.rows = Number(this.rows);
 		if(!this.break) this.break = 'word';
 	}
 	applyEllipsis(){
 		var rows = 0;
 		var height = 0;
 		var lastHeight = 0;
-		for(var i = 0; i < this.originalText.length; i++){
+		for(var i = 0; i < this.originalText.length; (i + 10 < this.originalText.length) ? i = i + 10 : i = this.originalText.length) {
 			this.el.nativeElement.textContent = this.originalText.substr(0, i+1);
 			height = this.el.nativeElement.clientHeight;
 			if(height > lastHeight){
@@ -57,6 +58,7 @@ export class EllipsisDirective implements OnInit {
 						if(height < lastHeight) break;
 					}
 				}
+				break;
 			}
 		}
 	}

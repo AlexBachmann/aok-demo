@@ -1,31 +1,24 @@
 <div class="wrapper">
 	<tekkl-notification-container></tekkl-notification-container>
 	<tekkl-offcanvas>
-		<ul class="offcanvas-menu">
+		<ul>
 			<li>
-				<span i18n="Offcanvas Menu Label">Account</span>
-				<ul class="submenu">
-					<li>
-						<a routerLink="/user/login" i18n="Offcanvas Submenu Label">Login</a>
-						<ul>
-							<li>
-								<a routerLink="/user/reset-password" i18n="Offcanvas Submenu Label">Change Password</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a routerLink="/user/register" i18n="Offcanvas Submenu Label">Register</a>
-					</li>
-				</ul>
+				<a close-on-click routerLink="/"><div class="icon icon-recos"></div>Empfehlungen</a>
 			</li>
 			<li>
-				<a routerLink="/backend" i18n="Offcanvas Menu Label">Backend</a>
+				<a close-on-click routerLink="/verlauf"><div class="icon icon-history"></div>Verlauf</a>
+			</li>
+			<li>
+				<a close-on-click routerLink="/favoriten"><div class="icon icon-favs"></div>Favoriten</a>
+			</li>
+			<li>
+				<a close-on-click routerLink="/einstellungen"><div class="icon icon-settings"></div>Einstellungen</a>
 			</li>
 		</ul>
 	</tekkl-offcanvas>
 	<div class="side-nav">
 		<div class="logo-container">
-			<div class="logo"></div>
+			<a routerLink="/" class="logo"></a>
 		</div>
 		<div class="suptitle">
 			Aktiv-Pause

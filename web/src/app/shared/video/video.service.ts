@@ -17,7 +17,7 @@ export class VideoService {
 		{
 			id: 1, 
 			url: 'https://www.youtube.com/watch?v=stMjdP88Bxo', 
-			title: 'Nacken Verspannung lösen', 
+			title: 'Nacken Verspannung lösen',
 			date: '2017-07-02', 
 			categories: ['Entspannung', 'Hals', 'Konzentration'], 
 			enabled: true,
@@ -25,6 +25,10 @@ export class VideoService {
 				{
 					title: 'Variiere die Kreisbewegung',
 					description: 'Ziel ist es, die Nackenmuskulatur zu lösen und zu bewegen. Fange daher mit kleinen Achten an und werde dann größer.'
+				},
+				{
+					title: 'Nicht zu große Achten ziehen',
+					description: 'Übertreibe es nicht. Es reicht, wenn Du 80% des Bewegungskreises Deines Nackens ausnutzt.'
 				},
 				{
 					title: 'Konzentriere Dich auf die Übung',
@@ -35,9 +39,9 @@ export class VideoService {
 		{
 			id: 2, 
 			url: 'https://www.youtube.com/watch?v=sGQo_hOBB0o', 
-			title: 'Brust und Rücken öffnen', 
+			title: 'Mobilisierung der Wirbelsäule', 
 			date: '2017-07-01', 
-			categories: ['Entspannung', 'Rücken', 'Brust', 'Konzentration'], 
+			categories: ['Entspannung', 'Rücken', 'Brust', 'Dehnung'], 
 			enabled: true,
 			steps: [
 				{
@@ -50,11 +54,11 @@ export class VideoService {
 				},
 				{
 					title: 'Dehne Bauch und Rückenmuskulatur',
-					description: 'Indem Du Deinen Oberkörper streckst und die Arme nach oben nimmst, wird Deine Bauch- und Rückenmuskulatur gedehnt, Verspannungen werden gelöst.'
+					description: 'Indem Du Deinen Oberkörper streckst und die Arme nach oben nimmst, wird Deine Bauch- und Rückenmuskulatur gedehnt, alltäglichen Verkürzungen wird entgegenwirkt.'
 				},
 				{
 					title: 'Verstärke den Effekt mit Deiner Hüfte',
-					description: 'Indem Du die Hüfte nach vorne nimmst, verstärkst Du den Effekt der Dehnung.'
+					description: 'Indem Du die Hüfte nach vorne nimmst, wird Dein Hüftbäuger gelöst. Hierdurch entspannt sich auch Dein Rücken.'
 				},
 			]
 		},

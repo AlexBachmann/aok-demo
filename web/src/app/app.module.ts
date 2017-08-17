@@ -25,12 +25,10 @@ import { OutsideClickEvent } from './shared/events/outside-click.event';
 import { offcanvasReducer } from './shared/ui/offcanvas/offcanvas.state';
 
 import { AppComponent } from './app.component';
-import { ToggleFieldComponent } from './shared/form/fields/toggle-field/toggle-field.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		ToggleFieldComponent,
 	],
 	imports: [
 		BrowserModule,
